@@ -28,8 +28,7 @@ public class MainController {
 
 
 
-        System.out.println(memberDto.getUserId());
-        System.out.println(memberDto.getPwd());
+
 
 
 
