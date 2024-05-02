@@ -4,7 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import vip.com.accommodation.service.member.MemberService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -12,15 +15,17 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
 
-    @GetMapping("/")
-    public String main(HttpSession session, Model model){
+    @Resource
+    private MemberService memberService;
 
 
+    @GetMapping("/login")
+    public String login(){
 
-            return "main/main";
+        return "member/login";
+    }
 
 
-        }
 
 
 

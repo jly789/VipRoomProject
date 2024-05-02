@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-/mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vip.com.accommodation.mapper.member.MemberMapper">
+
+
+
+
+<!--    <select id="maxNum" resultType="int">-->
+<!--        select ifnull(max(memberId),0) as memberId from member-->
+<!--    </select>-->
+
+
+<!--    <insert id="insertData" parameterType="man.man.dto.member.MemberInsertDTO">-->
+
+<!--        insert into member(memberId,userId,pwd,userName)-->
+<!--        values (#{memberId},#{userId},#{pwd},#{userName})-->
+
+<!--    </insert>-->
+
+<!--    <select id="memberIdFind" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
+<!--        select memberId from member-->
+<!--        where userId=#{userId}-->
+
+<!--    </select>-->
+
+<!--    <select id="login" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
+
+<!--        select count(*),0 from member-->
+<!--        where userId =#{userId} and pwd =#{pwd}-->
+
+
+
+
+<!--    </select>-->
+
+
+
+
+
+</mapper>

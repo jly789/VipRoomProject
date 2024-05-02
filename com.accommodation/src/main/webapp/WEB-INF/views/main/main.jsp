@@ -39,17 +39,22 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">dirEngine.</a>
+        <a class="navbar-brand" href="/">dirEngine.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                 <c:if test="${userId==null}">
-                <li class="nav-item"><a href="/loginMain" class="nav-link">login</a></li>
+                <li class="nav-item"><a href="/login" class="nav-link">로그인</a></li>
                     <li class="nav-item"><a href="/register" class="nav-link">회원가입</a></li>
+                </c:if>
+
+                <c:if test="${userId!=null}">
+                    <li class="nav-item"><a href="/" class="nav-link">로그아웃</a></li>
+
                 </c:if>
                 <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
                 <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>
@@ -71,14 +76,9 @@
 
 
 
-<c:if test="${userId!=null}">
-    환영합니다 ${userId}님
-    <li><a href="/">홈으로</a></li>
-    <li><a href="/logout">로그아웃</a></li>
 
-</c:if>
 
-<div class="hero-wrap js-fullheight" style="background-image: url('resources/images/bg_1.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url('resources/images/bg_4.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
