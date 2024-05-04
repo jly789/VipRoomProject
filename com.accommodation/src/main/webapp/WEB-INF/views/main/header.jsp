@@ -43,12 +43,22 @@
             <span class="oi oi-menu"></span> Menu
         </button>
 
+
+
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 
+                <c:if test="${userId==null}">
                 <li class="nav-item"><a href="/login" class="nav-link">로그인</a></li>
                 <li class="nav-item"><a href="/register" class="nav-link">회원가입</a></li>
+                </c:if>
+
+                <c:if test="${userId!=null}">
+                    <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
+
+                </c:if>
+
 
                 <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
                 <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>

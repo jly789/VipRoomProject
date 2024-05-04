@@ -16,25 +16,11 @@ public class MainController {
     @GetMapping("/")
     public String main(HttpSession session)throws Exception{
 
-        session.removeAttribute("userId");
-
-        return "main/main";
-    }
-
-    @PostMapping("/")
-    public String login_ok(HttpSession session, MemberDto memberDto)throws Exception{
-
-        session.setAttribute("userId",memberDto.getUserId());
-
-
-
-
-
-
-
 
 
         return "main/main";
     }
+
+
 
 }

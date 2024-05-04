@@ -1,6 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
+
 <c:set var="cp" value="<%=request.getContextPath()%>"/>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,22 +65,25 @@
 
         <div>
 
-          <form action="/register_success" method="post">
+          <form:form action="/register_success" method="post" modelAttribute="memberInsertDto">
             <div class="form-group">
-              <input type="text" class="form-control" name="userId" placeholder="아이디 입력" style="margin-left: 300px;">
+              <input type="text" class="form-control" name="userId" value="${memberInsertDto.userId}" placeholder="아이디 입력" style="margin-left: 300px;"/>
+              <form:errors path="userId" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="pwd" placeholder="비밀번호 입력" style="margin-left: 300px;">
+              <input type="text" class="form-control" name="pwd" placeholder="비밀번호 입력" style="margin-left: 300px;"/>
+              <form:errors path="pwd" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" name="userName" placeholder="이름 입력" style="margin-left: 300px;">
+              <input type="text" class="form-control" name="userName" placeholder="이름 입력" style="margin-left: 300px;"/>
+              <form:errors path="userName" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
 
 
             <input type="submit" value="회원가입" class="btn btn-primary py-3 px-5" style="margin-right: -600px;">
 
-          </form>
+          </form:form>
 
 
 

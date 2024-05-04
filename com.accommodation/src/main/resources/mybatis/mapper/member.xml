@@ -20,7 +20,27 @@
 
     </insert>
 
-<!--    <select id="memberIdFind" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
+
+
+    <select id="login" parameterType="vip.com.accommodation.dto.member.MemberLoginDto" resultType="int">
+
+        select count(*) from member
+        where userId =#{userId} and pwd =#{pwd}
+
+
+
+
+    </select>
+
+    <select id="idCheck" parameterType="String" resultType="int">
+
+    select count(*) from member
+    where userId =#{userId}
+
+    </select>
+
+
+    <!--    <select id="memberIdFind" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
 <!--        select memberId from member-->
 <!--        where userId=#{userId}-->
 
