@@ -123,7 +123,7 @@ public class MemberController {
     public String idSearch_ok(@Valid @ModelAttribute("memberSearchDto")MemberSearchDto memberSearchDto
                               ,BindingResult bindingResult,Model model){
 
-
+        System.out.println("테스트");
 
 
         String idSearch = memberService.idSearch(memberSearchDto);
