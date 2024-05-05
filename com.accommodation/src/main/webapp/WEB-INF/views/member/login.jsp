@@ -54,14 +54,18 @@
     <div class="row d-flex mb-5 contact-info">
       <div class="col-md-12 mb-4">
         <h2>로그인</h2>
+
       </div>
 
     <div>
 
         <form action="/" method="post">
           <div class="form-group">
+            <h6 style="margin-left: 100px;">아이디</h6>
             <input type="text" class="form-control" name="userId" placeholder="아이디 입력" style="margin-left: 300px;">
           </div>
+
+          <h6 style="margin-left: 120px;">비밀번호</h6>
           <div class="form-group">
             <input type="text" class="form-control" name="pwd" placeholder="비밀번호 입력" style="margin-left: 300px;">
           </div>
@@ -69,14 +73,26 @@
 
           <input type="submit" value="로그인" class="btn btn-primary py-3 px-5" style="margin-right: -600px;">
 
+
         </form>
 
 
 
     </div>
 
+
+
+
   </div>
   </div>
+
+  <strong><a href="/idSearch" style="color: black; text-align: end"  >계정 찾기 / </a>
+  <a href="/pwdSearch" style="color: black;" >비밀번호 찾기</a></strong>
+  <br/><br/>
+
+
+
+  <strong> <p> 아직 회원이 아니신가요?  <a href="/register"> 회원가입 </a> click</p></strong>
 
 
 </section>

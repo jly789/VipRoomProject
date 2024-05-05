@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import vip.com.accommodation.dto.member.MemberDto;
 import vip.com.accommodation.dto.member.MemberInsertDto;
 import vip.com.accommodation.dto.member.MemberLoginDto;
+import vip.com.accommodation.dto.member.MemberSearchDto;
 import vip.com.accommodation.service.member.MemberService;
 
 import javax.annotation.Resource;
@@ -81,8 +82,6 @@ public class MemberController {
                               BindingResult bindingResult,Model model
                              )throws Exception{
 
-        System.out.println(memberInsertDto.getBirth());
-
 
         if(bindingResult.hasFieldErrors()){
 
@@ -112,6 +111,86 @@ public class MemberController {
         return "redirect:/login";
     }
 
+
+    @GetMapping("/idSearch")
+    public String idSearch(){
+
+
+        return "/member/idSearch";
+    }
+
+    @PostMapping("/idSearch")
+    public String idSearch_ok(@Valid @ModelAttribute("memberSearchDto")MemberSearchDto memberSearchDto
+                              ,BindingResult bindingResult,Model model){
+
+
+
+
+        String idSearch = memberService.idSearch(memberSearchDto);
+
+        if(idSearch==null){
+            String exists = "해당정보는 없습니다";
+            model.addAttribute("exists", exists);
+        }
+
+        model.addAttribute("idSearch", idSearch);
+
+
+        if(bindingResult.hasFieldErrors()){
+
+            model.addAttribute("memberSearchDto",memberSearchDto);
+
+
+            return "/member/idSearch";
+        }
+
+
+        return "/member/idSearch";
+
+
+
+    }
+
+
+    @GetMapping("/pwdSearch")
+    public String pwdSearch(){
+
+
+        return "/member/pwdSearch";
+    }
+
+    @PostMapping("/pwdSearch")
+    public String pwdSearch_ok(@Valid @ModelAttribute("memberSearchDto")MemberSearchDto memberSearchDto
+            ,BindingResult bindingResult,Model model){
+
+
+
+
+        String pwdSearch = memberService.pwdSearch(memberSearchDto);
+        if(pwdSearch==null){
+            String exists = "해당정보는 없습니다";
+            model.addAttribute("exists", exists);
+        }
+
+
+
+        model.addAttribute("pwdSearch", pwdSearch);
+
+
+        if(bindingResult.hasFieldErrors()){
+
+            model.addAttribute("memberSearchDto",memberSearchDto);
+
+
+            return "/member/pwdSearch";
+        }
+
+
+        return "/member/pwdSearch";
+
+
+
+    }
 
 
 

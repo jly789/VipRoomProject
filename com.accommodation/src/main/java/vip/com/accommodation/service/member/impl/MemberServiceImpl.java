@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vip.com.accommodation.dto.member.MemberInsertDto;
 import vip.com.accommodation.dto.member.MemberLoginDto;
+import vip.com.accommodation.dto.member.MemberSearchDto;
 import vip.com.accommodation.mapper.member.MemberMapper;
 import vip.com.accommodation.service.member.MemberService;
 
@@ -54,6 +55,17 @@ public class MemberServiceImpl implements MemberService {
         }
 
         return 1;
+    }
+
+
+    @Override
+    public String idSearch(MemberSearchDto memberSearchDto) {
+       return memberMapper.idSearch(memberSearchDto);
+    }
+
+    @Override
+    public String pwdSearch(MemberSearchDto memberSearchDto) {
+        return memberMapper.pwdSearch(memberSearchDto);
     }
 
     @Override

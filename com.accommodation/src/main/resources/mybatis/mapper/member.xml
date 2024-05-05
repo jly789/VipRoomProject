@@ -41,6 +41,21 @@
 
     </select>
 
+    <select id="idSearch" parameterType="vip.com.accommodation.dto.member.MemberSearchDto" resultType="String">
+
+    select userId from member
+    where userName=#{userName} and email=#{email}
+
+
+    </select>
+
+    <select id="pwdSearch" parameterType="vip.com.accommodation.dto.member.MemberSearchDto" resultType="String">
+
+        select pwd from member
+        where userId=#{userId} and email=#{email}
+
+
+    </select>
 
     <!--    <select id="memberIdFind" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
 <!--        select memberId from member-->

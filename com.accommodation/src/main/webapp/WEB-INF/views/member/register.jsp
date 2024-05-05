@@ -137,10 +137,16 @@
             </div>
 
 
+            <div class="register-footer">
+              <p> 이미 아이디를 가지고 계신가요? <a href="/login"> 로그인 </a> here</p>
 
 
 
-            <input type="submit" id="register" value="회원가입" class="btn btn-primary py-3 px-5" style="margin-right: -600px;">
+            </div>
+
+
+            <input type="submit" id="register" value="회원가입" class="btn btn-primary py-3 px-5" >
+
 
           </form:form>
 
