@@ -67,21 +67,74 @@
 
           <form:form action="/register_success" method="post" modelAttribute="memberInsertDto">
             <div class="form-group">
-              <input type="text" class="form-control" name="userId" value="${memberInsertDto.userId}" placeholder="아이디 입력" style="margin-left: 300px;"/>
+              <input type="text" class="form-control" name="userId" id="userId" value="${memberInsertDto.userId}" placeholder="아이디 입력" style="margin-left: 300px;"/>
               <form:errors path="userId" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+
+
+            <input type="button" id="btnCheck" value="중복검사" class="btn btn-primary py-3 px-5" style="margin-left: 220px;" />
             </div>
+            <span id="result"></span>
+<%--            result = 중복확인시 텍스트값을 뿌려준다--%>
+
+            <input type="hidden" id="checkId" value=""/>
+<%--            checkId =중복확인 값 0일시 중복확인클릭x 1일시 중복확인클릭o--%>
+
+
             <div class="form-group">
-              <input type="text" class="form-control" name="pwd" placeholder="비밀번호 입력" style="margin-left: 300px;"/>
+              <input type="text" class="form-control" name="pwd" value="${memberInsertDto.pwd}" placeholder="비밀번호 입력" style="margin-left: 300px;"/>
               <form:errors path="pwd" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" name="userName" placeholder="이름 입력" style="margin-left: 300px;"/>
+              <input type="text" class="form-control" name="userName" value="${memberInsertDto.userName}" placeholder="이름 입력" style="margin-left: 300px;"/>
               <form:errors path="userName" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
 
+            <div class="form-group">
+              <input type="text" class="form-control" name="nickName" value="${memberInsertDto.nickName}" placeholder="닉네임 입력" style="margin-left: 300px;"/>
+              <form:errors path="nickName" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
 
-            <input type="submit" value="회원가입" class="btn btn-primary py-3 px-5" style="margin-right: -600px;">
+            <div class="form-group">
+              <input type="date" class="form-control" name="birth" value="${memberInsertDto.birth}" placeholder="생일 입력" style="margin-left: 300px;"/>
+              <form:errors path="birth" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+            <div class="form-group">
+              <input type="tel" class="form-control" name="tel" value="${memberInsertDto.tel}" placeholder="전화번호 입력" style="margin-left: 300px;"/>
+              <form:errors path="tel" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="postcode" value="${memberInsertDto.postcode}" placeholder="우편번호 입력" style="margin-left: 300px;"/>
+              <form:errors path="postcode" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="address" value="${memberInsertDto.address}" placeholder="주소 입력" style="margin-left: 300px;"/>
+              <form:errors path="address" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="detailAddress" value="${memberInsertDto.detailAddress}"  placeholder="상세주소 입력" style="margin-left: 300px;"/>
+              <form:errors path="detailAddress" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="extraAddress" value="${memberInsertDto.extraAddress}" placeholder="참고사항 입력" style="margin-left: 300px;"/>
+              <form:errors path="extraAddress" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" name="email"  value="${memberInsertDto.email}" placeholder="이메일 입력" style="margin-left: 300px;"/>
+              <form:errors path="email" cssStyle="font-weight: bold; color: #e95050"></form:errors>
+            </div>
+
+
+
+
+
+            <input type="submit" id="register" value="회원가입" class="btn btn-primary py-3 px-5" style="margin-right: -600px;">
 
           </form:form>
 
@@ -96,7 +149,71 @@
   </section>
 
 
+  <script>
 
+    $('#register').click(function (){
+
+      if($('#checkId').val()!=1){
+
+        alert('중복확인을 누르세요.');
+        return false;
+      }
+
+      if($('#result').text()=='이미 사용중인 아이디입니다.'){
+
+        alert('이미사용중인 아이디');
+        return false;
+      }
+
+
+    });
+
+
+
+
+    $('#btnCheck').click(function () {
+
+      if($('#userId').val() !=''){
+
+        $.ajax({
+
+          type:'POST',
+          url: '/idCheck',
+          data: 'userId=' + $('#userId').val(),
+          dataType: 'json',
+
+          success:function (result){
+
+            if(result=='1'){
+              $('#result').text('사용 가능한 아이디입니다.');
+              $('#checkId').val(1);
+
+              document.getElementById('result').style.color ="black";
+            }
+
+            else {
+              $('#result').text('이미 사용중인 아이디입니다.');
+              $('#checkId').val(1);
+              document.getElementById('result').style.color ="red";
+            }
+
+          },
+          error: function (a,b,c){
+            console.log(a,b,c);
+          }
+
+        });
+
+      } else{
+        alert('아이디를 입력하세요');
+        $('#userId').focus();
+      }
+
+
+
+    });
+
+  </script>
 
 
 

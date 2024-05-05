@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import vip.com.accommodation.dto.member.MemberDto;
 import vip.com.accommodation.dto.member.MemberInsertDto;
 import vip.com.accommodation.dto.member.MemberLoginDto;
@@ -65,24 +66,34 @@ public class MemberController {
         return "member/register";
     }
 
+
+    @ResponseBody
+    @PostMapping("/idCheck")
+    public int idCheck(String userId){
+
+        int result = memberService.idCheck(userId);
+
+        return result;
+    }
+
     @PostMapping("/register_success")
     public String register_ok(@Valid @ModelAttribute("memberInsertDto") MemberInsertDto memberInsertDto,
-                              BindingResult bindingResult,Model model,
-                              HttpServletResponse response)throws Exception{
+                              BindingResult bindingResult,Model model
+                             )throws Exception{
+
+        System.out.println(memberInsertDto.getBirth());
+
 
         if(bindingResult.hasFieldErrors()){
 
-            model.addAttribute("memberInsertDto",memberInsertDto);
 
+
+            model.addAttribute("memberInsertDto",memberInsertDto);
 
             return "member/register";
 
         }
 
-        if(memberService.idCheck(memberInsertDto.getUserId())==0){
-
-
-        }
 
 
         if(memberService.idCheck(memberInsertDto.getUserId())==1) {
@@ -92,13 +103,16 @@ public class MemberController {
 
             memberId = memberService.maxNum() + 1;
 
-            memberService.insertData(memberInsertDto, response);
+            memberService.insertData(memberInsertDto);
 
-            return "member/login";
+
+            return "redirect:/login";
         }
 
-        return "member/login";
+        return "redirect:/login";
     }
+
+
 
 
 

@@ -9,7 +9,7 @@ public interface MemberService {
 
     public int maxNum();
 
-    public void insertData(MemberInsertDto memberInsertDto, HttpServletResponse response)throws Exception;
+    public void insertData(MemberInsertDto memberInsertDto)throws Exception;
 
     public int idCheck(String userId);
 

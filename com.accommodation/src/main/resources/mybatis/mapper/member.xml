@@ -15,8 +15,10 @@
 
     <insert id="insertData" parameterType="vip.com.accommodation.mapper.member.MemberMapper">
 
-        insert into member(memberId,userId,pwd,userName)
-        values (#{memberId},#{userId},#{pwd},#{userName})
+        insert into member(memberId,role,userId,pwd,userName,nickName,birth,tel,postcode,address,detailAddress,extraAddress,email)
+        values (#{memberId},'회원',#{userId},#{pwd},#{userName},#{nickName},#{birth},#{tel},#{postcode},#{address}
+               ,#{detailAddress},#{extraAddress},#{email})
+
 
     </insert>
 
