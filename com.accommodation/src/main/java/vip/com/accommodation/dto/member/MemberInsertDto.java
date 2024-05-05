@@ -33,9 +33,9 @@ public class MemberInsertDto {
     @Size(min = 2, max = 15, message = "2~15자 이내로 입력해 주세요.")
     private String nickName;
 
-    @NotEmpty(message = "필수 정보입니다.")
-//    @PastOrPresent(message = "과거 또는 현재의 날짜여야 합니다.")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "필수 정보입니다.")
+    @PastOrPresent(message = "과거 또는 현재의 날짜여야 합니다.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birth;
 
     @NotBlank(message = "필수 정보입니다.")
