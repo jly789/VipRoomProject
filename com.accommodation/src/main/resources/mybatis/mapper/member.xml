@@ -57,6 +57,28 @@
 
     </select>
 
+    <select id="mypage" parameterType="String" resultType="vip.com.accommodation.dto.member.MemberFindDto">
+
+    select * from member
+    where userId = #{userId}
+
+
+
+    </select>
+
+    <update id="mypageUpdate" parameterType="vip.com.accommodation.dto.member.MemberUpdateDto">
+
+       update member
+       set  pwd =#{pwd},userName =#{userName},nickName =#{nickName},birth=#{birth}, tel =#{tel},postcode =#{postcode},address =#{address},
+           detailAddress =#{detailAddress},extraAddress =#{extraAddress},email =#{email}
+
+       where userId = #{userId}
+
+
+
+
+    </update>
+
     <!--    <select id="memberIdFind" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
 <!--        select memberId from member-->
 <!--        where userId=#{userId}-->
@@ -74,7 +96,20 @@
 <!--    </select>-->
 
 
+<select id="deleteLoginCheck" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto" resultType="int">
 
+    select count(*) from member
+    where userId = #{userId} and pwd = #{pwd}
+
+</select>
+
+
+    <delete id="mypageDelete" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto">
+
+    delete from member
+    where userId =#{userId} and pwd = #{pwd}
+
+    </delete>
 
 
 </mapper>

@@ -1,10 +1,9 @@
 package vip.com.accommodation.service.member;
 
-import vip.com.accommodation.dto.member.MemberInsertDto;
-import vip.com.accommodation.dto.member.MemberLoginDto;
-import vip.com.accommodation.dto.member.MemberSearchDto;
+import vip.com.accommodation.dto.member.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public interface MemberService {
 
@@ -18,5 +17,12 @@ public interface MemberService {
     public String pwdSearch(MemberSearchDto memberSearchDto);
 
     public int login(MemberLoginDto memberLoginDto, HttpServletResponse response)throws Exception ;
+
+    public List<MemberFindDto> mypage(String userId);
+    public  void mypageUpdate(MemberUpdateDto memberUpdateDto);
+
+    public int deleteLoginCheck(MemberDeleteDto memberDeleteDto);
+
+    public void mypageDelete(MemberDeleteDto memberDeleteDto);
 
 }

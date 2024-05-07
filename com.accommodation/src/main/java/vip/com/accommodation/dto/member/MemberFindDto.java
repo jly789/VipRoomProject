@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class MemberInsertDto {
+public class MemberFindDto {
 
 
     private int memberId;

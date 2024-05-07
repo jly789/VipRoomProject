@@ -55,6 +55,7 @@
                 </c:if>
 
                 <c:if test="${userId!=null}">
+                    <li class="nav-item"><a href="/mypage" class="nav-link">mypage</a></li>
                     <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
 
                 </c:if>

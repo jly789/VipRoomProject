@@ -1026,7 +1026,7 @@
                 <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 
                     <li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a></li>
-
+                <li class="nav-item"><a href="/mypage" class="nav-link">mypage</a></li>
 
                 <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
                 <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>

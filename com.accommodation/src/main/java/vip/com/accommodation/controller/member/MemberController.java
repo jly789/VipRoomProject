@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import vip.com.accommodation.dto.member.MemberDto;
-import vip.com.accommodation.dto.member.MemberInsertDto;
-import vip.com.accommodation.dto.member.MemberLoginDto;
-import vip.com.accommodation.dto.member.MemberSearchDto;
+import vip.com.accommodation.dto.member.*;
 import vip.com.accommodation.service.member.MemberService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -192,8 +191,99 @@ public class MemberController {
 
     }
 
+    @GetMapping("/mypage")
+    public String mypage(HttpSession session,Model model){
+
+        String userId = (String) session.getAttribute("userId");
 
 
+
+       List<MemberFindDto> memberFindDto = memberService.mypage(userId);
+
+       model.addAttribute("memberFindDto",memberFindDto);
+
+
+
+
+
+        return "/member/mypage";
+    }
+
+    @PostMapping("/mypage")
+    public String mypage_update(@Valid  @ModelAttribute("memberFindDto") MemberUpdateDto memberUpdateDto,
+
+                               BindingResult bindingResult,HttpSession session,Model model){
+
+
+
+
+
+
+        if(bindingResult.hasFieldErrors()){
+
+
+            return "/member/mypageUpdateOk";
+
+        }
+
+
+        memberService.mypageUpdate(memberUpdateDto);
+
+
+        return "redirect:/mypage";
+    }
+
+    @PostMapping("/mypageUpdate")
+    public String mypageUpdate(HttpSession session,Model model){
+
+        String userId = (String) session.getAttribute("userId");
+
+
+
+        List<MemberFindDto> memberFindDto = memberService.mypage(userId);
+
+        model.addAttribute("memberFindDto",memberFindDto);
+
+
+
+
+
+        return "/member/mypageUpdate";
+    }
+
+    @GetMapping("/mypageDelete")
+    public String mypageDelete(HttpSession session,Model model){
+
+
+        return "member/mypageDelete";
+    }
+
+
+
+
+    @PostMapping("/mypageDelete")
+    public String mypageDelete_ok(MemberDeleteDto memberDeleteDto,Model model){
+
+
+
+       if( memberService.deleteLoginCheck(memberDeleteDto) ==1){
+
+           String message = "아이디 또는 비밀번호 다시 체크";
+           model.addAttribute("message",message);
+           return "member/mypageDelete";
+           //삭제x
+       }
+
+       else
+
+            memberService.mypageDelete(memberDeleteDto);
+
+           //삭제
+
+
+
+        return "redirect:/login";
+    }
 
 
 

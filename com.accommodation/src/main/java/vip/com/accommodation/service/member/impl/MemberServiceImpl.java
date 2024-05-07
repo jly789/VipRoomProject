@@ -2,14 +2,13 @@ package vip.com.accommodation.service.member.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vip.com.accommodation.dto.member.MemberInsertDto;
-import vip.com.accommodation.dto.member.MemberLoginDto;
-import vip.com.accommodation.dto.member.MemberSearchDto;
+import vip.com.accommodation.dto.member.*;
 import vip.com.accommodation.mapper.member.MemberMapper;
 import vip.com.accommodation.service.member.MemberService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -96,4 +95,35 @@ public class MemberServiceImpl implements MemberService {
        return 1;
     }
 
+    @Override
+    public List<MemberFindDto> mypage(String userId) {
+       return memberMapper.mypage(userId);
+    }
+
+    @Override
+    public void mypageUpdate(MemberUpdateDto memberUpdateDto) {
+
+        memberMapper.mypageUpdate(memberUpdateDto);
+    }
+
+    @Override
+    public int deleteLoginCheck(MemberDeleteDto memberDeleteDto) {
+
+        if(memberMapper.deleteLoginCheck(memberDeleteDto)==1){
+            return 0; //아이디 확인완료
+        }
+        else {
+            return 1; //아이디 없음
+        }
+    }
+
+
+    @Override
+    public void mypageDelete(MemberDeleteDto memberDeleteDto) {
+
+
+
+        memberMapper.mypageDelete(memberDeleteDto);
+
+    }
 }
