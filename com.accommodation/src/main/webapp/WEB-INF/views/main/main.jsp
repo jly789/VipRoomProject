@@ -1025,8 +1025,22 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 
+
+
                     <li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a></li>
+
+                <c:if test="${userId == 'admin'}">
+                    <li class="nav-item"><a href="/mypage" class="nav-link">관리자페이지</a></li>
+                    <li class="nav-item"><a href="/accommodation" class="nav-link">숙박등록</a></li>
+
+
+                </c:if>
+
+                <c:if test="${userId != 'admin'}">
+
                 <li class="nav-item"><a href="/mypage" class="nav-link">mypage</a></li>
+
+                </c:if>
 
                 <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
                 <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>

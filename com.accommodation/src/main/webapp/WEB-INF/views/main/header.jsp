@@ -55,10 +55,23 @@
                 </c:if>
 
                 <c:if test="${userId!=null}">
+
+
+                    <c:if test="${userId == 'admin'}">
+                        <li class="nav-item"><a href="/mypage" class="nav-link">관리자페이지</a></li>
+                        <li class="nav-item"><a href="/accommodation" class="nav-link">숙박등록</a></li>
+                        <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
+
+                    </c:if>
+
+                <c:if test="${userId != 'admin'}">
+
                     <li class="nav-item"><a href="/mypage" class="nav-link">mypage</a></li>
                     <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
-
                 </c:if>
+                </c:if>
+
+
 
 
                 <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>

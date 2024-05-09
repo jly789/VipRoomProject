@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-/mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vip.com.accommodation.mapper.accommodation.AccommodationMapper">
+
+
+
+
+<!--    <select id="maxNum" resultType="int">-->
+<!--        select ifnull(max(memberId),0) as memberId from member-->
+<!--    </select>-->
+
+
+<!--    <insert id="insertData" parameterType="vip.com.accommodation.mapper.member.MemberMapper">-->
+
+<!--        insert into member(memberId,role,userId,pwd,userName,nickName,birth,tel,postcode,address,detailAddress,extraAddress,email)-->
+<!--        values (#{memberId},'회원',#{userId},#{pwd},#{userName},#{nickName},#{birth},#{tel},#{postcode},#{address}-->
+<!--               ,#{detailAddress},#{extraAddress},#{email})-->
+
+
+<!--    </insert>-->
+
+
+
+<!--    <select id="login" parameterType="vip.com.accommodation.dto.member.MemberLoginDto" resultType="int">-->
+
+<!--        select count(*) from member-->
+<!--        where userId =#{userId} and pwd =#{pwd}-->
+
+
+
+
+<!--    </select>-->
+
+<!--    <select id="idCheck" parameterType="String" resultType="int">-->
+
+<!--    select count(*) from member-->
+<!--    where userId =#{userId}-->
+
+<!--    </select>-->
+
+<!--    <select id="idSearch" parameterType="vip.com.accommodation.dto.member.MemberSearchDto" resultType="String">-->
+
+<!--    select userId from member-->
+<!--    where userName=#{userName} and email=#{email}-->
+
+
+<!--    </select>-->
+
+<!--    <select id="pwdSearch" parameterType="vip.com.accommodation.dto.member.MemberSearchDto" resultType="String">-->
+
+<!--        select pwd from member-->
+<!--        where userId=#{userId} and email=#{email}-->
+
+
+<!--    </select>-->
+
+<!--    <select id="mypage" parameterType="String" resultType="vip.com.accommodation.dto.member.MemberFindDto">-->
+
+<!--    select * from member-->
+<!--    where userId = #{userId}-->
+
+
+
+<!--    </select>-->
+
+<!--    <update id="mypageUpdate" parameterType="vip.com.accommodation.dto.member.MemberUpdateDto">-->
+
+<!--       update member-->
+<!--       set  pwd =#{pwd},userName =#{userName},nickName =#{nickName},birth=#{birth}, tel =#{tel},postcode =#{postcode},address =#{address},-->
+<!--           detailAddress =#{detailAddress},extraAddress =#{extraAddress},email =#{email}-->
+
+<!--       where userId = #{userId}-->
+
+
+
+
+<!--    </update>-->
+
+
+
+<!--<select id="deleteLoginCheck" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto" resultType="int">-->
+
+<!--    select count(*) from member-->
+<!--    where userId = #{userId} and pwd = #{pwd}-->
+
+<!--</select>-->
+
+
+<!--    <delete id="mypageDelete" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto">-->
+
+<!--    delete from member-->
+<!--    where userId =#{userId} and pwd = #{pwd}-->
+
+<!--    </delete>-->
+
+
+</mapper>
