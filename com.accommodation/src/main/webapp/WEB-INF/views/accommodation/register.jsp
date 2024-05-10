@@ -51,7 +51,7 @@
 
 
 
-
+<form:form action="/accommodation" method="post" modelAttribute="accommodationInsertDto" enctype="multipart/form-data">
 
 
 <div style="text-align: center;">
@@ -65,7 +65,7 @@
 
         <div>
 
-          <form:form action="/accommodation" method="post" modelAttribute="accommodationInsertDto">
+
 
 
 
@@ -173,38 +173,82 @@
 
 
             <div class="form-group">
-              <input type="text" class="form-control" name="accommodationInformation" id="sample6_postcode" value="${accommodationInsertDto.accommodationInformation}" placeholder="숙박정보 입력" />
+              <input type="text" class="form-control" name="accommodationInformation"  value="${accommodationInsertDto.accommodationInformation}" placeholder="숙박정보 입력" />
 
               <form:errors path="accommodationInformation" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
 
 
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="checkout__input">
+          <div class='addInput'>
+            <p>상품 이미지<span>*</span></p>
+            <input type="file" name="file" id="fileList" onchange="readURL(this);">
+          </div>
+          <button type="button" class="btnAdd">이미지 추가</button>
+        </div>
+      </div>
 
+        <br/>
+<%--    <div class="single-input-fields">--%>
+<%--      <input type="file" class="form-control" name="file"--%>
+<%--             style="width : 280px; height : 30px; "/>--%>
+<%--    </div>--%>
 
-            <input type="submit" id="register" value="숙박등록" class="btn btn-primary py-3 px-5" >
+<%--    <div class="single-input-fields">--%>
+<%--      <input type="file" class="form-control" name="file"--%>
+<%--             style="width : 280px; height : 30px; "/>--%>
+<%--    </div>--%>
 
+<%--    <div class="single-input-fields">--%>
+<%--      <input type="file" class="form-control" name="file"--%>
+<%--             style="width : 280px; height : 30px; "/>--%>
+<%--    </div>--%>
 
-          </form:form>
 
 
 
         </div>
 
       </div>
-    </div>
+    <input type="submit" id="register" value="숙박등록" class="btn btn-primary py-3 px-5" >
+    <br/>   <br/>
 
+</form:form>
 
-  </section>
 
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
   <script>
+
+
+    //파일 리스트 추가
+    $(document).ready(function() {
+      $('.btnAdd').click(function () {
+        $('.addInput').append(
+                '<input type="file" name="file" id="fileList" onchange="readURL(this);"/><button type="button" class="btnRemove">삭제</button>'
+        );//input file
+        $('.btnRemove').on('click',function(){//this='.btnRemove'
+          $(this).prev().remove();// .prev()=input file을 가리키고 remove()실행
+          $(this).next().remove();//<br> 삭제
+          $(this).remove();//버튼 삭제
+        });
+      });
+
+    });
+
 
     $('#register').click(function (){
 
       if($('#accommodationCategory').val()=='숙박유형'){
         alert('숙박유형을 선택하세요!');
         return false;
+      }
+
+      if($('#fileList').val()==''){
+          alert('이미지 파일을 선택하세요!');
+          return false;
       }
 
     });

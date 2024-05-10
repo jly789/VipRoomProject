@@ -8,19 +8,20 @@
 
 
 
-<!--    <select id="maxNum" resultType="int">-->
-<!--        select ifnull(max(memberId),0) as memberId from member-->
-<!--    </select>-->
+    <select id="maxNum" resultType="int">
+        select ifnull(max(accommodationId),0) from accommodation
+    </select>
 
 
-<!--    <insert id="insertData" parameterType="vip.com.accommodation.mapper.member.MemberMapper">-->
+    <insert id="accommodationInsert" parameterType="vip.com.accommodation.mapper.accommodation.AccommodationMapper">
 
-<!--        insert into member(memberId,role,userId,pwd,userName,nickName,birth,tel,postcode,address,detailAddress,extraAddress,email)-->
-<!--        values (#{memberId},'회원',#{userId},#{pwd},#{userName},#{nickName},#{birth},#{tel},#{postcode},#{address}-->
-<!--               ,#{detailAddress},#{extraAddress},#{email})-->
+        insert into accommodation(accommodationId,accommodationName,accommodationDistrict,accommodationCity,accommodationAddress,
+                                  accommodationCategory,accommodationInformation,accommodationCreateDate)
+        values (#{accommodationId},#{accommodationName},#{accommodationDistrict},#{accommodationCity},#{accommodationAddress}
+               ,#{accommodationCategory},#{accommodationInformation},sysdate())
 
 
-<!--    </insert>-->
+    </insert>
 
 
 

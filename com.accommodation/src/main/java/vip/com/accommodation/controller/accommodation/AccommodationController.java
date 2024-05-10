@@ -6,9 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
+import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
 import vip.com.accommodation.dto.city.CityDto;
+import vip.com.accommodation.dto.member.MemberInsertDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
+import vip.com.accommodation.service.accommodationImg.AccommodationImgService;
 import vip.com.accommodation.service.city.CityService;
 import vip.com.accommodation.service.member.MemberService;
 
@@ -29,6 +33,9 @@ public class AccommodationController {
     private AccommodationService accommodationService;
 
     @Resource
+    private AccommodationImgService accommodationImgService;
+
+    @Resource
     private CityService cityService;
 
 
@@ -45,20 +52,38 @@ public class AccommodationController {
 
 
     @PostMapping("/accommodation") //숙박등록
-    public String accommodation(@Valid @ModelAttribute("accommodationInsertDto")AccommodationInsertDto accommodationInsertDto
-    , BindingResult bindingResult, Model model){
+    public String accommodation(@Valid @ModelAttribute("accommodationInsertDto")AccommodationInsertDto accommodationInsertDto,
+                                AccommodationImgInsertDto accommodationImgInsertDto
+    , BindingResult bindingResult, Model model, List<MultipartFile> file)throws Exception{
+
+
+
+
+
+        int accommodationId = 0;
+
+        accommodationId = accommodationService.maxNum() + 1;
+
+
+        accommodationImgInsertDto.setAccommodationId(accommodationId);
 
 
 
 
         if(bindingResult.hasFieldErrors()){
 
-            System.out.println(accommodationInsertDto.getAccommodationDistrict());
-
             model.addAttribute("accommodationInsertDto",accommodationInsertDto);
             return "accommodation/register";
 
         }
+
+
+
+        accommodationService.accommodationInsert(accommodationInsertDto);
+
+        accommodationImgService.accommodationImgInsert(accommodationImgInsertDto,file);
+
+
 
         return "redirect:/";
     }

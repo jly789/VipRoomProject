@@ -6,6 +6,8 @@ drop table roomImg;
 drop table room;
 drop table accommodationImg;
 drop table accommodation;
+drop table city;
+drop table district;
 drop table member;
 
 
@@ -28,6 +30,30 @@ CREATE TABLE member ( -- 회원 테이블
 
                         CONSTRAINT PK_MEMBER PRIMARY KEY (memberId)
 );
+
+
+CREATE TABLE district ( -- 회원 테이블
+                          districtId  INT NOT NULL AUTO_INCREMENT, -- 지역구번호
+
+                          districtName  VARCHAR(50) NOT NULL, -- 지역구이름
+
+
+                          CONSTRAINT PK_DISTRICT PRIMARY KEY (districtId)
+);
+
+
+CREATE TABLE city ( -- 숙소 이미지 테이플
+                      cityId INT NOT NULL AUTO_INCREMENT,  -- 도시번호
+                      districtId INT NOT NULL, -- (외래키)지역구번호
+                      cityName VARCHAR(300) NOT NULL, -- 도시이름
+
+                      CONSTRAINT PK_CITY PRIMARY KEY (cityId),
+                      CONSTRAINT FK_CITY_DISTRICTID FOREIGN KEY(districtId) REFERENCES district (districtId)
+
+);
+
+
+
 
 
 
@@ -160,20 +186,121 @@ CREATE TABLE review
     CONSTRAINT FK_REVIEW_RESERVATIONID FOREIGN KEY (reservationId) REFERENCES reservation (reservationId)
 );
 
+INSERT into member
+VALUES(1,'관리자','admin','admin','관리자','관리자','01020893971','13111','경기도 성남시 태평동','수앤수캐슬','참고사항','jly123@naver.com','1995-04-01');
+
 
 INSERT into member
-VALUES(1,'회원','asd','asd','윤재일','비운의소나기','01020893971','13111','경기도 성남시 태평동','수앤수캐슬','참고사항','jly789@naver.com','1995-04-01');
+VALUES(2,'회원','asd','asd','윤재일','비운의소나기','01020893971','13111','경기도 성남시 태평동','수앤수캐슬','참고사항','jly789@naver.com','1993-04-01');
 
 INSERT into member
-VALUES(2,'회원','jly789','a123','김민정','민정이','01012345678','13112','경기도 성남시 수진동','수앤수캐슬','','jly456@naver.com','1999-05-01');
+VALUES(3,'회원','jly789','a123','김민정','민정이','01012345678','13112','경기도 성남시 수진동','수앤수캐슬','','jly456@naver.com','1999-05-01');
 
-INSERT into accommodation
-VALUES(1,'야놀자','경기도','성남시','경기도 성남시 태평동 7210','모텔','없음',sysdate());
+
+INSERT into district VALUES(1,'서울');
+INSERT into district VALUES(2,'부산');
+INSERT into district VALUES(3,'제주');
+INSERT into district VALUES(4,'경기');
+INSERT into district VALUES(5,'인천');
+INSERT into district VALUES(6,'강원');
+INSERT into district VALUES(7,'경상');
+INSERT into district VALUES(8,'전라');
+INSERT into district VALUES(9,'충청');
+
+
+INSERT into city VALUES(1,1,'강남/역삼/삼성');
+INSERT into city VALUES(2,1,'신사/청담/압구정');
+INSERT into city VALUES(3,1,'서초/교대/사당');
+INSERT into city VALUES(4,1,'잠실/송파/강동');
+INSERT into city VALUES(5,1,'을지로/명동/중구/동대문');
+INSERT into city VALUES(6,1,'서울역/이태원/용산');
+INSERT into city VALUES(7,1,'종로/인사동');
+INSERT into city VALUES(8,1,'홍대/합정/마포/서대문');
+INSERT into city VALUES(9,1,'여의도');
+INSERT into city VALUES(10,1,'영등포역');
+INSERT into city VALUES(11,1,'구로/신도림/금천');
+INSERT into city VALUES(12,1,'김포공항/염창/강서');
+INSERT into city VALUES(13,1,'건대입구/성수/왕십리');
+INSERT into city VALUES(14,1,'성북/강북/노원/도봉');
+
+INSERT into city VALUES(15,2,'해운대/마린시티');
+INSERT into city VALUES(16,2,'벡스코/센텀시티');
+INSERT into city VALUES(17,2,'송정/기장/정관');
+INSERT into city VALUES(18,2,'광안리/경성대');
+INSERT into city VALUES(19,2,'부산역');
+INSERT into city VALUES(20,2,'자갈치/남포동/영도');
+INSERT into city VALUES(21,2,'송도/다대포');
+INSERT into city VALUES(22,2,'서면/연산/범일');
+INSERT into city VALUES(23,2,'동래/온천/금정구');
+INSERT into city VALUES(24,2,'사상/강서/김해공항/하단');
+
+
+INSERT into city VALUES(25,3,'제주시/제주국제공항');
+INSERT into city VALUES(26,3,'서귀포시/모슬포');
+INSERT into city VALUES(27,3,'애월/한림/협재');
+INSERT into city VALUES(28,3,'중문');
+INSERT into city VALUES(29,3,'표선/성산');
+INSERT into city VALUES(30,3,'함덕/김녕/세화');
+
+INSERT into city VALUES(31,4,'가평/청평/양평');
+INSERT into city VALUES(32,4,'수원/화성');
+INSERT into city VALUES(33,4,'고양/파주/김포');
+INSERT into city VALUES(34,4,'의정부/포천/동두천');
+INSERT into city VALUES(35,4,'용인/동탄');
+INSERT into city VALUES(36,4,'오산/평택');
+INSERT into city VALUES(37,4,'남양주/구리/성남/분당');
+INSERT into city VALUES(38,4,'이천/광주/여주/하남');
+INSERT into city VALUES(39,4,'부천/광명/시흥/안산');
+INSERT into city VALUES(40,4,'안양/의왕/군포');
+
+INSERT into city VALUES(41,5,'송도/소래포구');
+INSERT into city VALUES(42,5,'인천국제공항/강화/을왕리');
+INSERT into city VALUES(43,5,'영종도/월미도');
+INSERT into city VALUES(44,5,'주안/간석/인천시청');
+INSERT into city VALUES(45,5,'청라/계양/부평');
+
+INSERT into city VALUES(46,6,'강릉');
+INSERT into city VALUES(47,6,'속초/고성');
+INSERT into city VALUES(48,6,'양양(서피비치/낙산)');
+INSERT into city VALUES(49,6,'춘천/인제/철원');
+INSERT into city VALUES(50,6,'평창/정선/영월');
+INSERT into city VALUES(51,6,'동해/삼척/태백');
+INSERT into city VALUES(52,6,'홍천/횡성/원주');
+
+INSERT into city VALUES(53,7,'대구/구미/안동/문경');
+INSERT into city VALUES(54,7,'경주');
+INSERT into city VALUES(55,7,'울산/양산/밀양');
+INSERT into city VALUES(56,7,'거제/통영');
+INSERT into city VALUES(57,7,'포항/영덕/울진/청송');
+INSERT into city VALUES(58,7,'창원/마산/진해/김해/부곡');
+INSERT into city VALUES(59,7,'남해/사천/하동/진주');
+
+INSERT into city VALUES(60,8,'전주/완주');
+INSERT into city VALUES(61,8,'광주/나주/함평');
+INSERT into city VALUES(62,8,'여수');
+INSERT into city VALUES(63,8,'순천/광양/담양/보성/화순');
+INSERT into city VALUES(64,8,'남원/부안/정읍/고창/무주/구례');
+INSERT into city VALUES(65,8,'군산/익산');
+INSERT into city VALUES(66,8,'목포/신안/영광/진도/고흥/영암/완도/강진');
+
+INSERT into city VALUES(67,9,'대전/세종');
+INSERT into city VALUES(68,9,'천안/아산/도고');
+INSERT into city VALUES(69,9,'당진/덕산/태안/서산/안면도');
+INSERT into city VALUES(70,9,'보령/대천/부여/공주/금산');
+INSERT into city VALUES(71,9,'청주/음성/진천');
+INSERT into city VALUES(72,9,'충주/제천/단양/괴산/증평');
+
+
+
+-- INSERT into accommodation
+-- VALUES(1,'야놀자','경기도','성남시','경기도 성남시 태평동 7210','모텔','없음',sysdate());
 
 
 commit;
 
 select * from member;
+select * from district;
+select * from city;
 select * from accommodation;
 select * from accommodationImg;
 select * from room;
@@ -188,13 +315,13 @@ select * from review;
 
 
 
-select userId from member
-where userName ='윤재일' and email='jly789@naver.com';
+-- select userId from member
+-- where userName ='윤재일' and email='jly789@naver.com';
 
 
 
-select count(*) from member
-where userId ='a123' and pwd ='a123';
+-- select count(*) from member
+-- where userId ='a123' and pwd ='a123';
 
 -- delete from member
 -- where userId ='a123' and pwd ='a123';
