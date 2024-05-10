@@ -77,15 +77,15 @@ CREATE TABLE accommodation ( -- 숙소 테이블
 CREATE TABLE accommodationImg ( -- 숙소 이미지 테이플
                                   accommodationImgId INT NOT NULL AUTO_INCREMENT,  -- 숙소 이미지번호
                                   accommodationId INT NOT NULL, -- (외래키)숙소번호
-                                  accommodationImage     VARCHAR(300) NOT NULL,  -- 숙소 이미지
-                                  accommodationImagePath VARCHAR(300) NOT NULL, -- 숙소 이미지경로
+                                  accommodationImage     VARCHAR(300) NULL,  -- 숙소 이미지
+                                  accommodationImagePath VARCHAR(300)  NULL, -- 숙소 이미지경로
 
-                                  CONSTRAINT PK_ACCOMMODATION PRIMARY KEY (accommodationImgId),
+                                  CONSTRAINT PK_ACCOMMODATIONIMG PRIMARY KEY (accommodationImgId),
                                   CONSTRAINT FK_ACCOMMODATIONIMG_ACCOMMODATIONID FOREIGN KEY(accommodationId) REFERENCES accommodation (accommodationId)
 
 );
 
-
+--  CONSTRAINT PK_ACCOMMODATION PRIMARY KEY (accommodationImgId),
 
 
 
@@ -311,20 +311,10 @@ select * from notice;
 select * from review;
 
 
-
-
-
-
--- select userId from member
--- where userName ='윤재일' and email='jly789@naver.com';
-
-
-
--- select count(*) from member
--- where userId ='a123' and pwd ='a123';
-
--- delete from member
--- where userId ='a123' and pwd ='a123';
+--    select accommodationImg.accommodationImgId  from  accommodation
+-- 	left join  accommodationImg
+-- 	on accommodation.accommodationId= accommodationImg.accommodationId
+--         where  accommodation.accommodationId=1;
 
 
 
@@ -339,15 +329,6 @@ select * from review;
 
 
 
---  오라클 문법
--- select nvl(max(memberId),0) from member;
-
---   select nvl(count(*),0) from member;
--- select max(memberId),0 from member;
-
---   -- mysql문법
---   select ifnull(max(memberId),1) as memberId from member;
---   select count(*),0 from member;
 
 
--- accommodation
+
