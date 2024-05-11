@@ -3,37 +3,35 @@
         PUBLIC "-/mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="vip.com.accommodation.mapper.accommodation.AccommodationMapper">
-
+<mapper namespace="vip.com.accommodation.mapper.accommodationImg.AccommodationImgMapper">
 
 
 
     <select id="maxNum" resultType="int">
-        select ifnull(max(accommodationId),0) from accommodation
+        select ifnull(max(accommodationImgId),0) from accommodationImg
     </select>
 
 
-    <insert id="accommodationInsert" parameterType="vip.com.accommodation.mapper.accommodation.AccommodationMapper">
 
-        insert into accommodation(accommodationId,accommodationName,accommodationDistrict,accommodationCity,accommodationAddress,
-                                  accommodationCategory,accommodationInformation,accommodationCreateDate)
-        values (#{accommodationId},#{accommodationName},#{accommodationDistrict},#{accommodationCity},#{accommodationAddress}
-               ,#{accommodationCategory},#{accommodationInformation},sysdate())
+    <insert id="accommodationImgInsert"  parameterType="vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto">
+
+        insert into accommodationImg(accommodationImgId,accommodationId,accommodationImage,accommodationImagePath)
+        values (#{accommodationImgId},#{accommodationId},#{accommodationImage},#{accommodationImagePath})
 
 
     </insert>
 
 
 
-    <select id="accommodationFindList" resultType="vip.com.accommodation.dto.accommodation.AccommodationFindDto">
+<!--    <select id="login" parameterType="vip.com.accommodation.dto.member.MemberLoginDto" resultType="int">-->
 
-        select distinct * from accommodation
-
-
-
+<!--        select count(*) from member-->
+<!--        where userId =#{userId} and pwd =#{pwd}-->
 
 
-    </select>
+
+
+<!--    </select>-->
 
 <!--    <select id="idCheck" parameterType="String" resultType="int">-->
 

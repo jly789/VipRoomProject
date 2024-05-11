@@ -13,17 +13,19 @@ import vip.com.accommodation.dto.city.CityDto;
 import vip.com.accommodation.dto.member.MemberInsertDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.accommodationImg.AccommodationImgService;
+import vip.com.accommodation.service.alert.AlertService;
 import vip.com.accommodation.service.city.CityService;
 import vip.com.accommodation.service.member.MemberService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class AccommodationController {
-
 
 
     @Resource
@@ -38,26 +40,34 @@ public class AccommodationController {
     @Resource
     private CityService cityService;
 
+    @Resource
+    private AlertService alertService;
 
 
     @GetMapping("/accommodation") //숙박등록
-    public String accommodation(){
-
-
+    public String accommodation() {
 
 
         return "accommodation/register";
     }
 
 
-
     @PostMapping("/accommodation") //숙박등록
-    public String accommodation(@Valid @ModelAttribute("accommodationInsertDto")AccommodationInsertDto accommodationInsertDto,
+    public String accommodation(@Valid @ModelAttribute("accommodationInsertDto") AccommodationInsertDto accommodationInsertDto,
                                 AccommodationImgInsertDto accommodationImgInsertDto
-    , BindingResult bindingResult, Model model, List<MultipartFile> file)throws Exception{
+            , BindingResult bindingResult, Model model, List<MultipartFile> file, HttpServletResponse response) throws Exception {
 
 
+        for (int i = 0; i < file.size(); i++) { //이미지 파일에 null값있을시 다시입력
+            if (file.get(i).getOriginalFilename().isEmpty()) {
 
+               alertService.accommodationImgAlertMessage(response);
+
+                model.addAttribute("accommodationInsertDto", accommodationInsertDto);
+                return "accommodation/register";
+
+            }
+        }
 
 
         int accommodationId = 0;
@@ -68,21 +78,17 @@ public class AccommodationController {
         accommodationImgInsertDto.setAccommodationId(accommodationId);
 
 
+        if (bindingResult.hasFieldErrors()) {
 
-
-        if(bindingResult.hasFieldErrors()){
-
-            model.addAttribute("accommodationInsertDto",accommodationInsertDto);
+            model.addAttribute("accommodationInsertDto", accommodationInsertDto);
             return "accommodation/register";
 
         }
 
 
-
         accommodationService.accommodationInsert(accommodationInsertDto);
 
-        accommodationImgService.accommodationImgInsert(accommodationImgInsertDto,file);
-
+        accommodationImgService.accommodationImgInsert(accommodationImgInsertDto, file);
 
 
         return "redirect:/";
@@ -91,15 +97,12 @@ public class AccommodationController {
 
     @ResponseBody
     @PostMapping("/accommodationDistrict")
-    public List<CityDto> idCheck(@RequestParam("accommodationDistrict") String accommodationDistrict){
+    public List<CityDto> idCheck(@RequestParam("accommodationDistrict") String accommodationDistrict) {
 
-      List<CityDto> cityDtoList =  cityService.citySearch(accommodationDistrict);
+        List<CityDto> cityDtoList = cityService.citySearch(accommodationDistrict);
 
         return cityDtoList;
     }
-
-
-
 
 
 }

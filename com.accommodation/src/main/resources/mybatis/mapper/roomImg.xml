@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-/mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vip.com.accommodation.mapper.roomImg.RoomImgMapper">
+
+
+    <select id="maxNum" resultType="int">
+        select ifnull(max(roomImgId),0) from roomImg
+    </select>
+
+
+
+    <insert id="roomImgInsert"  parameterType="vip.com.accommodation.dto.roomImg.RoomImgInsertDto">
+
+        insert into roomImg(roomImgId,roomId,roomImage,roomImagePath)
+        values (#{roomImgId},#{roomId},#{roomImage},#{roomImagePath})
+
+
+    </insert>
+
+
+
+</mapper>

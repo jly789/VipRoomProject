@@ -85,8 +85,6 @@ CREATE TABLE accommodationImg ( -- 숙소 이미지 테이플
 
 );
 
---  CONSTRAINT PK_ACCOMMODATION PRIMARY KEY (accommodationImgId),
-
 
 
 CREATE TABLE room ( -- 객실테이블
@@ -94,7 +92,7 @@ CREATE TABLE room ( -- 객실테이블
                       accommodationId INT NOT NULL,  -- (외래키)숙소번호
                       roomPrice INT NOT NULL, -- 객실 1박당 가격
                       maximumCapacity INT NOT NULL,   -- 최대 숙박인원
-                      roomNumbersy  INT NOT NULL,   -- 객실 수
+                      roomNumbers  INT NOT NULL,   -- 객실 수
                       roomName VARCHAR(30) NOT NULL,  -- 객실이름
                       roomDescription VARCHAR(300) NOT NULL, -- 객실소개
 
@@ -104,8 +102,8 @@ CREATE TABLE room ( -- 객실테이블
 );
 
 CREATE TABLE roomImg ( -- 객실 이미지 테이플
-                         roomImgId INT NOT NULL  AUTO_INCREMENT,  -- 숙소 이미지번호
-                         roomId  INT NOT NULL,  -- (외래키)숙소번호
+                         roomImgId INT NOT NULL  AUTO_INCREMENT,  -- 객실이미지번호
+                         roomId  INT NOT NULL,  -- (외래키)객실번호
                          roomImage  VARCHAR(300) NOT NULL,  -- 객실 이미지
                          roomImagePath VARCHAR(300) NOT NULL, -- 객실 이미지경로
 
@@ -291,9 +289,14 @@ INSERT into city VALUES(71,9,'청주/음성/진천');
 INSERT into city VALUES(72,9,'충주/제천/단양/괴산/증평');
 
 
+INSERT into accommodation VALUES(1,'부산호텔','부산','광안리/경성대','부산 남구 분포로 66-11','호텔/리조트','부산 남구 분포로 66-11',sysdate());
+INSERT into accommodation VALUES(2,'모란리조트','경기','남양주/구리/성남/분당','경기 성남시 수정구 모란로 1','호텔/리조트','모란리조트',sysdate());
+INSERT into accommodation VALUES(3,'야놀자모텔','서울','강남/역삼/삼성','서울 강남구 가로수길 9','모텔','야놀자모텔입니다',sysdate());
 
--- INSERT into accommodation
--- VALUES(1,'야놀자','경기도','성남시','경기도 성남시 태평동 7210','모텔','없음',sysdate());
+INSERT into accommodationImg VALUES(1,1,'메시1.jpg','/accommodationImg/메시1.jpg');
+INSERT into accommodationImg VALUES(2,1,'메시2.PNG','/accommodationImg/메시2.PNG');
+INSERT into accommodationImg VALUES(3,2,'무리뉴1.jpg','/accommodationImg/무리뉴1.jpg');
+INSERT into accommodationImg VALUES(4,3,'용인조아용.JPG','/accommodationImg/용인조아용.JPG');
 
 
 commit;
