@@ -65,7 +65,7 @@ CREATE TABLE accommodation ( -- 숙소 테이블
                                accommodationCity VARCHAR(20) NOT NULL, -- 숙소 시 ex) ex)강남구/삼성구/용인시/성남시
                                accommodationAddress VARCHAR(100) NOT NULL, -- 숙소주소
                                accommodationCategory VARCHAR(30) NOT NULL,  -- 숙소유형: 모텔 호텔.리조트 펜션 게스트하우스 캠핑
-                               accommodationInformation VARCHAR(100) NOT NULL, -- 숙소 정보
+                               accommodationInformation VARCHAR(5000) NOT NULL, -- 숙소 정보
                                accommodationCreateDate datetime NOT NULL default current_timestamp, -- 숙소 등록일
 
                                CONSTRAINT PK_ACCOMMODATION PRIMARY KEY (accommodationId)
@@ -91,10 +91,11 @@ CREATE TABLE room ( -- 객실테이블
                       roomId INT NOT NULL AUTO_INCREMENT, -- 객실번호
                       accommodationId INT NOT NULL,  -- (외래키)숙소번호
                       roomPrice INT NOT NULL, -- 객실 1박당 가격
+                      standardNumbers INT NOT NULL, -- 기준인원
                       maximumCapacity INT NOT NULL,   -- 최대 숙박인원
                       roomNumbers  INT NOT NULL,   -- 객실 수
                       roomName VARCHAR(30) NOT NULL,  -- 객실이름
-                      roomDescription VARCHAR(300) NOT NULL, -- 객실소개
+                      roomDescription VARCHAR(5000) NOT NULL, -- 객실소개
 
 
                       CONSTRAINT PK_ROOM PRIMARY KEY (roomId),
@@ -289,15 +290,53 @@ INSERT into city VALUES(71,9,'청주/음성/진천');
 INSERT into city VALUES(72,9,'충주/제천/단양/괴산/증평');
 
 
-INSERT into accommodation VALUES(1,'부산호텔','부산','광안리/경성대','부산 남구 분포로 66-11','호텔/리조트','부산 남구 분포로 66-11',sysdate());
-INSERT into accommodation VALUES(2,'모란리조트','경기','남양주/구리/성남/분당','경기 성남시 수정구 모란로 1','호텔/리조트','모란리조트',sysdate());
-INSERT into accommodation VALUES(3,'야놀자모텔','서울','강남/역삼/삼성','서울 강남구 가로수길 9','모텔','야놀자모텔입니다',sysdate());
+INSERT into accommodation VALUES(1,'강남 캠퍼스','서울','강남/역삼/삼성','서울 강남구 테헤란로2길 13 (역삼동)','모텔','★강남역 1번 출구 도보 1분거리★',sysdate());
 
-INSERT into accommodationImg VALUES(1,1,'메시1.jpg','/accommodationImg/메시1.jpg');
-INSERT into accommodationImg VALUES(2,1,'메시2.PNG','/accommodationImg/메시2.PNG');
-INSERT into accommodationImg VALUES(3,2,'무리뉴1.jpg','/accommodationImg/무리뉴1.jpg');
-INSERT into accommodationImg VALUES(4,3,'용인조아용.JPG','/accommodationImg/용인조아용.JPG');
+INSERT into accommodation VALUES(2,'호텔 센트럴베이 광안리','부산','광안리/경성대','부산광역시 수영구 광안해변로 189','호텔/리조트','넓고 푸르른 바다를 객실에서 바라보며, 일상의 피로를 안락하고 편안한 공간에서
+해소하며 재충전할 수 있는 휴식처 입니다. 최선의 서비스를 제공하여 고객에게 최고의 만족을 선사하기 위해 노력하겠습니다.',sysdate());
 
+
+INSERT into accommodation VALUES(3,'호텔 휘슬락 바이 베스트웨스턴 시그니처 컬렉션','제주','제주시/제주국제공항','제주특별자치도 제주시 서부두2길 26','호텔/리조트','제주국제공항과 여객선터미널이 근접하여 접근성이 매우 우수하고 넓은 탑동광장을 비롯하여 아름다운 제주바다풍경을 온몸으로 맞이할 수 있는 힐링과 낭만을 선물합니다.
+흑돼지 특화거리 및 서부두 명품 횟집거리 등의 향토음식거리가 즐비하여 제주 향토음식을 가까이서 즐길 수 있습니다.',sysdate());
+
+
+
+
+INSERT into accommodationImg VALUES(1,1,'01_강남캠퍼스.jpg','/accommodationImg/01_강남캠퍼스.jpg');
+INSERT into accommodationImg VALUES(2,2,'02_호텔센트럴베이광안리.jpg','/accommodationImg/02_호텔센트럴베이광안리.jpg');
+INSERT into accommodationImg VALUES(3,3,'03_호텔 휘슬락 바이 베스트웨스턴 시그니처 컬렉션.jpg','/accommodationImg/03_호텔 휘슬락 바이 베스트웨스턴 시그니처 컬렉션.jpg');
+
+
+
+INSERT into room VALUES(1,1,55000,2,2,5,'Standard','Standard 객실 랜덤배정');
+
+
+INSERT into room VALUES(2,2,99000,1,1,5,'비즈니스싱글 시티뷰','기본정보
+일회용품 무료 제공 불가 (칫솔, 치약, 면도기)
+기준 1인 / 최대 1인
+싱글 침대 1개
+에어컨, TV, 냉장고, 커피포트, 생수
+샤워시설, 욕조, 욕실용품, 드라이기, 가운
+금연 객실
+시설 및 서비스
+객실구조
+원룸형
+객실구성
+침대룸 1개
+욕실 1개');
+
+INSERT into room VALUES(3,3,95000,2,2,5,'디럭스 트윈','7.4평, 싱글 침대 2개
+2인 기준 / 인원 추가 불가
+에어컨, TV, 냉장고, 커피포트, 생수
+샤워시설, 욕실용품, 드라이기
+개별 테라스
+무료 Wi-Fi
+금연객실');
+
+
+INSERT into roomImg VALUES(1,1,'01_Standard.jpg','/roomImg/01_Standard.jpg');
+INSERT into roomImg VALUES(2,2,'02_비즈니스싱글 시티뷰.jpg','/roomImg/02_비즈니스싱글 시티뷰.jpg');
+INSERT into roomImg VALUES(3,3,'03_디럭스 트윈.jpg','/roomImg/03_디럭스 트윈.jpg');
 
 commit;
 
