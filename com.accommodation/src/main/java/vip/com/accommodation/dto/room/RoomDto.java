@@ -19,10 +19,12 @@ public class RoomDto {
 
     private int roomPrice; //객실 1박당 가격
 
+    private int  standardNumbers; //기준인원
+
     private int maximumCapacity; //최대 숙박인원
 
 
-    private int roomNumbers;//객실수
+    private int roomNumbers;// 객실수
 
     @NotBlank(message = "필수 정보입니다.")
     private String roomName; //객실이름

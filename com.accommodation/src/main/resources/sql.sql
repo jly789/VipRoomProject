@@ -87,6 +87,8 @@ CREATE TABLE accommodationImg ( -- 숙소 이미지 테이플
 
 
 
+
+
 CREATE TABLE room ( -- 객실테이블
                       roomId INT NOT NULL AUTO_INCREMENT, -- 객실번호
                       accommodationId INT NOT NULL,  -- (외래키)숙소번호
@@ -296,7 +298,7 @@ INSERT into accommodation VALUES(2,'호텔 센트럴베이 광안리','부산','
 해소하며 재충전할 수 있는 휴식처 입니다. 최선의 서비스를 제공하여 고객에게 최고의 만족을 선사하기 위해 노력하겠습니다.',sysdate());
 
 
-INSERT into accommodation VALUES(3,'호텔 휘슬락 바이 베스트웨스턴 시그니처 컬렉션','제주','제주시/제주국제공항','제주특별자치도 제주시 서부두2길 26','호텔/리조트','제주국제공항과 여객선터미널이 근접하여 접근성이 매우 우수하고 넓은 탑동광장을 비롯하여 아름다운 제주바다풍경을 온몸으로 맞이할 수 있는 힐링과 낭만을 선물합니다.
+INSERT into accommodation VALUES(3,'호텔 휘슬락','제주','제주시/제주국제공항','제주특별자치도 제주시 서부두2길 26','호텔/리조트','제주국제공항과 여객선터미널이 근접하여 접근성이 매우 우수하고 넓은 탑동광장을 비롯하여 아름다운 제주바다풍경을 온몸으로 맞이할 수 있는 힐링과 낭만을 선물합니다.
 흑돼지 특화거리 및 서부두 명품 횟집거리 등의 향토음식거리가 즐비하여 제주 향토음식을 가까이서 즐길 수 있습니다.',sysdate());
 
 
@@ -304,7 +306,7 @@ INSERT into accommodation VALUES(3,'호텔 휘슬락 바이 베스트웨스턴 �
 
 INSERT into accommodationImg VALUES(1,1,'01_강남캠퍼스.jpg','/accommodationImg/01_강남캠퍼스.jpg');
 INSERT into accommodationImg VALUES(2,2,'02_호텔센트럴베이광안리.jpg','/accommodationImg/02_호텔센트럴베이광안리.jpg');
-INSERT into accommodationImg VALUES(3,3,'03_호텔 휘슬락 바이 베스트웨스턴 시그니처 컬렉션.jpg','/accommodationImg/03_호텔 휘슬락 바이 베스트웨스턴 시그니처 컬렉션.jpg');
+INSERT into accommodationImg VALUES(3,3,'03_호텔휘슬락.jpg','/accommodationImg/03_호텔휘슬락.jpg');
 
 
 
@@ -351,6 +353,18 @@ select * from reservation;
 select * from orders;
 select * from notice;
 select * from review;
+
+
+select *  from  accommodation
+                    left join  accommodationImg
+                               on accommodation.accommodationId= accommodationImg.accommodationId
+                    left join room on room.accommodationId = accommodationImg.accommodationId
+where accommodation.accommodationId=1;
+
+
+
+-- 특정행만 가져오기 첫번째 행만 출력하기 select * from roomImg where roomId =5 limit 1;
+
 
 
 --    select accommodationImg.accommodationImgId  from  accommodation

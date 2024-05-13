@@ -5,12 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodation.AccommodationFindDto;
+import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.room.RoomInsertDto;
 import vip.com.accommodation.dto.roomImg.RoomImgInsertDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
@@ -45,6 +43,24 @@ public class RoomController {
     @Resource
     private AlertService alertService;
 
+    @GetMapping("/{accommodationId}")
+
+    public String roomMain(@PathVariable("accommodationId")int accommodationId, Model model){
+
+
+
+
+
+           List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(accommodationId);
+
+        model.addAttribute("accommodationDetailList",accommodationDetailList);
+
+
+        return "room/roomMain";
+    }
+
+
+
 
     @GetMapping("/room")
     public String room(Model model){
@@ -65,6 +81,8 @@ public class RoomController {
                              @RequestParam("accommodationId")int accommodationId, HttpServletResponse response)throws Exception{
 
 
+
+
         for (int i = 0; i < file.size(); i++) { //이미지 파일에 null값있을시 다시입력
             if (file.get(i).getOriginalFilename().isEmpty()) {
 
@@ -80,7 +98,6 @@ public class RoomController {
         roodId = roomService.maxNum()+1; //객실등록하고 그 등록한 roomId 검색
         roomImgInsertDto.setRoomId(roodId); //검색한 roomId를 객실이미지의 roomId 값에넣음
 
-
         if(bindingResult.hasFieldErrors()){
 
             List<AccommodationFindDto> accommodationFindList= accommodationService.accommodationFindList();
@@ -93,6 +110,7 @@ public class RoomController {
             return "room/register";
 
         }
+
 
         //등록서비스
         roomService.roomInsert(roomInsertDto); //객실 등록

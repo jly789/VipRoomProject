@@ -21,6 +21,8 @@ public class RoomInsertDto {
 
     private int roomPrice; //객실 1박당 가격
 
+    private int  standardNumbers; //기준인원
+
 
     private int maximumCapacity; //최대 숙박인원
 

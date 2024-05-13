@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
+import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
 import vip.com.accommodation.dto.city.CityDto;
 import vip.com.accommodation.dto.member.MemberInsertDto;
@@ -42,6 +43,23 @@ public class AccommodationController {
 
     @Resource
     private AlertService alertService;
+
+
+
+    @GetMapping("/accommodationMain")
+
+    public String accommodationMain(Model model){
+
+
+
+        List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList();
+
+        model.addAttribute("accommodationMainList",accommodationMainList);
+
+
+        return "accommodation/accommodationMain";
+    }
+
 
 
     @GetMapping("/accommodation") //숙박등록

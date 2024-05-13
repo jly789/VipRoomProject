@@ -60,7 +60,7 @@
     <div class="container" style="margin-right: 300px; >
       <div class="row d-flex mb-5 contact-info">
         <div class="col-md-12 mb-4">
-          <h2>숙박등록</h2>
+          <h2>숙소등록</h2>
         </div>
 
         <div>
@@ -71,7 +71,7 @@
 
 
             <div class="form-group">
-              <input type="text" class="form-control" name="accommodationName" value="${accommodationInsertDto.accommodationName}" placeholder="숙박이름 입력" />
+              <input type="text" class="form-control" name="accommodationName" id="accommodationName" value="${accommodationInsertDto.accommodationName}" placeholder="숙소이름 입력" />
               <form:errors path="accommodationName" cssStyle="font-weight: bold; color: #e95050" cssClass="text-center" ></form:errors>
             </div>
 
@@ -97,7 +97,7 @@
 
 
             <div class="form-group">
-              <input type="text" class="form-control" name="accommodationDistrict" id="accommodationDistrict" value="" placeholder="숙박지역구 입력"/>
+              <input type="text" class="form-control" name="accommodationDistrict" id="accommodationDistrict" value="" placeholder="숙소지역구 입력"/>
 
             </div>
 
@@ -123,7 +123,7 @@
 
 
             <div class="form-group">
-              <input type="text" class="form-control" name="accommodationCity" id="accommodationCity"  value="${accommodationInsertDto.accommodationCity}" placeholder="숙박도시 입력"/>
+              <input type="text" class="form-control" name="accommodationCity" id="accommodationCity"  value="${accommodationInsertDto.accommodationCity}" placeholder="숙소도시 입력"/>
               <form:errors path="accommodationCity" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
 
@@ -151,7 +151,7 @@
 
     <div class="form-group" style="text-align: left;">
       <select id="accommodationCategory" name="accommodationCategory">
-        <option selected="selected">숙박유형</option>
+        <option selected="selected">숙소유형</option>
         <option value="모텔">모텔</option>
         <option value="호텔/리조트">호텔/리조트</option>
         <option value="펜션/풀빌라">펜션/풀빌라</option>
@@ -173,7 +173,7 @@
 
 
             <div class="form-group">
-              <input type="text" class="form-control" name="accommodationInformation"  value="${accommodationInsertDto.accommodationInformation}" placeholder="숙박정보 입력" />
+              <input type="text" class="form-control" name="accommodationInformation" id="accommodationInformation"  value="${accommodationInsertDto.accommodationInformation}" placeholder="숙소정보 입력" />
 
               <form:errors path="accommodationInformation" cssStyle="font-weight: bold; color: #e95050"></form:errors>
             </div>
@@ -241,10 +241,38 @@
 
     $('#register').click(function (){
 
-      if($('#accommodationCategory').val()=='숙박유형'){
-        alert('숙박유형을 선택하세요!');
+      if($('#accommodationName').val()==''){
+        alert('숙소이름을 선택하세요!');
         return false;
       }
+
+      if($('#accommodationDistrict').val()==''){
+        alert('숙소지역구를 선택하세요!');
+        return false;
+      }
+
+      if($('#accommodationCity').val()==''){
+        alert('숙소도시를 선택하세요!');
+        return false;
+      }
+
+      if($('#sample6_address').val()==''){
+        alert('주소를 입력하세요!');
+        return false;
+      }
+
+
+      if($('#accommodationCategory').val()=='숙소유형'){
+        alert('숙소유형을 선택하세요!');
+        return false;
+      }
+
+      if($('#accommodationInformation').val()==''){
+        alert('숙소정보를 선택하세요!');
+        return false;
+      }
+
+
 
       if($('#fileList').val()==''){
           alert('이미지 파일을 선택하세요!');

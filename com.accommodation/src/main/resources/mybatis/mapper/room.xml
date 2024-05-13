@@ -13,9 +13,9 @@
 
     <insert id="roomInsert" parameterType="vip.com.accommodation.mapper.room.RoomMapper">
 
-        insert into room(roomId,accommodationId,roomPrice,maximumCapacity,roomNumbers,
+        insert into room(roomId,accommodationId,roomPrice,standardNumbers,maximumCapacity,roomNumbers,
                          roomName,roomDescription)
-        values (#{roomId},#{accommodationId},#{roomPrice},#{maximumCapacity},#{roomNumbers}
+        values (#{roomId},#{accommodationId},#{roomPrice},#{standardNumbers},#{maximumCapacity},#{roomNumbers}
                ,#{roomName},#{roomDescription})
 
 

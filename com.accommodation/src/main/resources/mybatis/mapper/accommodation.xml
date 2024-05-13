@@ -35,6 +35,38 @@
 
     </select>
 
+    <select id="accommodationMainList" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
+
+        select distinct *  from  accommodation
+                            left join  accommodationImg
+                                       on accommodation.accommodationId= accommodationImg.accommodationId
+                            left join room on room.accommodationId = accommodationImg.accommodationId
+
+
+
+
+
+    </select>
+
+
+    <select id="accommodationDetailList" parameterType="int" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
+
+        select distinct *  from  accommodation
+                                     left join  accommodationImg
+                                                on accommodation.accommodationId= accommodationImg.accommodationId
+                                     left join room on room.accommodationId = accommodationImg.accommodationId
+                                     where accommodation.accommodationId= #{accommodationId}
+
+
+
+
+
+
+    </select>
+
+
+
+
 <!--    <select id="idCheck" parameterType="String" resultType="int">-->
 
 <!--    select count(*) from member-->

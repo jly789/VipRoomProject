@@ -83,7 +83,7 @@
 
             <div class="form-group">
               <h5 style="text-align: left;">이름</h5>
-              <input type="text" class="form-control" name="roomName" value="${roomInsertDto.roomName}" placeholder="이름 입력" />
+              <input type="text" class="form-control" name="roomName" id="roomName" value="${roomInsertDto.roomName}" placeholder="이름 입력" />
               <form:errors path="roomName" cssStyle="font-weight: bold; color: #e95050" cssClass="text-center" ></form:errors>
             </div>
 
@@ -96,15 +96,15 @@
             </div>
 
 
+          <div class="form-group">
+            <h5 style="text-align: left;">기준인원 수</h5>
+            <input type="text" class="form-control" name="standardNumbers" id="standardNumbers" value="${roomInsertDto.standardNumbers}" placeholder="객실 수 입력" />
+
+
+          </div>
 
 
 
-            <div class="form-group">
-              <h5 style="text-align: left;">객실 수</h5>
-              <input type="text" class="form-control" name="roomNumbers" id="roomNumbers" value="${roomInsertDto.roomNumbers}" placeholder="객실 수 입력" />
-
-
-            </div>
 
     <div class="form-group">
       <h5 style="text-align: left;">최대 숙박인원</h5>
@@ -113,9 +113,16 @@
 
     </div>
 
+          <div class="form-group">
+            <h5 style="text-align: left;">객실 수</h5>
+            <input type="text" class="form-control" name="roomNumbers" id="roomNumbers" value="${roomInsertDto.roomNumbers}" placeholder="객실 수 입력" />
+
+
+          </div>
+
     <div class="form-group">
       <h5 style="text-align: left;">객실소개</h5>
-      <input type="text" class="form-control" name="roomDescription"  value="${roomInsertDto.roomDescription}" placeholder="객실소개 입력" />
+      <input type="text" class="form-control" name="roomDescription" id="roomDescription"  value="${roomInsertDto.roomDescription}" placeholder="객실소개 입력" />
 
       <form:errors path="roomDescription" cssStyle="font-weight: bold; color: #e95050"></form:errors>
     </div>
@@ -173,8 +180,26 @@
         return false;
       }
 
+      if($('#roomName').val()==''){
+        alert('등록할 객실이름을 입력하세요!');
+        return false;
+      }
+
       if($('#roomPrice').val()==''){
         alert('객실 1박당 가격을 입력하세요!');
+        return false;
+      }
+
+      if($('#standardNumbers').val()==''){
+        alert('기준 인원 수를 입력하세요!');
+        return false;
+      }
+
+
+
+
+      if($('#maximumCapacity').val()==''){
+        alert('최대 숙박인원을 입력하세요!');
         return false;
       }
 
@@ -183,8 +208,9 @@
         return false;
       }
 
-      if($('#maximumCapacity').val()==''){
-        alert('최대 숙박인원을 입력하세요!');
+
+      if($('#roomDescription').val()==''){
+        alert('객실소개를 입력하세요!');
         return false;
       }
 
