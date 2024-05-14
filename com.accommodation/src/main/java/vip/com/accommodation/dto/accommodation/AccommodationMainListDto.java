@@ -38,6 +38,10 @@ public class AccommodationMainListDto {
     private String roomName; //객실이름
     private String roomDescription; //객실소개
 
+    //객실이미지
+    private int roomImgId; //객실이미지번호
+    private String roomImage;
+    private String roomImagePath;
 
 
 }

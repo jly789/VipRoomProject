@@ -14,8 +14,8 @@
 
     <insert id="roomImgInsert"  parameterType="vip.com.accommodation.dto.roomImg.RoomImgInsertDto">
 
-        insert into roomImg(roomImgId,roomId,roomImage,roomImagePath)
-        values (#{roomImgId},#{roomId},#{roomImage},#{roomImagePath})
+        insert into roomImg(roomImgId,roomId,accommodationId,roomImage,roomImagePath)
+        values (#{roomImgId},#{roomId},#{accommodationId},#{roomImage},#{roomImagePath})
 
 
     </insert>

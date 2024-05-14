@@ -157,7 +157,7 @@
                     </p>
                   </div>
                   <div class="two">
-                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>
+<%--                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>--%>
                   </div>
                 </div>
                 <p></p>

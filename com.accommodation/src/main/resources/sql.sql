@@ -107,11 +107,13 @@ CREATE TABLE room ( -- 객실테이블
 CREATE TABLE roomImg ( -- 객실 이미지 테이플
                          roomImgId INT NOT NULL  AUTO_INCREMENT,  -- 객실이미지번호
                          roomId  INT NOT NULL,  -- (외래키)객실번호
+                         accommodationId Int NOT NULL, -- (외래키)숙소번호
                          roomImage  VARCHAR(300) NOT NULL,  -- 객실 이미지
                          roomImagePath VARCHAR(300) NOT NULL, -- 객실 이미지경로
 
                          CONSTRAINT PK_ROOMIMG PRIMARY KEY (roomImgId),
-                         CONSTRAINT FK_ROOMIMG_ROOMID FOREIGN KEY (roomId) REFERENCES room (roomId)
+                         CONSTRAINT FK_ROOMIMG_ROOMID FOREIGN KEY (roomId) REFERENCES room (roomId),
+                         CONSTRAINT FK_ROOMIMG_ACCOMMODATIONID FOREIGN KEY (accommodationId) REFERENCES accommodation (accommodationId)
 
 );
 
@@ -294,7 +296,7 @@ INSERT into city VALUES(72,9,'충주/제천/단양/괴산/증평');
 
 INSERT into accommodation VALUES(1,'강남 캠퍼스','서울','강남/역삼/삼성','서울 강남구 테헤란로2길 13 (역삼동)','모텔','★강남역 1번 출구 도보 1분거리★',sysdate());
 
-INSERT into accommodation VALUES(2,'호텔 센트럴베이 광안리','부산','광안리/경성대','부산광역시 수영구 광안해변로 189','호텔/리조트','넓고 푸르른 바다를 객실에서 바라보며, 일상의 피로를 안락하고 편안한 공간에서
+INSERT into accommodation VALUES(2,'호텔 센트럴베이','부산','광안리/경성대','부산광역시 수영구 광안해변로 189','호텔/리조트','넓고 푸르른 바다를 객실에서 바라보며, 일상의 피로를 안락하고 편안한 공간에서
 해소하며 재충전할 수 있는 휴식처 입니다. 최선의 서비스를 제공하여 고객에게 최고의 만족을 선사하기 위해 노력하겠습니다.',sysdate());
 
 
@@ -309,11 +311,15 @@ INSERT into accommodationImg VALUES(2,2,'02_호텔센트럴베이광안리.jpg',
 INSERT into accommodationImg VALUES(3,3,'03_호텔휘슬락.jpg','/accommodationImg/03_호텔휘슬락.jpg');
 
 
+select * from room
+where accommodationId=1;
 
 INSERT into room VALUES(1,1,55000,2,2,5,'Standard','Standard 객실 랜덤배정');
+INSERT into room VALUES(2,1,90000,2,2,5,'Deluxe','75" SMART TV 넷플릭스 시청가능 프리존,랜덤배정
+');
+INSERT into room VALUES(3,1,200000,2,2,5,'Suite','Suite 객실 랜덤배정');
 
-
-INSERT into room VALUES(2,2,99000,1,1,5,'비즈니스싱글 시티뷰','기본정보
+INSERT into room VALUES(4,2,99000,1,1,5,'비즈니스싱글 시티뷰','기본정보
 일회용품 무료 제공 불가 (칫솔, 치약, 면도기)
 기준 1인 / 최대 1인
 싱글 침대 1개
@@ -327,7 +333,7 @@ INSERT into room VALUES(2,2,99000,1,1,5,'비즈니스싱글 시티뷰','기본�
 침대룸 1개
 욕실 1개');
 
-INSERT into room VALUES(3,3,95000,2,2,5,'디럭스 트윈','7.4평, 싱글 침대 2개
+INSERT into room VALUES(5,3,95000,2,2,5,'디럭스 트윈','7.4평, 싱글 침대 2개
 2인 기준 / 인원 추가 불가
 에어컨, TV, 냉장고, 커피포트, 생수
 샤워시설, 욕실용품, 드라이기
@@ -336,9 +342,11 @@ INSERT into room VALUES(3,3,95000,2,2,5,'디럭스 트윈','7.4평, 싱글 침�
 금연객실');
 
 
-INSERT into roomImg VALUES(1,1,'01_Standard.jpg','/roomImg/01_Standard.jpg');
-INSERT into roomImg VALUES(2,2,'02_비즈니스싱글 시티뷰.jpg','/roomImg/02_비즈니스싱글 시티뷰.jpg');
-INSERT into roomImg VALUES(3,3,'03_디럭스 트윈.jpg','/roomImg/03_디럭스 트윈.jpg');
+INSERT into roomImg VALUES(1,1,1,'01_Standard.jpg','/roomImg/01_Standard.jpg');
+INSERT into roomImg VALUES(2,2,1,'01_Deluxe.jpg','/roomImg/01_Deluxe.jpg');
+INSERT into roomImg VALUES(3,3,1,'01_Suite.jpg','/roomImg/01_Suite.jpg');
+INSERT into roomImg VALUES(4,4,2,'02_비즈니스싱글시티뷰.jpg','/roomImg/02_비즈니스싱글시티뷰.jpg');
+INSERT into roomImg VALUES(5,5,3,'03_디럭스트윈.jpg','/roomImg/03_디럭스트윈.jpg');
 
 commit;
 
@@ -355,11 +363,36 @@ select * from notice;
 select * from review;
 
 
-select *  from  accommodation
-                    left join  accommodationImg
-                               on accommodation.accommodationId= accommodationImg.accommodationId
-                    left join room on room.accommodationId = accommodationImg.accommodationId
-where accommodation.accommodationId=1;
+
+--      select distinct accommodation.accommodationName,accommodationImg.accommodationImage,accommodation.accommodationCategory ,room.roomPrice  from  accommodation
+--                             left join  accommodationImg
+--                                        on accommodation.accommodationId= accommodationImg.accommodationId
+--                             left join room on room.accommodationId = accommodationImg.accommodationId;
+
+
+--     select  a.accommodationId,a.accommodationName ,b.accommodationImage,
+--   a.accommodationCategory  from  accommodation a
+--                             left join  accommodationImg b
+--                                         on a.accommodationId= b.accommodationId
+--                              left join room c on c.accommodationId = b.accommodationId
+--                                group by a.accommodationName,a.accommodationId,b.accommodationImage;
+
+
+
+
+
+
+
+
+
+
+
+--       select distinct *  from  accommodation
+--                                       left join  accommodationImg
+--                                                 on accommodation.accommodationId= accommodationImg.accommodationId
+--                                       left join room on room.accommodationId = accommodationImg.accommodationId
+--                                      left join roomImg on roomImg.accommodationId = accommodationImg.accommodationId
+--                                       where accommodation.accommodationId=1;
 
 
 
@@ -367,10 +400,24 @@ where accommodation.accommodationId=1;
 
 
 
---    select accommodationImg.accommodationImgId  from  accommodation
--- 	left join  accommodationImg
--- 	on accommodation.accommodationId= accommodationImg.accommodationId
---         where  accommodation.accommodationId=1;
+
+
+select distinct *  from  accommodation
+                             left join  accommodationImg
+                                        on accommodation.accommodationId= accommodationImg.accommodationId
+
+where accommodation.accommodationId= 1;
+
+
+select distinct * from  room
+                            join roomImg on roomImg.roomId = room.roomId
+where room.accommodationId=1;
+
+
+-- 									select distinct room.roomId, room.roomName,room.roomPrice,room.roomDescription
+--                                     ,roomImg.roomImage,roomImg.roomImagePath from  room
+--  									 join roomImg on roomImg.roomId = room.roomId
+--                                    where room.accommodationId=1;
 
 
 

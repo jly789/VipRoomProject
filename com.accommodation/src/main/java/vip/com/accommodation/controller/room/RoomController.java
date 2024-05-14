@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodation.AccommodationFindDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.room.RoomInsertDto;
+import vip.com.accommodation.dto.room.RoomMainListDto;
 import vip.com.accommodation.dto.roomImg.RoomImgInsertDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.alert.AlertService;
@@ -52,8 +53,11 @@ public class RoomController {
 
 
            List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(accommodationId);
+           List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
 
         model.addAttribute("accommodationDetailList",accommodationDetailList);
+        model.addAttribute("roomMainListDto",roomMainListDto);
+
 
 
         return "room/roomMain";

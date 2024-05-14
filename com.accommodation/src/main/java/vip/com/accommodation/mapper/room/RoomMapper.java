@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.room.RoomDto;
 import vip.com.accommodation.dto.room.RoomInsertDto;
+import vip.com.accommodation.dto.room.RoomMainListDto;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public interface RoomMapper {
     public int maxNum();
 
     public void roomInsert(RoomInsertDto roomInsertDto);
+
+
+    public List<RoomMainListDto> roomDetailList(int accommodationId);
 
 
 

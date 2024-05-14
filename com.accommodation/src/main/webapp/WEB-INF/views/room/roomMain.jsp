@@ -44,10 +44,12 @@
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 
+
 <c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
 
+<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">
 
-<div class="hero-wrap js-fullheight" style="background-image: url('${accommodationDetailList.accommodationImagePath}');">
+  </c:forEach>
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -146,17 +148,18 @@
         <div class="row">
           <div class="col-md-12 ftco-animate">
             <div class="single-slider owl-carousel">
+
               <div class="item">
-                <div class="hotel-img" style="background-image: url(images/hotel-2.jpg);"></div>
-              </div>
-              <div class="item">
-                <div class="hotel-img" style="background-image: url(images/hotel-3.jpg);"></div>
-              </div>
-              <div class="item">
-                <div class="hotel-img" style="background-image: url(images/hotel-4.jpg);"></div>
+                <c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
+                <div class="hotel-img" style="background-image: url(${accommodationDetailList.accommodationImagePath});"></div>
+                </c:forEach>
               </div>
             </div>
+            </div>
           </div>
+
+
+
           <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
             <span>Our Best hotels &amp; Rooms</span>
             <h2>Luxury Hotel in Paris</h2>
@@ -187,25 +190,18 @@
             </div>
             <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
           </div>
-          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-            <h4 class="mb-4">Take A Tour</h4>
-            <div class="block-16">
-              <figure>
-                <img src="images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">
-                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
-              </figure>
-            </div>
-          </div>
+
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
             <h4 class="mb-4">Our Rooms</h4>
             <div class="row">
+              <c:forEach var="roomMainListDto" items="${roomMainListDto}">
               <div class="col-md-4">
                 <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-4.jpg);"></a>
+                  <a href="hotel-single.html" class="img img-2" style="background-image: url(${roomMainListDto.roomImagePath});"></a>
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
-                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+                        <h3><a href="hotel-single.html">${roomMainListDto.roomName}</a></h3>
                         <p class="rate">
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
@@ -216,77 +212,20 @@
                         </p>
                       </div>
                       <div class="two">
-                        <span class="price per-price">$40<br><small>/night</small></span>
+                        <span class="price per-price"><br><small>${roomMainListDto.roomPrice}원</small></span>
                       </div>
                     </div>
-                    <p>Far far away, behind the word mountains, far from the countries</p>
+                    <p>기준 ${roomMainListDto.standardNumbers}인 / 최대 ${roomMainListDto.maximumCapacity}인 </p>
                     <hr>
                     <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> Miami, Fl</span>
-                      <span class="ml-auto"><a href="#">Book Now</a></span>
+
+                      <span style="margin-left: 70px;"><a href="#">예약하기</a></span>
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-5.jpg);"></a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p>
-                      </div>
-                      <div class="two">
-                        <span class="price per-price">$40<br><small>/night</small></span>
-                      </div>
-                    </div>
-                    <p>Far far away, behind the word mountains, far from the countries</p>
-                    <hr>
-                    <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> Miami, Fl</span>
-                      <span class="ml-auto"><a href="#">Book Now</a></span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-6.jpg);"></a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p>
-                      </div>
-                      <div class="two">
-                        <span class="price per-price">$40<br><small>/night</small></span>
-                      </div>
-                    </div>
-                    <p>Far far away, behind the word mountains, far from the countries</p>
-                    <hr>
-                    <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> Miami, Fl</span>
-                      <span class="ml-auto"><a href="#">Book Now</a></span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </c:forEach>
+
           </div>
 
           <form action="/reservation" method="get">
@@ -398,7 +337,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(${accommodationDetailList.accommodationImagePath});"></a>
+                  <a href="hotel-single.html" class="img img-2"></a>
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
@@ -504,7 +443,7 @@
 
 
 
-</c:forEach>
+
 
 
 
