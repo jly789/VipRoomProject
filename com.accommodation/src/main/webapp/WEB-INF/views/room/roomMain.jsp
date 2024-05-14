@@ -288,6 +288,8 @@
               </div>
             </div>
           </div>
+
+          <form action="/reservation" method="get">
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
             <h4 class="mb-5">Check Availability &amp; Booking</h4>
             <div class="fields">
@@ -342,12 +344,14 @@
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input type="submit" value="Check Availability" class="btn btn-primary py-3">
+                    <input type="submit" value="예약하기" class="btn btn-primary py-3">
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+         </form>
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
             <h4 class="mb-4">Review &amp; Ratings</h4>
             <div class="row">
