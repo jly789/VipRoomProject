@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-/mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vip.com.accommodation.mapper.reservation.ReservationMapper">
+
+
+<!--    <select id="maxNum" resultType="int">-->
+<!--        select ifnull(max(roomId),0) from room-->
+<!--    </select>-->
+
+
+<!--    <insert id="roomInsert" parameterType="vip.com.accommodation.mapper.room.RoomMapper">-->
+
+<!--        insert into room(roomId,accommodationId,roomPrice,standardNumbers,maximumCapacity,roomNumbers,-->
+<!--                         roomName,roomDescription)-->
+<!--        values (#{roomId},#{accommodationId},#{roomPrice},#{standardNumbers},#{maximumCapacity},#{roomNumbers}-->
+<!--               ,#{roomName},#{roomDescription})-->
+
+
+<!--    </insert>-->
+
+
+
+</mapper>
