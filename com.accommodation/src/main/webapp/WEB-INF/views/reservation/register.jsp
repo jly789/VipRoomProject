@@ -45,219 +45,227 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 
 
+<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
+
+<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">
+
+  </c:forEach>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotel.html">Hotel</a></span> <span>Hotel Single</span></p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels Details</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="ftco-section ftco-degree-bg">
+  <div class="container">
+    <div class="row">
 
 
 
 
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-md-12 ftco-animate">
+            <div class="single-slider owl-carousel">
 
+              <div class="item">
+                <c:forEach var="roomSpecificListDto" items="${roomSpecificListDto}">
+                <div class="hotel-img" style="background-image: url(${roomSpecificListDto.roomImagePath});"></div>
 
-<%--<form:form action="/roomInsert" method="post" modelAttribute="roomInsertDto" enctype="multipart/form-data">--%>
-
-
-<%--<div style="text-align: center;">--%>
-
-<%--  <section class="ftco-section contact-section ftco-degree-bg">--%>
-<%--    <div class="container" style="margin-right: 300px; >--%>
-<%--      <div class="row d-flex mb-5 contact-info">--%>
-<%--        <div class="col-md-12 mb-4">--%>
-<%--          <h2>객실등록</h2>--%>
-
-
-<%--        </div>--%>
-
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
-<%--        <div>--%>
+        <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+          <span></span>
+          <h2>${roomSpecificListDto.roomName}</h2>
+
+          <p class="rate mb-5">
+            <span class="loc"><a href="#"><i class="icon-map"></i></a></span>
+            <span class="star">
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star-o"></i>
+    							8 Rating</span>
+          </p>
+          <h6> 기준 ${roomSpecificListDto.standardNumbers}인 / 최대  ${roomSpecificListDto.maximumCapacity}인</h6>
+
+        <div class="d-md-flex mt-5 mb-5">
 
 
-<%--          <select name="accommodationId" id="accommodationId">--%>
-<%--            <option value="숙소선택" selected="selected" id="">숙소선택</option>--%>
-<%--            <c:forEach var="accommodationFindList" items="${accommodationFindList}">--%>
-<%--              <option value="${accommodationFindList.accommodationId}">${accommodationFindList.accommodationName}</option>--%>
-<%--            </c:forEach>--%>
-<%--          </select>--%>
-
-<%--        <br/>   <br/>--%>
 
 
-<%--            <div class="form-group">--%>
-<%--              <h5 style="text-align: left;">이름</h5>--%>
-<%--              <input type="text" class="form-control" name="roomName" id="roomName" value="${roomInsertDto.roomName}" placeholder="이름 입력" />--%>
-<%--              <form:errors path="roomName" cssStyle="font-weight: bold; color: #e95050" cssClass="text-center" ></form:errors>--%>
+              ${roomSpecificListDto.roomDescription}
+
+          </div>
+
+            <p>숙박<br/>
+              ${roomSpecificListDto.roomPrice}원</p>
+
+          <br/>
+
+          <form action="/reservationPayment" method="post">
+            <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+              <h4 class="mb-5">예약하기</h4>
+              <div class="fields">
+                <div class="row">
+
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <h6>Check In</h6>
+                      <input type="date" name="reservationCheckIn" id="reservationCheckIn" class="form-control" v placeholder="체크인">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <h6>Check Out</h6>
+                      <input type="date" name="reservationCheckOut" id="reservationCheckOut" class="form-control" placeholder="체크아웃">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" name="roomId" id="roomId" value="${roomSpecificListDto.roomId}">
+                      <input type="hidden" class="form-control" name="accommodationId" id="accommodationId" value="${roomSpecificListDto.accommodationId}">
+                      <input type="hidden" class="form-control" name="roomPrice" value="${roomSpecificListDto.roomPrice}">
+
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="submit" value="예약하기" class="btn btn-primary py-3">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+         </c:forEach>
+
+<%--          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">--%>
+<%--            <h4 class="mb-4">Our Rooms</h4>--%>
+<%--            <div class="row">--%>
+<%--              <c:forEach var="roomMainListDto" items="${roomMainListDto}">--%>
+<%--                <div class="col-md-4">--%>
+<%--                  <div class="destination">--%>
+<%--                    <a href="hotel-single.html" class="img img-2" style="background-image: url(${roomMainListDto.roomImagePath});"></a>--%>
+<%--                    <div class="text p-3">--%>
+<%--                      <div class="d-flex">--%>
+<%--                        <div class="one">--%>
+<%--                          <h3><a href="hotel-single.html">${roomMainListDto.roomName}</a></h3>--%>
+<%--                          <p class="rate">--%>
+<%--                            <i class="icon-star"></i>--%>
+<%--                            <i class="icon-star"></i>--%>
+<%--                            <i class="icon-star"></i>--%>
+<%--                            <i class="icon-star"></i>--%>
+<%--                            <i class="icon-star-o"></i>--%>
+<%--                            <span>8 Rating</span>--%>
+<%--                          </p>--%>
+<%--                        </div>--%>
+<%--                        <div class="two">--%>
+<%--                          <span class="price per-price"><br><small>${roomMainListDto.roomPrice}원</small></span>--%>
+<%--                        </div>--%>
+<%--                      </div>--%>
+<%--                      <p>기준 ${roomMainListDto.standardNumbers}인 / 최대 ${roomMainListDto.maximumCapacity}인 </p>--%>
+<%--                      <hr>--%>
+<%--                      <p class="bottom-area d-flex">--%>
+
+<%--                        <span style="margin-left: 70px;"><a href="#">예약하기</a></span>--%>
+<%--                      </p>--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--              </c:forEach>--%>
+
 <%--            </div>--%>
 
 
 
-<%--            <div class="form-group">--%>
-<%--              <h5 style="text-align: left;">객실 1박당 가격</h5>--%>
-<%--              <input type="text" class="form-control" name="roomPrice" id="roomPrice"  value="${roomInsertDto.roomPrice}" placeholder="객실 1박당 가격 입력"/>--%>
 
-<%--            </div>--%>
-
-
-<%--          <div class="form-group">--%>
-<%--            <h5 style="text-align: left;">기준인원 수</h5>--%>
-<%--            <input type="text" class="form-control" name="standardNumbers" id="standardNumbers" value="${roomInsertDto.standardNumbers}" placeholder="객실 수 입력" />--%>
-
-
-<%--          </div>--%>
-
-
-
-
-<%--    <div class="form-group">--%>
-<%--      <h5 style="text-align: left;">최대 숙박인원</h5>--%>
-<%--      <input type="text" class="form-control" name="maximumCapacity" id="maximumCapacity"  value="${roomInsertDto.maximumCapacity}" placeholder="최대 숙박인원 입력" />--%>
-
-
-<%--    </div>--%>
-
-<%--          <div class="form-group">--%>
-<%--            <h5 style="text-align: left;">객실 수</h5>--%>
-<%--            <input type="text" class="form-control" name="roomNumbers" id="roomNumbers" value="${roomInsertDto.roomNumbers}" placeholder="객실 수 입력" />--%>
-
-
-<%--          </div>--%>
-
-<%--    <div class="form-group">--%>
-<%--      <h5 style="text-align: left;">객실소개</h5>--%>
-<%--      <input type="text" class="form-control" name="roomDescription" id="roomDescription"  value="${roomInsertDto.roomDescription}" placeholder="객실소개 입력" />--%>
-
-<%--      <form:errors path="roomDescription" cssStyle="font-weight: bold; color: #e95050"></form:errors>--%>
-<%--    </div>--%>
-
-
-<%--    <div class="row">--%>
-<%--      <div class="col-lg-4">--%>
-<%--        <div class="checkout__input">--%>
-<%--          <div class='addInput'>--%>
-<%--            <p>상품 이미지<span>*</span></p>--%>
-<%--            <input type="file" name="file" id="fileList" onchange="readURL(this);">--%>
-<%--          </div>--%>
-<%--          <button type="button" class="btnAdd">이미지 추가</button>--%>
-<%--        </div>--%>
-<%--      </div>--%>
-
-<%--        <br/>--%>
-
-
-
-
-
-<%--      </div>--%>
-<%--    <input type="submit" id="register" value="숙박등록" class="btn btn-primary py-3 px-5" >--%>
-<%--    <br/>   <br/>--%>
-
-<%--</form:form>--%>
-
-
-<%--  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>--%>
-
-<%--  <script>--%>
-
-
-<%--    //파일 리스트 추가--%>
-<%--    $(document).ready(function() {--%>
-<%--      $('.btnAdd').click(function () {--%>
-<%--        $('.addInput').append(--%>
-<%--                '<input type="file" name="file" id="fileList" onchange="readURL(this);"/><button type="button" class="btnRemove">삭제</button>'--%>
-<%--        );//input file--%>
-<%--        $('.btnRemove').on('click',function(){//this='.btnRemove'--%>
-<%--          $(this).prev().remove();// .prev()=input file을 가리키고 remove()실행--%>
-<%--          $(this).next().remove();//<br> 삭제--%>
-<%--          $(this).remove();//버튼 삭제--%>
-<%--        });--%>
-<%--      });--%>
-
-<%--    });--%>
-
-
-<%--    $('#register').click(function (){--%>
-
-<%--      if($('#accommodationId').val()=='숙소선택'){--%>
-<%--        alert('등록할 숙소를 선택하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-<%--      if($('#roomName').val()==''){--%>
-<%--        alert('등록할 객실이름을 입력하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-<%--      if($('#roomPrice').val()==''){--%>
-<%--        alert('객실 1박당 가격을 입력하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-<%--      if($('#standardNumbers').val()==''){--%>
-<%--        alert('기준 인원 수를 입력하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-
-
-
-<%--      if($('#maximumCapacity').val()==''){--%>
-<%--        alert('최대 숙박인원을 입력하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-<%--      if($('#roomNumbers').val()==''){--%>
-<%--        alert('객실 수를 입력하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-
-<%--      if($('#roomDescription').val()==''){--%>
-<%--        alert('객실소개를 입력하세요!');--%>
-<%--        return false;--%>
-<%--      }--%>
-
-
-
-<%--      if($('#fileList').val()==''){--%>
-<%--          alert('이미지 파일을 선택하세요!');--%>
-<%--          return false;--%>
-<%--      }--%>
-
-<%--    });--%>
-
-
-
-
-<%--  </script>--%>
-
-
-
-
-
-
-
-
-
-
-
-
-  <jsp:include page="../main/footer.jsp"></jsp:include>
-
-  <script src="/resources/js/jquery.min.js"></script>
-  <script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="/resources/js/popper.min.js"></script>
-  <script src="/resources/js/bootstrap.min.js"></script>
-  <script src="/resources/js/jquery.easing.1.3.js"></script>
-  <script src="/resources/js/jquery.waypoints.min.js"></script>
-  <script src="/resources/js/jquery.stellar.min.js"></script>
-  <script src="/resources/js/owl.carousel.min.js"></script>
-  <script src="/resources/js/jquery.magnific-popup.min.js"></script>
-  <script src="/resources/js/aos.js"></script>
-  <script src="/resources/js/jquery.animateNumber.min.js"></script>
-  <script src="/resources/js/bootstrap-datepicker.js"></script>
-  <script src="/resources/js/jquery.timepicker.min.js"></script>
-  <script src="/resources/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="/resources/js/google-map.js"></script>
-  <script src="/resources/js/main.js"></script>
+    </div>
+
+
+          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+            <h4 class="mb-4">Our Rooms</h4>
+            <div class="row">
+              <c:forEach var="roomMainListDto" items="${roomMainListDto}">
+              <div class="col-md-4">
+                <div class="destination">
+                  <a href="hotel-single.html" class="img img-2" style="background-image: url(${roomMainListDto.roomImagePath});"></a>
+                  <div class="text p-3">
+                    <div class="d-flex">
+                      <div class="one">
+                        <h3><a href="hotel-single.html">${roomMainListDto.roomName}</a></h3>
+                        <p class="rate">
+                          <i class="icon-star"></i>
+                          <i class="icon-star"></i>
+                          <i class="icon-star"></i>
+                          <i class="icon-star"></i>
+                          <i class="icon-star-o"></i>
+                          <span>8 Rating</span>
+                        </p>
+                      </div>
+                      <div class="two">
+                        <span class="price per-price"><br><small>${roomMainListDto.roomPrice}원</small></span>
+                      </div>
+                    </div>
+                    <p>기준 ${roomMainListDto.standardNumbers}인 / 최대 ${roomMainListDto.maximumCapacity}인 </p>
+                    <hr>
+                    <p class="bottom-area d-flex">
+
+                      <span style="margin-left: 70px;"><a href="#">예약하기</a></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </c:forEach>
+</section> <!-- .section -->
+
+
+
+
+
+
+
+
+
+
+<jsp:include page="../main/footer.jsp"></jsp:include>
+
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/resources/js/popper.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/js/jquery.easing.1.3.js"></script>
+<script src="/resources/js/jquery.waypoints.min.js"></script>
+<script src="/resources/js/jquery.stellar.min.js"></script>
+<script src="/resources/js/owl.carousel.min.js"></script>
+<script src="/resources/js/jquery.magnific-popup.min.js"></script>
+<script src="/resources/js/aos.js"></script>
+<script src="/resources/js/jquery.animateNumber.min.js"></script>
+<script src="/resources/js/bootstrap-datepicker.js"></script>
+<script src="/resources/js/jquery.timepicker.min.js"></script>
+<script src="/resources/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="/resources/js/google-map.js"></script>
+<script src="/resources/js/main.js"></script>
 
 </body>
 </html>

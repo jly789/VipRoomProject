@@ -32,5 +32,13 @@
     </select>
 
 
+    <select id="roomSpecificListDto" parameterType="int" resultType="vip.com.accommodation.dto.room.RoomSpecificListDto">
+
+        select distinct * from  room
+                                    join roomImg on roomImg.roomId = room.roomId
+        where  room.roomId=#{roomId} and room.accommodationId=#{accommodationId}
+
+    </select>
+
 
 </mapper>

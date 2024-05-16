@@ -152,7 +152,7 @@
               <div class="item">
                 <c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
                 <div class="hotel-img" style="background-image: url(${accommodationDetailList.accommodationImagePath});"></div>
-                </c:forEach>
+
               </div>
             </div>
             </div>
@@ -161,10 +161,10 @@
 
 
           <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-            <span>Our Best hotels &amp; Rooms</span>
-            <h2>Luxury Hotel in Paris</h2>
+            <span>${accommodationDetailList.accommodationCategory}</span>
+            <h2>${accommodationDetailList.accommodationName}</h2>
             <p class="rate mb-5">
-              <span class="loc"><a href="#"><i class="icon-map"></i> 291 South 21th Street, Suite 721 New York NY 10016</a></span>
+              <span class="loc"><a href="#"><i class="icon-map"></i>${accommodationDetailList.accommodationAddress}</a></span>
               <span class="star">
     							<i class="icon-star"></i>
     							<i class="icon-star"></i>
@@ -175,21 +175,12 @@
             </p>
             <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
             <div class="d-md-flex mt-5 mb-5">
-              <ul>
-                <li>The Big Oxmox advised her not to do so</li>
-                <li>When she reached the first hills of the Italic Mountains</li>
-                <li>She had a last view back on the skyline of her hometown </li>
-                <li>Bookmarksgrove, the headline of Alphabet </li>
-              </ul>
-              <ul class="ml-md-5">
-                <li>Question ran over her cheek, then she continued</li>
-                <li>Pityful a rethoric question ran</li>
-                <li>Mountains, she had a last view back on the skyline</li>
-                <li>Headline of Alphabet Village and the subline</li>
-              </ul>
+
+                ${accommodationDetailList.accommodationInformation}
+
             </div>
-            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-          </div>
+
+        </c:forEach>
 
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
             <h4 class="mb-4">Our Rooms</h4>
@@ -219,7 +210,7 @@
                     <hr>
                     <p class="bottom-area d-flex">
 
-                      <span style="margin-left: 70px;"><a href="#">예약하기</a></span>
+                      <span style="margin-left: 70px;"><a href="/reservation?roomId=${roomMainListDto.roomId}&accommodationId=${roomMainListDto.accommodationId}">예약하기</a></span>
                     </p>
                   </div>
                 </div>
@@ -228,108 +219,7 @@
 
           </div>
 
-          <form action="/reservation" method="get">
-          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-            <h4 class="mb-5">Check Availability &amp; Booking</h4>
-            <div class="fields">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Email">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control" placeholder="Guest">
-                        <option value="0">Guest</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control" placeholder="Children">
-                        <option value="0">Children</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <input type="submit" value="예약하기" class="btn btn-primary py-3">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-         </form>
-          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-            <h4 class="mb-4">Review &amp; Ratings</h4>
-            <div class="row">
-              <div class="col-md-6">
-                <form method="post" class="star-rating">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                      <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i> 100 Ratings</span></p>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                      <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i> 30 Ratings</span></p>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                      <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 5 Ratings</span></p>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                      <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                      <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-                    </label>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
             <h4 class="mb-4">Related Hotels</h4>
 

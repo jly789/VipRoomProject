@@ -11,15 +11,15 @@
 <!--    </select>-->
 
 
-<!--    <insert id="roomInsert" parameterType="vip.com.accommodation.mapper.room.RoomMapper">-->
+    <insert id="reservationInsert" parameterType="vip.com.accommodation.mapper.reservation.ReservationMapper">
 
-<!--        insert into room(roomId,accommodationId,roomPrice,standardNumbers,maximumCapacity,roomNumbers,-->
-<!--                         roomName,roomDescription)-->
-<!--        values (#{roomId},#{accommodationId},#{roomPrice},#{standardNumbers},#{maximumCapacity},#{roomNumbers}-->
-<!--               ,#{roomName},#{roomDescription})-->
+        insert into reservation(reservationId,memberId,accommodationId,roomId,reservationStatus,
+                                reservationDetails,reservationCheckIn,reservationCheckOut)
+        values (#{reservationId},1,#{accommodationId},#{roomId},'예약가능'
+               ,'숙소예약에 필요한 정보를 입력해주세요',#{reservationCheckIn},#{reservationCheckOut})
 
 
-<!--    </insert>-->
+    </insert>
 
 
 
