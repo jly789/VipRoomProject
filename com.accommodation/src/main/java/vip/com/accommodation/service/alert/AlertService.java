@@ -13,6 +13,8 @@ public interface AlertService {
 
         public void roomImgAlertMessage(HttpServletResponse response)throws Exception;
 
+        public void reservationAlertMessage(HttpServletResponse response)throws Exception;
+
 
 
 }

@@ -80,7 +80,7 @@
 
 
           <div class="comment-form-wrap pt-5" style="text-align: center;">
-            <h3 class="mb-5">예약완료</h3>
+            <h3 class="mb-5">결제하기</h3>
             <form action="#" class="p-5 bg-light">
               <div class="form-group">
                 <label for="name">Name *</label>

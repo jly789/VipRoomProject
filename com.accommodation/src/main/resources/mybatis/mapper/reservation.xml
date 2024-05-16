@@ -11,6 +11,17 @@
 <!--    </select>-->
 
 
+        <select id="reservationSearch" parameterType="vip.com.accommodation.dto.reservation.ReservationFindDto" resultType="int">
+            select count(*) from reservation
+                                     left join room on reservation.roomId = room.roomId
+            where reservationCheckIn=#{reservationCheckIn}
+              and reservationCheckOut =#{reservationCheckOut} and room.roomId=#{roomId};
+        </select>
+
+
+
+
+
     <insert id="reservationInsert" parameterType="vip.com.accommodation.mapper.reservation.ReservationMapper">
 
         insert into reservation(reservationId,memberId,accommodationId,roomId,reservationStatus,

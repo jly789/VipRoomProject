@@ -38,7 +38,11 @@
   <link rel="stylesheet" href="/resources/css/icomoon.css">
   <link rel="stylesheet" href="/resources/css/style.css">
 
+
+
 </head>
+
+
 <body>
 
 
@@ -115,23 +119,28 @@
 
           <br/>
 
-          <form action="/reservationPayment" method="post">
+          <form action="/reservation" method="post">
             <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
               <h4 class="mb-5">예약하기</h4>
               <div class="fields">
                 <div class="row">
 
 
+
+
                   <div class="col-md-6">
                     <div class="form-group">
                       <h6>Check In</h6>
-                      <input type="date" name="reservationCheckIn" id="reservationCheckIn" class="form-control" v placeholder="체크인">
+                      <input type="date" name="reservationCheckIn" id="start"
+                             onChange="setendmin(this.value)" class="form-control"
+                            placeholder="체크인">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <h6>Check Out</h6>
-                      <input type="date" name="reservationCheckOut" id="reservationCheckOut" class="form-control" placeholder="체크아웃">
+                      <input type="date"  name="reservationCheckOut" id="end" class="form-control" readonly
+                             placeholder="체크아웃">
                     </div>
                   </div>
 
@@ -148,7 +157,8 @@
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="submit" value="예약하기" class="btn btn-primary py-3">
+
+                      <input type="submit" id="submit" value="예약하기" class="btn btn-primary py-3">
                     </div>
                   </div>
                 </div>
@@ -159,42 +169,7 @@
 
          </c:forEach>
 
-<%--          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">--%>
-<%--            <h4 class="mb-4">Our Rooms</h4>--%>
-<%--            <div class="row">--%>
-<%--              <c:forEach var="roomMainListDto" items="${roomMainListDto}">--%>
-<%--                <div class="col-md-4">--%>
-<%--                  <div class="destination">--%>
-<%--                    <a href="hotel-single.html" class="img img-2" style="background-image: url(${roomMainListDto.roomImagePath});"></a>--%>
-<%--                    <div class="text p-3">--%>
-<%--                      <div class="d-flex">--%>
-<%--                        <div class="one">--%>
-<%--                          <h3><a href="hotel-single.html">${roomMainListDto.roomName}</a></h3>--%>
-<%--                          <p class="rate">--%>
-<%--                            <i class="icon-star"></i>--%>
-<%--                            <i class="icon-star"></i>--%>
-<%--                            <i class="icon-star"></i>--%>
-<%--                            <i class="icon-star"></i>--%>
-<%--                            <i class="icon-star-o"></i>--%>
-<%--                            <span>8 Rating</span>--%>
-<%--                          </p>--%>
-<%--                        </div>--%>
-<%--                        <div class="two">--%>
-<%--                          <span class="price per-price"><br><small>${roomMainListDto.roomPrice}원</small></span>--%>
-<%--                        </div>--%>
-<%--                      </div>--%>
-<%--                      <p>기준 ${roomMainListDto.standardNumbers}인 / 최대 ${roomMainListDto.maximumCapacity}인 </p>--%>
-<%--                      <hr>--%>
-<%--                      <p class="bottom-area d-flex">--%>
 
-<%--                        <span style="margin-left: 70px;"><a href="#">예약하기</a></span>--%>
-<%--                      </p>--%>
-<%--                    </div>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--              </c:forEach>--%>
-
-<%--            </div>--%>
 
 
 
@@ -239,7 +214,63 @@
 </section> <!-- .section -->
 
 
+<script>
+  $(function(){//get today in date yyyy-mm-dd
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+//January is 0 so need to add 1 to make it 1!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+      dd='0'+dd
+    }
+    if(mm<10){
+      mm='0'+mm
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+//set today as min of start date
+    document.getElementById("start").setAttribute("min", today);
+  })
 
+  //when startdate is set, set start date as min of end date
+  function setendmin(e){
+    var today = new Date(e);
+    var dd = today.getDate()+1;
+    var mm = today.getMonth()+1;
+//January is 0 so need to add 1 to make it 1!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+      dd='0'+dd
+    }
+    if(mm<10){
+      mm='0'+mm
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+
+    $('#end').val(today);
+
+
+    //document.getElementById("end").setAttribute("min",result);
+
+  }
+
+
+  $('#submit').click(function (){
+
+
+
+    if($('#start').val()==$('#end').val()){
+
+
+     alert('예약 날짜를 선택해주세요!');
+     return false;
+    }
+
+  });
+
+
+
+</script>
 
 
 

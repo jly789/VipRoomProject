@@ -11,6 +11,7 @@ import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
 import vip.com.accommodation.dto.city.CityDto;
+import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationListDto;
 import vip.com.accommodation.dto.room.RoomMainListDto;
@@ -59,8 +60,6 @@ public class ReservationController {
     @GetMapping("/reservation")
     public String reservation(Model model,@RequestParam("roomId")int roomId,@RequestParam("accommodationId")int accommodationId){
 
-        System.out.println(roomId);
-        System.out.println(accommodationId);
 
 
         List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(accommodationId);
@@ -76,14 +75,28 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public String reservation_ok(Model model, ReservationInsertDto reservationInsertDto){
+    public String reservation_ok(Model model, ReservationFindDto reservationFindDto,HttpServletResponse response)throws Exception{
 
-        // reservationService.reservationInsert(reservationInsertDto);
+            String msg;
+
+
+           if(reservationService.reservationSearch(reservationFindDto)==0){
+
+               alertService.reservationAlertMessage(response);
+
+               return "reservation/register";
+           }
+
+
+            return "reservation/reservationPayment";
+        }
 
 
 
-        return "reservation/reservationPayment";
-    }
+
+
+
+
 
 
 //    @PostMapping("/reservationPayment")

@@ -33,6 +33,17 @@ public class AlertImpl implements AlertService {
         out.println("history.go(-1);</script>");
         out.flush();
     }
+
+
+    @Override
+    public void reservationAlertMessage(HttpServletResponse response) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        out.println("<script> alert('해당 날짜에는 예약이 꽉 찼습니다.');");
+        out.println("history.go(-1);</script>");
+        out.flush();
+    }
 }
 
 
