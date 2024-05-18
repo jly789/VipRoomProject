@@ -12,6 +12,8 @@ import vip.com.accommodation.mapper.room.RoomMapper;
 import vip.com.accommodation.service.reservation.ReservationService;
 import vip.com.accommodation.service.room.RoomService;
 
+import java.util.List;
+
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
@@ -24,7 +26,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public int maxNum() {
-        return roomMapper.maxNum();
+        return reservationMapper.maxNum();
     }
 
     @Override
@@ -56,5 +58,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void reservationInsert(ReservationInsertDto reservationInsertDto) {
         reservationMapper.reservationInsert(reservationInsertDto);
+    }
+
+    @Override
+    public List<ReservationFindDto> reservationFindDto(ReservationFindDto reservationFindDto) {
+        return reservationMapper.reservationFindDto(reservationFindDto);
     }
 }

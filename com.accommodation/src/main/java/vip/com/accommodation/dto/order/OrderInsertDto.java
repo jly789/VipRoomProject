@@ -13,18 +13,17 @@ import java.time.LocalDate;
 public class OrderInsertDto {
 
 
-    private int reservationId; // 예약번호
-    private int memberId; // (외래키)회원번호
-    private int accommodationId;// (외래키)숙소번호
-    private int roomId; // (외래키)객실번호
-    private String reservationStatus;  // 객실상태 ex)예약가능, 예약불가
-    private String reservationDetails;  //예약내용
+    private int orderId; // 주문번호
+    private int reservationId; //(외래키)예약번호
+    private int orderPrice; // 주문가격
+    private int orderNum;//
+    private int impUid; //
+    private String orderStatus;  //주문상태 ex)결제완료
+    private LocalDate orderDate; //주문날짜
 
-    @PastOrPresent(message = "과거 또는 현재의 날짜여야 합니다.")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate reservationCheckIn; //체크인
 
-    @PastOrPresent(message = "과거 또는 현재의 날짜여야 합니다.")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate reservationCheckOut; //체크아웃
+
+
+
+
 }

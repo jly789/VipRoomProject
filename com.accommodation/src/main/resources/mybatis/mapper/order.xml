@@ -5,32 +5,25 @@
 
 <mapper namespace="vip.com.accommodation.mapper.order.OrderMapper">
 
-
-<!--    <select id="maxNum" resultType="int">-->
-<!--        select ifnull(max(roomId),0) from room-->
-<!--    </select>-->
-
-
-<!--        <select id="reservationSearch" parameterType="vip.com.accommodation.dto.reservation.ReservationFindDto" resultType="int">-->
-<!--            select count(*) from reservation-->
-<!--                                     left join room on reservation.roomId = room.roomId-->
-<!--            where reservationCheckIn=#{reservationCheckIn}-->
-<!--              and reservationCheckOut =#{reservationCheckOut} and room.roomId=#{roomId};-->
+<!--        <select id="maxNum" resultType="int">-->
+<!--            select ifnull(max(roomId),0) from orders-->
 <!--        </select>-->
 
 
 
+    <insert id="orderInsert" parameterType="vip.com.accommodation.mapper.order.OrderMapper">
+
+        insert into orders(orderId,reservationId,orderPrice,orderNum,impUid,orderStatus,orderDate)
+        values (#{orderId},#{reservationId},#{orderPrice},#{orderNum},#{impUid}
+               ,'결제완료',sysdate())
 
 
-<!--    <insert id="reservationInsert" parameterType="vip.com.accommodation.mapper.reservation.ReservationMapper">-->
-
-<!--        insert into reservation(reservationId,memberId,accommodationId,roomId,reservationStatus,-->
-<!--                                reservationDetails,reservationCheckIn,reservationCheckOut)-->
-<!--        values (#{reservationId},1,#{accommodationId},#{roomId},'예약가능'-->
-<!--               ,'숙소예약에 필요한 정보를 입력해주세요',#{reservationCheckIn},#{reservationCheckOut})-->
+    </insert>
 
 
-<!--    </insert>-->
+
+
+
 
 
 

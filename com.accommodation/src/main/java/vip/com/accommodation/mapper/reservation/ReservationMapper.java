@@ -6,6 +6,8 @@ import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
 import vip.com.accommodation.dto.room.RoomInsertDto;
 
+import java.util.List;
+
 @Mapper
 public interface ReservationMapper {
 
@@ -17,7 +19,7 @@ public interface ReservationMapper {
 
     public void reservationInsert(ReservationInsertDto reservationInsertDto);
 
-
+    public List<ReservationFindDto> reservationFindDto(ReservationFindDto reservationFindDto);
 
 
 

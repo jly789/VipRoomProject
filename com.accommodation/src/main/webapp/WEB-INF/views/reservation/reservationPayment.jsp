@@ -1,119 +1,67 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
-
-
 <c:set var="cp" value="<%=request.getContextPath()%>"/>
-<!DOCTYPE html>
-<html lang="en">
+
+
+<!doctype html>
+<html class="no-js" lang="zxx">
 <head>
-  <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-  <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
-
-  <link rel="stylesheet" href="/resources/css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="/resources/css/animate.css">
-
-  <link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="/resources/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="/resources/css/magnific-popup.css">
-
-  <link rel="stylesheet" href="/resources/css/aos.css">
-
-  <link rel="stylesheet" href="/resources/css/ionicons.min.css">
-
-  <link rel="stylesheet" href="/resources/css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="/resources/css/jquery.timepicker.css">
-
-
-  <link rel="stylesheet" href="/resources/css/flaticon.css">
-  <link rel="stylesheet" href="/resources/css/icomoon.css">
-  <link rel="stylesheet" href="/resources/css/style.css">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Book Shop</title>
+  <!-- jQuery -->
+  <script
+          type="text/javascript"
+          src="https://code.jquery.com/jquery-1.12.4.min.js"
+  ></script>
+  <!-- iamport.payment.js -->
+  <script
+          type="text/javascript"
+          src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+  ></script>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-
-
 <jsp:include page="../main/header.jsp"></jsp:include>
 
+<main>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <div>
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
-
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-
-  <link rel="stylesheet" href="css/aos.css">
-
-  <link rel="stylesheet" href="css/ionicons.min.css">
-
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
-  <link rel="stylesheet" href="css/flaticon.css">
-  <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <input type="hidden" id="orderNum" name="orderNum" value="">
 
 
 
-          <div class="comment-form-wrap pt-5" style="text-align: center;">
-            <h3 class="mb-5">결제하기</h3>
-            <form action="#" class="p-5 bg-light">
-              <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" class="form-control" id="name">
-              </div>
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" class="form-control" id="email">
-              </div>
-              <div class="form-group">
-                <label for="website">Website</label>
-                <input type="url" class="form-control" id="website">
-              </div>
 
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-              </div>
+    <input type="hidden" id="purchaseBook"  value="아잉"/>
 
-            </form>
-          </div>
-        </div>
 
-      </div> <!-- .col-md-8 -->
 
-      </div>
+
+    <input type="hidden" id="finaltotalPrice" value="1"/>
+
+
+
+
+    <span></span>
+
+
+
+
+    <button class="btn w-100" id="payment">결제하기</button>
+
 
   </div>
+  </section>
 
-</section> <!-- .section -->
+  <!--End Checkout Area -->
+</main>
+
+<script>
 
 
 
@@ -121,26 +69,81 @@
 
 
 
+
+  var IMP = window.IMP;
+  IMP.init("imp88246600");
+
+  $('#payment').click(function () {
+
+
+
+
+
+
+
+    //pg: "html5_inicis"
+    // pg : 'kakaopay.TC0ONETIME',
+    // pg : 'danal_tpay',
+    //  pg : 'kakaopay.TC0ONETIME'
+
+    IMP.request_pay({
+      pg : 'kakaopay.TC0ONETIME',
+      pay_method: "card", // 결제방식
+      merchant_uid : 'merchant_' + new Date().getTime(), // 주문번호
+      name: $('#purchaseBook').val(), // 상품명
+
+      amount: $("#finaltotalPrice").val(),
+
+    },function(data){
+      if(data.success){
+        var msg = "결제 완료";
+        msg += '고유ID : ' + data.imp_uid;                //아임포트 uid는 실제 결제 시 결제 고유번호를 서버와 비교해서 결제처리하는데 필요없긴함.
+        msg += '// 상점 거래ID : ' + data.merchant_uid; // 주문번호
+        msg += '// 결제 금액 : ' + $("#finaltotalPrice").val();
+        // msg += '// 포인트 사용 금액 : ' + data.usePoint;
+        msg += '// 카드 승인번호 : ' + data.apply_num;
+
+        $("#orderNum").val(data.merchant_uid);
+
+        $.ajax({
+          type: 'post',
+          url: '/payment',
+          data: {
+
+
+          },
+          traditional: true,
+          dataType: 'JSON',
+
+        });
+      }else{
+        var msg = "결제 실패"
+        msg += "에러 내용" + rsp.error_msg;
+      }
+
+      alert("결제성공!");
+
+      window.location.href = "/myOrder";
+    });
+
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
 
 <jsp:include page="../main/footer.jsp"></jsp:include>
-
-<script src="/resources/js/jquery.min.js"></script>
-<script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
-<script src="/resources/js/jquery.easing.1.3.js"></script>
-<script src="/resources/js/jquery.waypoints.min.js"></script>
-<script src="/resources/js/jquery.stellar.min.js"></script>
-<script src="/resources/js/owl.carousel.min.js"></script>
-<script src="/resources/js/jquery.magnific-popup.min.js"></script>
-<script src="/resources/js/aos.js"></script>
-<script src="/resources/js/jquery.animateNumber.min.js"></script>
-<script src="/resources/js/bootstrap-datepicker.js"></script>
-<script src="/resources/js/jquery.timepicker.min.js"></script>
-<script src="/resources/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="/resources/js/google-map.js"></script>
-<script src="/resources/js/main.js"></script>
-
 </body>
 </html>

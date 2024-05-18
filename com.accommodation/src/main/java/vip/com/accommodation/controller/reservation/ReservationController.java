@@ -11,6 +11,7 @@ import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
 import vip.com.accommodation.dto.city.CityDto;
+import vip.com.accommodation.dto.order.OrderInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationListDto;
@@ -75,7 +76,7 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public String reservation_ok(Model model, ReservationFindDto reservationFindDto,HttpServletResponse response)throws Exception{
+    public String reservation_ok(Model model, @ModelAttribute("reservationFindDto") ReservationFindDto reservationFindDto,HttpServletResponse response)throws Exception{
 
             String msg;
 
@@ -88,25 +89,63 @@ public class ReservationController {
            }
 
 
+
+
+
+        List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(reservationFindDto.getAccommodationId());
+        List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(reservationFindDto.getAccommodationId());
+        List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(reservationFindDto.getRoomId(),reservationFindDto.getAccommodationId());
+
+        model.addAttribute("accommodationDetailList",accommodationDetailList);
+        model.addAttribute("roomMainListDto",roomMainListDto);
+        model.addAttribute("roomSpecificListDto",roomSpecificListDto);
+
+
+
+
+
+
+
+
             return "reservation/reservationPayment";
         }
 
 
+    @ResponseBody
+    @PostMapping("/payment")
+    public String reservationOrder(OrderInsertDto orderInsertDto)throws Exception {
+
+        System.out.println("안녕");
+
+        System.out.println(orderInsertDto.getOrderNum());
+        System.out.println(orderInsertDto.getImpUid());
+        //    System.out.println(orderInsertDto.getOrderPrice());
 
 
-
-
-
-
-
-//    @PostMapping("/reservationPayment")
-//    public String reservation_ok(Model model, ReservationInsertDto reservationInsertDto){
+//             reservationService.reservationInsert(reservationInsertDto);
 //
-//       // reservationService.reservationInsert(reservationInsertDto);
+//            int reservationId =  reservationService.maxNum();
 //
+//            orderInsertDto.setReservationId(reservationId);
 //
-//
-//        return "reservation/reservationPayment";
+//            orderService.orderInsert(orderInsertDto);
+
+
+
+
+
+
+
+        return "reservation/reservationPayment";
+
+
+    }
+
+
+
+
+
+
 //    }
 
 
