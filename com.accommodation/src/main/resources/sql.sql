@@ -95,7 +95,6 @@ CREATE TABLE room ( -- 객실테이블
                       roomPrice INT NOT NULL, -- 객실 1박당 가격
                       standardNumbers INT NOT NULL, -- 기준인원
                       maximumCapacity INT NOT NULL,   -- 최대 숙박인원
-                      roomNumbers  INT NOT NULL,   -- 객실 수
                       roomName VARCHAR(30) NOT NULL,  -- 객실이름
                       roomDescription VARCHAR(5000) NOT NULL, -- 객실소개
 
@@ -123,11 +122,10 @@ CREATE TABLE reservation ( -- 예약테이블
                              memberId INT NOT NULL, -- (외래키)회원번호
                              accommodationId INT NOT NULL, -- (외래키)숙소번호
                              roomId INT NOT NULL, -- (외래키)객실번호
-                             reservationHeadCount INT NOT NULL,  -- 예약인원수
                              reservationStatus VARCHAR(30) default '예약가능',  -- 객실상태 ex)예약가능, 예약불가,
-                             reservationDetails VARCHAR(300) NULL, -- 예약내용,
-                             reservationCheckIn DATE NOT NULL, -- 체크인
-                             reservationCheckOut DATE NOT NULL, -- 체크아웃
+                             reservationDetails VARCHAR(300) default '숙소예약에 필요한 정보를 입력해주세요', -- 예약내용,
+                             reservationCheckIn VARCHAR(30) NOT NULL, -- 체크인
+                             reservationCheckOut VARCHAR(30) NOT NULL, -- 체크아웃
 
                              CONSTRAINT PK_RESERVATION PRIMARY KEY (reservationId),
                              CONSTRAINT FK_RESERVATION_MEMBERID FOREIGN KEY (memberId) REFERENCES member (memberId),
@@ -136,7 +134,7 @@ CREATE TABLE reservation ( -- 예약테이블
 );
 
 
-
+-- reservationHeadCount INT NOT NULL,  -- 예약인원수
 
 CREATE TABLE orders -- 주문
 (
@@ -314,12 +312,12 @@ INSERT into accommodationImg VALUES(3,3,'03_호텔휘슬락.jpg','/accommodation
 select * from room
 where accommodationId=1;
 
-INSERT into room VALUES(1,1,55000,2,2,5,'Standard','Standard 객실 랜덤배정');
-INSERT into room VALUES(2,1,90000,2,2,5,'Deluxe','75" SMART TV 넷플릭스 시청가능 프리존,랜덤배정
+INSERT into room VALUES(1,1,55000,2,2,'Standard','Standard 객실 랜덤배정');
+INSERT into room VALUES(2,1,90000,2,2,'Deluxe','75" SMART TV 넷플릭스 시청가능 프리존,랜덤배정
 ');
-INSERT into room VALUES(3,1,200000,2,2,5,'Suite','Suite 객실 랜덤배정');
+INSERT into room VALUES(3,1,200000,2,2,'Suite','Suite 객실 랜덤배정');
 
-INSERT into room VALUES(4,2,99000,1,1,5,'비즈니스싱글 시티뷰','기본정보
+INSERT into room VALUES(4,2,99000,1,1,'비즈니스싱글 시티뷰','기본정보
 일회용품 무료 제공 불가 (칫솔, 치약, 면도기)
 기준 1인 / 최대 1인
 싱글 침대 1개
@@ -333,7 +331,7 @@ INSERT into room VALUES(4,2,99000,1,1,5,'비즈니스싱글 시티뷰','기본�
 침대룸 1개
 욕실 1개');
 
-INSERT into room VALUES(5,3,95000,2,2,5,'디럭스 트윈','7.4평, 싱글 침대 2개
+INSERT into room VALUES(5,3,95000,2,2,'디럭스 트윈','7.4평, 싱글 침대 2개
 2인 기준 / 인원 추가 불가
 에어컨, TV, 냉장고, 커피포트, 생수
 샤워시설, 욕실용품, 드라이기
@@ -361,6 +359,37 @@ select * from reservation;
 select * from orders;
 select * from notice;
 select * from review;
+
+-- select * from room
+-- where roomId =1;
+
+INSERT into reservation VALUES(1,1,1,1,'예약중','','2024-05-17','2024-05-18');
+INSERT into reservation VALUES(2,1,1,1,'예약중','','2024-05-19','2024-05-20');
+INSERT into reservation VALUES(3,1,1,1,'예약중','','2024-05-22','2024-05-23');
+-- INSERT into reservation VALUES(4,1,1,4,'예약중','','2024-05-16','2024-05-17');
+-- INSERT into reservation VALUES(5,1,1,5,'예약중','','2024-05-16','2024-05-17');
+-- INSERT into reservation VALUES(6,1,1,1,'예약중','','2024-05-17','2024-05-18');
+-- INSERT into reservation VALUES(7,1,1,2,'예약중','','2024-05-17','2024-05-18');
+-- INSERT into reservation VALUES(8,1,1,1,'예약중','','2024-05-22','2024-05-23');
+
+select count(*) from reservation
+                         left join room on reservation.roomId = room.roomId
+where  reservationCheckIn='2024-05-17'
+  and reservationCheckOut ='2024-05-18' and room.roomId=1;
+
+
+
+
+
+-- UPDATE room
+
+-- SET roomReservationNumbers = roomReservationNumbers+1
+
+-- WHERE roomId = 1;
+
+
+
+
 
 
 
@@ -402,16 +431,16 @@ select * from review;
 
 
 
-select distinct *  from  accommodation
-                             left join  accommodationImg
-                                        on accommodation.accommodationId= accommodationImg.accommodationId
+--                          select distinct *  from  accommodation
+--                                      left join  accommodationImg
+--                                                 on accommodation.accommodationId= accommodationImg.accommodationId
+--
+--                                      where accommodation.accommodationId= 1;
+--
 
-where accommodation.accommodationId= 1;
-
-
-select distinct * from  room
-                            join roomImg on roomImg.roomId = room.roomId
-where room.accommodationId=1;
+-- 	select distinct * from  room
+--  									 join roomImg on roomImg.roomId = room.roomId
+--                                    where room.accommodationId=1 and room.roomId =2;
 
 
 -- 									select distinct room.roomId, room.roomName,room.roomPrice,room.roomDescription
