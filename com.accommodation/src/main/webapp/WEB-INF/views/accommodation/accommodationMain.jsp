@@ -53,84 +53,79 @@
     <div class="row">
       <div class="col-lg-3 sidebar">
         <div class="sidebar-wrap bg-light ftco-animate">
-          <h3 class="heading mb-4">Find City</h3>
-          <form action="#">
+          <h3 class="heading mb-4">도시 검색</h3>
+          <form:form action="/accommodationMainSearchCity" method="post" modelAttribute="accommodationMainListDto">
             <div class="fields">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Destination, City">
-              </div>
+
               <div class="form-group">
                 <div class="select-wrap one-third">
                   <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                  <select name="" id="" class="form-control" placeholder="Keyword search">
-                    <option value="">Select Location</option>
-                    <option value="">San Francisco USA</option>
-                    <option value="">Berlin Germany</option>
-                    <option value="">Lodon United Kingdom</option>
-                    <option value="">Paris Italy</option>
+                  <select name="accommodationDistrict" id="accommodationDistrictOption"  class="form-control" placeholder="Keyword search">
+                    <c:if test="${accommodationMainListDto.accommodationDistrict!=null}">
+                    <option value="${accommodationMainListDto.accommodationDistrict}" selected="selected" >${accommodationMainListDto.accommodationDistrict}</option>
+                      <option value="전체">전체</option>
+                      <option value="서울">서울</option>
+                      <option value="부산">부산</option>
+                      <option value="제주">제주</option>
+                      <option value="경기">경기</option>
+                      <option value="인천">인천</option>
+                      <option value="강원">강원</option>
+                      <option value="경상">경상</option>
+                      <option value="전라">전라</option>
+                      <option value="충청">충청</option>
+
                   </select>
+                    </c:if>
+
+                  <c:if test="${accommodationMainListDto.accommodationDistrict==null}">
+                  <option value="선택" selected="selected" disabled>선택</option>
+                    <option value="전체">전체</option>
+                    <option value="서울">서울</option>
+                    <option value="부산">부산</option>
+                    <option value="제주">제주</option>
+                    <option value="경기">경기</option>
+                    <option value="인천">인천</option>
+                    <option value="강원">강원</option>
+                    <option value="경상">경상</option>
+                    <option value="전라">전라</option>
+                    <option value="충청">충청</option>
+                  </select>
+                  </c:if>
                 </div>
               </div>
-              <div class="form-group">
-                <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
+
+              <div class="select-wrap one-third">
+                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                <c:if test="${accommodationMainListDto.accommodationCity!=null}">
+                <select name="accommodationCity" id="subCategory" class="form-control" placeholder="지역선택">
+                  <option value="${accommodationMainListDto.accommodationCity}" selected="selected" >${accommodationMainListDto.accommodationCity}</option>
+
+
+                </select>
+                </c:if>
+
+                <c:if test="${accommodationMainListDto.accommodationCity==null}">
+                  <select name="accommodationCity" id="subCategory" class="form-control" placeholder="지역선택">
+                    <option value="선택" selected="selected" >선택</option>
+
+
+                  </select>
+                </c:if>
               </div>
-              <div class="form-group">
-                <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-              </div>
-              <div class="form-group">
-                <div class="range-slider">
-		              		<span>
-										    <input type="number" value="25000" min="0" max="120000"/>	-
-										    <input type="number" value="50000" min="0" max="120000"/>
-										  </span>
-                  <input value="1000" min="0" max="120000" step="500" type="range"/>
-                  <input value="50000" min="0" max="120000" step="500" type="range"/>
-                  </svg>
-                </div>
-              </div>
+
+
+
               <div class="form-group">
                 <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
               </div>
             </div>
-          </form>
+          </form:form>
         </div>
 
-        <div class="sidebar-wrap bg-light ftco-animate">
-          <h3 class="heading mb-4">Star Rating</h3>
-          <form method="post" class="star-rating">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">
-                <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-              </label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">
-                <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
-              </label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">
-                <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-              </label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">
-                <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-              </label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">
-                <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-              </label>
-            </div>
-          </form>
-        </div>
+
       </div>
+
+
       <div class="col-lg-9">
         <div class="row">
 
@@ -164,7 +159,7 @@
                 <hr>
                 <p class="bottom-area d-flex">
                   <span><i class="icon-map-o"></i>${accommodationMainList.accommodationCategory}</span>
-                  <span class="ml-auto"><a href="#">예약하기</a></span>
+                  <span class="ml-auto"><a href="${accommodationMainList.accommodationId}">예약하기</a></span>
                 </p>
               </div>
             </div>
@@ -203,6 +198,86 @@
 
 
   <jsp:include page="../main/footer.jsp"></jsp:include>
+
+
+<script>
+
+  $('#accommodationDistrictOption').change(function () {
+
+
+    if($('#accommodationDistrictOption').val()=='전체'){
+
+     $('#subCategory').hide();
+    }
+
+    if($('#accommodationDistrictOption').val()!='전체'){
+
+      $('#subCategory').show();
+    }
+
+
+
+    $('#accommodationCity').val('');
+
+    const accommodationDistrict = '';
+    const accommodationDistrictOption = $('#accommodationDistrictOption').val();
+
+    $('#accommodationDistrict').val(accommodationDistrictOption)
+
+
+
+
+
+
+
+    $.ajax({
+
+      type:'POST',
+      url: '/accommodationDistrict',
+      data: 'accommodationDistrict=' +  accommodationDistrictOption,
+      dataType: 'json',
+
+      success:function (cityDtoList){
+
+
+        // if(result=='1'){
+        //   $('#result').text('사용 가능한 아이디입니다.');
+        //   $('#checkId').val(1);
+
+
+        // accommodationCityOption
+
+
+        $('#subCategory').empty();
+
+
+        for(let i = 0; i < cityDtoList.length; i++) {
+          let subCategoryDTO = cityDtoList[i]
+
+
+          let option = $('<option value="' + subCategoryDTO.cityName + '">' + subCategoryDTO.cityName + '</option>')
+
+
+
+          $('#subCategory').append(option)
+        }
+
+
+        $('#subCategory').niceSelect('update')
+      },
+      error: function (a,b,c){
+        console.log(a,b,c);
+      }
+
+    });
+
+
+
+
+
+  });
+
+</script>
 
   <script src="/resources/js/jquery.min.js"></script>
   <script src="/resources/js/jquery-migrate-3.0.1.min.js"></script>

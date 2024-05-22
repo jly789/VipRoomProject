@@ -61,8 +61,34 @@ public class AccommodationController {
     }
 
 
+    @PostMapping("/accommodationMainSearchCity")
 
-    @GetMapping("/accommodation") //숙박등록
+    public String accommodationMainSearchCity(@ModelAttribute("accommodationMainListDto")AccommodationMainListDto accommodationMainListDto,Model model){
+
+
+        if(accommodationMainListDto.getAccommodationDistrict().equals("전체")){
+
+            List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList();
+
+            model.addAttribute("accommodationMainList",accommodationMainList);
+
+
+            return "accommodation/accommodationMain";
+        }
+
+
+
+        List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainListSearchCity(accommodationMainListDto);
+
+        model.addAttribute("accommodationMainList",accommodationMainList);
+
+
+        return "accommodation/accommodationMain";
+    }
+
+
+
+    @GetMapping("/accommodation") //숙소등록
     public String accommodation() {
 
 
@@ -70,7 +96,7 @@ public class AccommodationController {
     }
 
 
-    @PostMapping("/accommodation") //숙박등록
+    @PostMapping("/accommodation") //숙소등록
     public String accommodation(@Valid @ModelAttribute("accommodationInsertDto") AccommodationInsertDto accommodationInsertDto,
                                 AccommodationImgInsertDto accommodationImgInsertDto
             , BindingResult bindingResult, Model model, List<MultipartFile> file, HttpServletResponse response) throws Exception {
@@ -121,6 +147,9 @@ public class AccommodationController {
 
         return cityDtoList;
     }
+
+
+
 
 
 }

@@ -51,6 +51,24 @@
     </select>
 
 
+    <select id="accommodationMainListSearchCity" parameterType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
+
+        select  a.accommodationId,a.accommodationName ,b.accommodationImage,
+                a.accommodationCategory  from  accommodation a
+                                                   left join  accommodationImg b
+                                                              on a.accommodationId= b.accommodationId
+                                                   left join room c on c.accommodationId = b.accommodationId
+
+        where a.accommodationDistrict= #{accommodationDistrict} and a.accommodationCity=#{accommodationCity}
+        group by a.accommodationName,a.accommodationId,b.accommodationImage
+
+
+
+
+
+    </select>
+
+
     <select id="accommodationDetailList" parameterType="int" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
 
         select distinct *  from  accommodation
@@ -65,6 +83,11 @@
 
 
     </select>
+
+
+
+
+
 
 
 

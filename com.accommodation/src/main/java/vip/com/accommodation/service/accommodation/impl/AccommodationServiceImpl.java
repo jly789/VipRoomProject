@@ -41,6 +41,11 @@ public class AccommodationServiceImpl implements AccommodationService {
     }
 
     @Override
+    public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto) {
+        return accommodationMapper.accommodationMainListSearchCity(accommodationMainListDto);
+    }
+
+    @Override
     public List<AccommodationMainListDto> accommodationDetailList(int accommodationId) {
         return accommodationMapper.accommodationDetailList(accommodationId);
     }

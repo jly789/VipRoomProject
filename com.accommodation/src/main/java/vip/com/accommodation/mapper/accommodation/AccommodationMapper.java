@@ -17,6 +17,8 @@ public interface AccommodationMapper {
 
     public List<AccommodationMainListDto> accommodationMainList();
 
+    public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto);
+
     public List<AccommodationMainListDto> accommodationDetailList(int accommodationId);
 
 
