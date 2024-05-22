@@ -16,8 +16,8 @@ public class OrderInsertDto {
     private int orderId; // 주문번호
     private int reservationId; //(외래키)예약번호
     private int orderPrice; // 주문가격
-    private int orderNum;//
-    private int impUid; //
+    private String orderNum;//
+    private String impUid; //
     private String orderStatus;  //주문상태 ex)결제완료
     private LocalDate orderDate; //주문날짜
 

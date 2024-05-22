@@ -27,7 +27,7 @@
         insert into reservation(reservationId,memberId,accommodationId,roomId,reservationStatus,
                                 reservationDetails,reservationCheckIn,reservationCheckOut)
         values (#{reservationId},1,#{accommodationId},#{roomId},'예약중'
-               ,'숙소예약에 필요한 정보를 입력해주세요',#{reservationCheckIn},#{reservationCheckOut})
+               ,#{reservationDetails},#{reservationCheckIn},#{reservationCheckOut})
 
 
     </insert>

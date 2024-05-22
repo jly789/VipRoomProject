@@ -136,6 +136,8 @@ CREATE TABLE reservation ( -- 예약테이블
 
 -- reservationHeadCount INT NOT NULL,  -- 예약인원수
 
+
+
 CREATE TABLE orders -- 주문
 (
     orderId     INT NOT NULL AUTO_INCREMENT, -- 주문번호
@@ -364,16 +366,16 @@ select * from review;
 -- where roomId =1;
 
 INSERT into reservation VALUES(1,1,1,1,'예약중','','2024-05-17','2024-05-18');
-INSERT into reservation VALUES(2,1,1,1,'예약중','','2024-05-19','2024-05-20');
-INSERT into reservation VALUES(3,1,1,1,'예약중','','2024-05-22','2024-05-23');
+-- INSERT into reservation VALUES(2,1,1,1,'예약중','','2024-05-19','2024-05-20');
+-- INSERT into reservation VALUES(3,1,1,1,'예약중','','2024-05-22','2024-05-23');
 -- INSERT into reservation VALUES(4,1,1,4,'예약중','','2024-05-16','2024-05-17');
 -- INSERT into reservation VALUES(5,1,1,5,'예약중','','2024-05-16','2024-05-17');
 -- INSERT into reservation VALUES(6,1,1,1,'예약중','','2024-05-17','2024-05-18');
 -- INSERT into reservation VALUES(7,1,1,2,'예약중','','2024-05-17','2024-05-18');
 -- INSERT into reservation VALUES(8,1,1,1,'예약중','','2024-05-22','2024-05-23');
 
-select count(*) from reservation
-                         left join room on reservation.roomId = room.roomId
+select * from reservation
+                  left join room on reservation.roomId = room.roomId
 where  reservationCheckIn='2024-05-17'
   and reservationCheckOut ='2024-05-18' and room.roomId=1;
 

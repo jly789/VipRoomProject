@@ -22,6 +22,7 @@ import vip.com.accommodation.service.accommodationImg.AccommodationImgService;
 import vip.com.accommodation.service.alert.AlertService;
 import vip.com.accommodation.service.city.CityService;
 import vip.com.accommodation.service.member.MemberService;
+import vip.com.accommodation.service.order.OrderService;
 import vip.com.accommodation.service.reservation.ReservationService;
 import vip.com.accommodation.service.room.RoomService;
 
@@ -56,6 +57,9 @@ public class ReservationController {
     @Resource
     ReservationService reservationService;
 
+    @Resource
+    OrderService orderService;
+
 
 
     @GetMapping("/reservation")
@@ -76,9 +80,11 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public String reservation_ok(Model model, @ModelAttribute("reservationFindDto") ReservationFindDto reservationFindDto,HttpServletResponse response)throws Exception{
+    public String reservation_ok(Model model,ReservationFindDto reservationFindDto,HttpServletResponse response)throws Exception{
 
             String msg;
+
+
 
 
            if(reservationService.reservationSearch(reservationFindDto)==0){
@@ -99,7 +105,7 @@ public class ReservationController {
         model.addAttribute("accommodationDetailList",accommodationDetailList);
         model.addAttribute("roomMainListDto",roomMainListDto);
         model.addAttribute("roomSpecificListDto",roomSpecificListDto);
-
+        model.addAttribute("reservationFindDto",reservationFindDto);
 
 
 
@@ -113,22 +119,21 @@ public class ReservationController {
 
     @ResponseBody
     @PostMapping("/payment")
-    public String reservationOrder(OrderInsertDto orderInsertDto)throws Exception {
+    public String reservationOrder(OrderInsertDto orderInsertDto,ReservationInsertDto reservationInsertDto)throws Exception {
 
-        System.out.println("안녕");
+
 
         System.out.println(orderInsertDto.getOrderNum());
         System.out.println(orderInsertDto.getImpUid());
-        //    System.out.println(orderInsertDto.getOrderPrice());
 
 
-//             reservationService.reservationInsert(reservationInsertDto);
-//
-//            int reservationId =  reservationService.maxNum();
-//
-//            orderInsertDto.setReservationId(reservationId);
-//
-//            orderService.orderInsert(orderInsertDto);
+             reservationService.reservationInsert(reservationInsertDto);
+
+            int reservationId =  reservationService.maxNum();
+
+            orderInsertDto.setReservationId(reservationId);
+
+            orderService.orderInsert(orderInsertDto);
 
 
 
