@@ -19,7 +19,13 @@ public interface AccommodationMapper {
 
     public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto);
 
+
+
+
     public List<AccommodationMainListDto> accommodationDetailList(int accommodationId);
+
+    public String relatedHotelsDistrict(int accommodationId); //특정 숙소번호의 같은 지역구 호텔리스트
+    public List<AccommodationMainListDto> relatedHotels(String district); //특정 지역구의 관련된 호텔리스트
 
 
 }

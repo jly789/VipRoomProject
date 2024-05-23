@@ -39,6 +39,11 @@ public class MemberController {
 
       if(memberService.login(memberLoginDto,response)==1){
           session.setAttribute("userId",memberLoginDto.getUserId());
+          int memberId = memberService.memberIdSearch(memberLoginDto);
+          session.setAttribute("memberId",memberId);
+
+
+
 
 
           return "main/main";
@@ -51,13 +56,14 @@ public class MemberController {
 
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/logOut")
     public String logOut(HttpSession session){
 
         session.removeAttribute("userId");
+        session.removeAttribute("memberId");
 
 
-        return "main/main";
+        return "redirect:/";
     }
 
     @GetMapping("/register")

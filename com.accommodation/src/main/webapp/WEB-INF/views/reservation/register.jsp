@@ -48,7 +48,7 @@
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 
-
+<input type="hidden" name="userId" id="userId" value="${userId}">${userId}</input>
 <c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
 
 <div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">
@@ -187,7 +187,7 @@
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
-                        <h3><a href="hotel-single.html">${roomMainListDto.roomName}</a></h3>
+                        <h3>${roomMainListDto.roomName}</h3>
                         <p class="rate">
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
@@ -205,7 +205,7 @@
                     <hr>
                     <p class="bottom-area d-flex">
 
-                      <span style="margin-left: 70px;"><a href="#">예약하기</a></span>
+                      <span style="margin-left: 70px;"><a href="/reservation?roomId=${roomMainListDto.roomId}&accommodationId=${roomMainListDto.accommodationId}">예약하기</a></span>
                     </p>
                   </div>
                 </div>
@@ -257,6 +257,10 @@
 
   $('#submit').click(function (){
 
+    if($('#userId').val()==''){
+      alert('회원만 예약가능합니다! \n로그인하세요');
+      return false;
+    }
 
 
     if($('#start').val()==$('#end').val()){

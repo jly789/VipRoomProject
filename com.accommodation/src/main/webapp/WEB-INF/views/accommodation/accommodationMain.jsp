@@ -141,7 +141,7 @@
               <div class="text p-3">
                 <div class="d-flex">
                   <div class="one">
-                    <h3><a href="hotel-single.html">${accommodationMainList.accommodationName}</a></h3>
+                    <h3>${accommodationMainList.accommodationName}</h3>
                     <p class="rate">
                       <i class="icon-star"></i>
                       <i class="icon-star"></i>

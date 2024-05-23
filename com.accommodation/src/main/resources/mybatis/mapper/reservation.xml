@@ -26,7 +26,7 @@
 
         insert into reservation(reservationId,memberId,accommodationId,roomId,reservationStatus,
                                 reservationDetails,reservationCheckIn,reservationCheckOut)
-        values (#{reservationId},1,#{accommodationId},#{roomId},'예약중'
+        values (#{reservationId},#{memberId},#{accommodationId},#{roomId},'예약중'
                ,#{reservationDetails},#{reservationCheckIn},#{reservationCheckOut})
 
 

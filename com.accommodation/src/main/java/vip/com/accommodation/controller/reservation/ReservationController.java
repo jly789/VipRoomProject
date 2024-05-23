@@ -28,6 +28,7 @@ import vip.com.accommodation.service.room.RoomService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -63,7 +64,9 @@ public class ReservationController {
 
 
     @GetMapping("/reservation")
-    public String reservation(Model model,@RequestParam("roomId")int roomId,@RequestParam("accommodationId")int accommodationId){
+    public String reservation(HttpSession session,Model model,@RequestParam("roomId")int roomId,@RequestParam("accommodationId")int accommodationId){
+
+        String userId = (String) session.getAttribute("userId");
 
 
 
@@ -71,6 +74,7 @@ public class ReservationController {
         List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
         List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(roomId,accommodationId);
 
+        model.addAttribute("userId",userId);
         model.addAttribute("accommodationDetailList",accommodationDetailList);
         model.addAttribute("roomMainListDto",roomMainListDto);
         model.addAttribute("roomSpecificListDto",roomSpecificListDto);
@@ -80,10 +84,10 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public String reservation_ok(Model model,ReservationFindDto reservationFindDto,HttpServletResponse response)throws Exception{
+    public String reservation_ok(Model model, ReservationFindDto reservationFindDto, HttpSession session, HttpServletResponse response)throws Exception{
 
             String msg;
-
+            int memberId = (int)session.getAttribute("memberId");
 
 
 
@@ -102,6 +106,7 @@ public class ReservationController {
         List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(reservationFindDto.getAccommodationId());
         List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(reservationFindDto.getRoomId(),reservationFindDto.getAccommodationId());
 
+        model.addAttribute("memberId",memberId);
         model.addAttribute("accommodationDetailList",accommodationDetailList);
         model.addAttribute("roomMainListDto",roomMainListDto);
         model.addAttribute("roomSpecificListDto",roomSpecificListDto);

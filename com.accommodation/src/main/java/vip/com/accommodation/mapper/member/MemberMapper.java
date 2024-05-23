@@ -23,6 +23,8 @@ public interface MemberMapper {
 
     public int login(MemberLoginDto memberLoginDto);
 
+    public int memberIdSearch(MemberLoginDto memberLoginDto);
+
     public  List<MemberFindDto> mypage(String userId);
 
     public  void mypageUpdate(MemberUpdateDto memberUpdateDto);

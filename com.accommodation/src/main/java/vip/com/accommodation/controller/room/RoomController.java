@@ -55,8 +55,13 @@ public class RoomController {
            List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(accommodationId);
            List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
 
+           String accommodationDistrict = accommodationService.relatedHotelsDistrict(accommodationId);
+
+           List<AccommodationMainListDto> relatedHotels = accommodationService.relatedHotels(accommodationDistrict);
+
         model.addAttribute("accommodationDetailList",accommodationDetailList);
         model.addAttribute("roomMainListDto",roomMainListDto);
+        model.addAttribute("relatedHotels",relatedHotels);
 
 
 

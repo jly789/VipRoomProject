@@ -69,6 +69,38 @@
     </select>
 
 
+    <select id="relatedHotelsDistrict" parameterType="int" resultType="String">
+
+        select accommodationDistrict  from  accommodation
+                                     left join  accommodationImg
+                                                on accommodation.accommodationId= accommodationImg.accommodationId
+
+        where accommodation.accommodationId= #{accommodationId}
+
+
+    </select>
+
+
+
+
+    <select id="relatedHotels" parameterType="String" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
+
+        select  a.accommodationId,a.accommodationName ,b.accommodationImage,b.accommodationImagePath,
+                a.accommodationCategory  from  accommodation a
+                                                   left join  accommodationImg b
+                                                              on a.accommodationId= b.accommodationId
+                                                   left join room c on c.accommodationId = b.accommodationId
+
+        where a.accommodationDistrict= #{accommodationDistrict}
+        group by a.accommodationName,a.accommodationId,b.accommodationImage,b.accommodationImagePath
+
+
+
+
+
+    </select>
+
+
     <select id="accommodationDetailList" parameterType="int" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
 
         select distinct *  from  accommodation

@@ -31,6 +31,13 @@
     <link rel="stylesheet" href="/resources/css/icomoon.css">
     <link rel="stylesheet" href="/resources/css/style.css">
 
+    <style>
+
+
+        ul.submenu{position:absolute;width:170px;background:#fff;left:0;top:90%;visibility:hidden;opacity:0;box-shadow:0 0 10px 3px rgba(0,0,0,0.05);padding:17px 0;border-radius:5px 5px 0 0;-webkit-transition:all .2s ease-out 0s;-moz-transition:all .2s ease-out 0s;-ms-transition:all .2s ease-out 0s;-o-transition:all .2s ease-out 0s;transition:all .2s ease-out 0s}.header-bottom .main-menu ul ul.submenu>li{margin-left:7px;display:block}.header-bottom .main-menu ul ul.submenu>li>a{padding:6px 10px !important;font-size:14px;color:#0b1c39;text-transform:capitalize;text-align:left}.header-bottom .main-menu ul ul.submenu>li>a:hover{color:#FF1616;background:none;letter-spacing:0.5px}
+        ul>li:hover>ul.submenu{visibility:visible;opacity:1;top:100%}.top-bg{background:#000000}
+        .nav-item{display:block}@media (max-width: 575px){.nav-button .nav-tabs .nav-item{font-size:18px}}
+    </style>
 </head>
 <body>
 
@@ -78,8 +85,14 @@
 
                 <li class="nav-item"><a href="/accommodationMain" class="nav-link">Hotel</a></li>
 
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+                <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a>
+
+
+
+
+
+                </li>
+
             </ul>
         </div>
     </div>
@@ -98,7 +111,7 @@
 
 
 
-<div class="hero-wrap js-fullheight" style="background-image: url('resources/images/bg_4.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url('/mainImg/main.jpg');">
 
 </div>
 

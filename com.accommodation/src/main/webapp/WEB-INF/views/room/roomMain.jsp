@@ -176,7 +176,7 @@
         </c:forEach>
 
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-            <h4 class="mb-4">Our Rooms</h4>
+            <h4 class="mb-4">방 종류</h4>
             <div class="row">
               <c:forEach var="roomMainListDto" items="${roomMainListDto}">
               <div class="col-md-4">
@@ -185,7 +185,7 @@
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
-                        <h3><a href="hotel-single.html">${roomMainListDto.roomName}</a></h3>
+                        <h3>${roomMainListDto.roomName}</h3>
                         <p class="rate">
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
@@ -213,101 +213,43 @@
           </div>
 
 
-          <div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-            <h4 class="mb-4">Related Hotels</h4>
+              <h4 class="mb-4">같은 지역 호텔</h4>
+              <div class="row">
 
 
-            <div class="row">
-              <div class="col-md-4">
-                <div class="destination">
-                  <a href="hotel-single.html" class="img img-2"></a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
+                <c:forEach var="relatedHotels" items="${relatedHotels}">
+
+                  <div class="col-md-4 ftco-animate">
+                    <div class="destination">
+                      <a href="${relatedHotels.accommodationId}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(accommodationImg/${relatedHotels.accommodationImage});">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                          <span class="icon-search2"></span>
+                        </div>
+                      </a>
+                      <div class="text p-3">
+                        <div >
+
+                            <h3>${relatedHotels.accommodationName}</h3>
+
+
+                          <div class="two">
+                              <%--                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>--%>
+                          </div>
+                        </div>
+                        <p></p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                          <span><i class="icon-map-o"></i>${relatedHotels.accommodationCategory}</span>
+                          <span class="ml-auto"><a href="${relatedHotels.accommodationId}">예약하기</a></span>
                         </p>
                       </div>
-                      <div class="two">
-                        <span class="price per-price">$40<br><small>/night</small></span>
-                      </div>
                     </div>
-                    <p>Far far away, behind the word mountains, far from the countries</p>
-                    <hr>
-                    <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> Miami, Fl</span>
-                      <span class="ml-auto"><a href="#">Book Now</a></span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-2.jpg);"></a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p>
-                      </div>
-                      <div class="two">
-                        <span class="price per-price">$40<br><small>/night</small></span>
-                      </div>
-                    </div>
-                    <p>Far far away, behind the word mountains, far from the countries</p>
-                    <hr>
-                    <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> Miami, Fl</span>
-                      <span class="ml-auto"><a href="#">Book Now</a></span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-3.jpg);"></a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p>
-                      </div>
-                      <div class="two">
-                        <span class="price per-price">$40<br><small>/night</small></span>
-                      </div>
-                    </div>
-                    <p>Far far away, behind the word mountains, far from the countries</p>
-                    <hr>
-                    <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> Miami, Fl</span>
-                      <span class="ml-auto"><a href="#">Book Now</a></span>
-                    </p>
-
                   </div>
 
-                </div>
+                </c:forEach>
 
               </div>
+
 
             </div>
 

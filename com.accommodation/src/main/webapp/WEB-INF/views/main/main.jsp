@@ -52,11 +52,11 @@
                         <li class="nav-item"><a href="/register" class="nav-link">회원가입</a></li>
 
 
-                    <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
+
                     <li class="nav-item"><a href="/accommodationMain" class="nav-link">Hotels</a></li>
 
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+                    <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a></li>
+
                 </ul>
             </div>
         </div>
@@ -70,7 +70,7 @@
     <!-- END nav -->
 
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('resources/images/bg_4.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('/mainImg/main.jpg');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -1027,7 +1027,7 @@
 
 
 
-                    <li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a></li>
+                    <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
 
                 <c:if test="${userId == 'admin'}">
                     <li class="nav-item"><a href="/mypage" class="nav-link">관리자페이지</a></li>
@@ -1046,8 +1046,8 @@
 
                 <li class="nav-item"><a href="/accommodationMain" class="nav-link">Hotel</a></li>
 
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+                <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a></li>
+
             </ul>
         </div>
     </div>
@@ -1061,7 +1061,7 @@
 <!-- END nav -->
 
 
-<div class="hero-wrap js-fullheight" style="background-image: url('resources/images/bg_4.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url('/mainImg/main.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">

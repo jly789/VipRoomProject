@@ -34,6 +34,19 @@
 
     </select>
 
+    <select id="memberIdSearch" parameterType="vip.com.accommodation.dto.member.MemberLoginDto" resultType="int">
+
+        select memberId from member
+        where userId =#{userId}
+
+
+
+
+    </select>
+
+
+
+
     <select id="idCheck" parameterType="String" resultType="int">
 
     select count(*) from member

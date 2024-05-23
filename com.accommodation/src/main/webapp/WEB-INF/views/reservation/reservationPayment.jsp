@@ -162,6 +162,8 @@
 
           <div class="col-md-12">
             <div class="form-group">
+
+              <input type="hidden" name="memberId" id="memberId" value="${memberId}"/>
               <p>금액:${roomSpecificListDto.roomPrice}</p>
 
               </c:forEach>
@@ -247,6 +249,7 @@
             reservationCheckIn: $('#reservationCheckIn').val(),
             reservationCheckOut: $('#reservationCheckOut').val(),
             reservationDetails: $('#reservationDetails').val(),
+            memberId:$('#memberId').val(),
 
 
           },

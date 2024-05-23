@@ -18,6 +18,8 @@ public interface MemberService {
 
     public int login(MemberLoginDto memberLoginDto, HttpServletResponse response)throws Exception ;
 
+    public int memberIdSearch(MemberLoginDto memberLoginDto);
+
     public List<MemberFindDto> mypage(String userId);
     public  void mypageUpdate(MemberUpdateDto memberUpdateDto);
 

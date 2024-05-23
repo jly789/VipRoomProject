@@ -49,4 +49,14 @@ public class AccommodationServiceImpl implements AccommodationService {
     public List<AccommodationMainListDto> accommodationDetailList(int accommodationId) {
         return accommodationMapper.accommodationDetailList(accommodationId);
     }
+
+    @Override
+    public String relatedHotelsDistrict(int accommodationId) {
+        return accommodationMapper.relatedHotelsDistrict(accommodationId);
+    }
+
+    @Override
+    public List<AccommodationMainListDto> relatedHotels(String district) {
+        return accommodationMapper.relatedHotels(district);
+    }
 }

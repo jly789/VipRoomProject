@@ -96,6 +96,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public int memberIdSearch(MemberLoginDto memberLoginDto) {
+       return memberMapper.memberIdSearch(memberLoginDto);
+    }
+
+    @Override
     public List<MemberFindDto> mypage(String userId) {
        return memberMapper.mypage(userId);
     }
