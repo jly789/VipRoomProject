@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-/mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vip.com.accommodation.mapper.review.ReviewMapper">
+
+<!--        <select id="maxNum" resultType="int">-->
+<!--            select ifnull(max(roomId),0) from orders-->
+<!--        </select>-->
+
+
+
+<!--    <insert id="orderInsert" parameterType="vip.com.accommodation.mapper.order.OrderMapper">-->
+
+<!--        insert into orders(orderId,reservationId,orderPrice,orderNum,impUid,orderStatus,orderDate)-->
+<!--        values (#{orderId},#{reservationId},#{orderPrice},#{orderNum},#{impUid}-->
+<!--               ,'결제완료',sysdate())-->
+
+
+<!--    </insert>-->
+
+
+
+
+
+
+
+
+</mapper>
