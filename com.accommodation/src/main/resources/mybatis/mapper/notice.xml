@@ -11,16 +11,32 @@
 
 
 
-<!--    <insert id="orderInsert" parameterType="vip.com.accommodation.mapper.order.OrderMapper">-->
+    <insert id="noticeInsert" parameterType="vip.com.accommodation.dto.notice.NoticeInsertDto">
 
-<!--        insert into orders(orderId,reservationId,orderPrice,orderNum,impUid,orderStatus,orderDate)-->
-<!--        values (#{orderId},#{reservationId},#{orderPrice},#{orderNum},#{impUid}-->
-<!--               ,'결제완료',sysdate())-->
-
-
-<!--    </insert>-->
+        insert into notice(noticeId,memberId,noticeSubject,noticeContent,noticeType,noticeDate,noticeViews)
+        values (#{noticeId},1,#{noticeSubject},#{noticeContent},#{noticeType},sysdate(),0)
 
 
+    </insert>
+
+
+        <select id="noticeList" resultType="vip.com.accommodation.dto.notice.NoticeListDto">
+
+        select * from notice
+        ORDER BY noticeType ='중요' DESC
+
+
+
+        </select>
+
+        <select id="noticeDetailList" parameterType="int" resultType="vip.com.accommodation.dto.notice.NoticeListDto">
+
+                select * from notice
+                where noticeId =#{noticeId}
+
+
+
+        </select>
 
 
 

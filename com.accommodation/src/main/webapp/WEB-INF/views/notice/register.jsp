@@ -45,167 +45,132 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 
 
-
-
-
-<section class="ftco-section ftco-degree-bg">
+<br/><br/><br/>
+<div>
+  <!-- Hero area Start-->
   <div class="container">
     <div class="row">
+      <div class="col-xl-12">
+        <div class="slider-area">
+
+          <div class="hero-caption hero-caption2">
 
 
-
-
-
-
-
-
-
-                  <div class="form-group" >
-                    <input type="button" id="notice" value="공지" class="btn btn-primary py-3 px-5">
-
-                  </div>
-
-
-
-                  <div class="form-group">
-                    <input type="button" id="review" value="리뷰" class="btn btn-primary py-3 px-5">
-                  </div>
-
-
-
-      <c:if test="${userId=='admin'}">
-        <div >
-          <input type="button" id="noticeInsert" value="공지등록" class="btn btn-primary py-3 px-5">
-
-        </div>
-
-
-      </c:if>
-
-
-
-
-    </div>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">공지번호</th>
-        <th scope="col">공지상태</th>
-        <th scope="col">제목</th>
-        <th scope="col">작성자</th>
-        <th scope="col">작성날짜</th>
-      </tr>
-      </thead>
-      <tbody>
-
-
-    <c:forEach var="noticeList" items="${noticeList}">
-
-      <tr>
-        <td>
-          <div class="media">
-
-            <div class="media-body">
-                ${noticeList.noticeId}
-
-            </div>
           </div>
-        </td>
-
-
-        <c:if test="${noticeList.noticeType=='중요'}">
-        <td>
-          <h6 style="color: red;"><strong>${noticeList.noticeType}</strong></h6>
-
-        </td>
-        </c:if>
-
-
-        <c:if test="${noticeList.noticeType=='공지'}">
-          <td>
-            <h6 style="color: black;"><strong>${noticeList.noticeType}</strong></h6>
-
-          </td>
-        </c:if>
-
-
-
-        <td style="color:black">
-          <a href="/notice/${noticeList.noticeId}" style="color: black;">${noticeList.noticeSubject}</a>
-        </td>
-
-
-        <td style="color:black">
-           ${userId}
-        </td>
-
-        <td style="color:black">
-            ${noticeList.noticeDate}
-        </td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </tr>
-
-    </c:forEach>
-      </tbody>
-
-    </table>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!--  Hero area End -->
+  <!-- Blog Area Start -->
+  <form action="/noticeInsert" method="post">
+    <div style="text-align: center">
+      <div class="comment-form">
+        <h3>공지사항</h3>
+        <select name="noticeType" id="noticeType">
+          <option value="선택">선택</option>
+          <option value="공지">공지</option>
+          <option value="중요">중요</option>
+
+        </select>
+        <%--                        <input type="checkbox" id="noticeType" name="noticeType" value="중요">중요</input>--%>
+        <%--                        <input type="checkbox" id="noticeType" name="noticeType" value="공지">공지</input>--%>
+        <br/><br/><br/>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+
+              <div class="col-sm-6">
+                <div class="form-group">
 
 
 
-</section>
+
+                  <input class="form-control" name="noticeSubject" id="noticeSubject"  type="text" placeholder="제목"
+                         style="width : 500px; height : 40px; margin-left: 575px;" >
+
+                </div>
+              </div>
+
+
+
+
+              <textarea  name="noticeContent" id="noticeContent" cols="100" rows="15"
+                         placeholder=" 내용: "></textarea>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="form-group" style="margin-left: 800px;" >
+            <input type="submit" id="noticeInsert" value="공지등록" class="btn btn-primary py-3 px-5">
+          </div>
+
+          <div class="form-group">
+            <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();">
+          </div>
+
+
+
+        </div>
+        <%--                        </form>--%>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Blog Area End -->
+</main>
+
 
 
 <br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 <jsp:include page="../main/footer.jsp"></jsp:include>
 
 
 <script>
 
-$('#notice').click(function (){
 
 
 
-
-  location.href='/notice';
-
-
-});
-
-$('#review').click(function (){
-
-
-  location.href='/review';
-
-
-});
 
 $('#noticeInsert').click(function (){
 
+  if($('#noticeSubject').val()==''){
 
-  location.href='/noticeInsert';
+    alert('제목을 입력하세요');
+    return false;
+  }
+
+  if($('#noticeContent').val()==''){
+
+    alert('내용을 입력하세요');
+    return false;
+  }
+
+
+  if($('#noticeType').val()=='선택'){
+
+    alert('공지유형을 선택하세요\n\nex)공지,중요');
+    return false;
+  }
+
+
+
 
 
 });
+
+
+function history_back() {
+  history.back();
+}
 
 </script>
 

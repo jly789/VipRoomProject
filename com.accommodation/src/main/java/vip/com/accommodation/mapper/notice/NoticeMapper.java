@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import vip.com.accommodation.dto.accommodation.AccommodationFindDto;
 import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
+import vip.com.accommodation.dto.notice.NoticeInsertDto;
+import vip.com.accommodation.dto.notice.NoticeListDto;
 
 import java.util.List;
 
@@ -11,7 +13,11 @@ import java.util.List;
 public interface NoticeMapper {
 
     public int maxNum();
-    public void accommodationInsert(AccommodationInsertDto accommodationInsertDto);
+    public void noticeInsert(NoticeInsertDto noticeInsertDto);
+
+    public List<NoticeListDto> noticeList();
+
+    public List<NoticeListDto> noticeDetailList(int noticeId);
 
 
 

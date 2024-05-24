@@ -157,11 +157,11 @@ CREATE TABLE notice
 (
     noticeId      INT NOT NULL  AUTO_INCREMENT,
     memberId      INT NOT NULL         NOT NULL,
-    noticeViews   INT NOT NULL DEFAULT 0,
     noticeSubject VARCHAR(300)  NOT NULL,
     noticeContent VARCHAR(4000) NOT NULL,
-    noticeType    VARCHAR(50)   NOT NULL, -- 중요,공지,긴급
+    noticeType    VARCHAR(50)   NOT NULL, -- 중요,공지
     noticeDate    datetime NOT NULL default current_timestamp,
+    noticeViews   INT NOT NULL DEFAULT 0,
 
     CONSTRAINT PK_NOTICE PRIMARY KEY (noticeId),
     CONSTRAINT FK_NOTICE_MEMBERID FOREIGN KEY (memberId) REFERENCES member (memberId)
@@ -348,6 +348,57 @@ INSERT into roomImg VALUES(3,3,1,'01_Suite.jpg','/roomImg/01_Suite.jpg');
 INSERT into roomImg VALUES(4,4,2,'02_비즈니스싱글시티뷰.jpg','/roomImg/02_비즈니스싱글시티뷰.jpg');
 INSERT into roomImg VALUES(5,5,3,'03_디럭스트윈.jpg','/roomImg/03_디럭스트윈.jpg');
 
+
+
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(1,1,'긴급공지입니다','8월19일 14시 점검합니다','중요',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(2,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(3,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(4,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(5,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(6,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(7,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(8,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(9,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(10,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(11,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(12,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(13,1,'환불/교환 공지','환불 또는 교환 필요시 031-1234-5678로 전화문의 바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(14,1,'이달의 도서 공지','8월 베스트셀러 스티브잡스입니다!','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(15,1,'택배 지연발생 공지','택배 지연발생시 문의바랍니다','공지',sysdate(),0);
+
+INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
+values(16,1,'리뷰이벤트 진행예정','8월20일~8월30일 전 상품 30% 여름 할인예정!','중요',sysdate(),0);
+
 commit;
 
 select * from member;
@@ -374,11 +425,18 @@ INSERT into reservation VALUES(1,1,1,1,'예약중','','2024-05-17','2024-05-18')
 -- INSERT into reservation VALUES(7,1,1,2,'예약중','','2024-05-17','2024-05-18');
 -- INSERT into reservation VALUES(8,1,1,1,'예약중','','2024-05-22','2024-05-23');
 
-select * from reservation
-                  left join room on reservation.roomId = room.roomId
-where  reservationCheckIn='2024-05-17'
-  and reservationCheckOut ='2024-05-18' and room.roomId=1;
 
+
+
+
+select  a.accommodationId,a.accommodationName ,b.accommodationImage,
+        a.accommodationCategory  from  accommodation a
+                                           left join  accommodationImg b
+                                                      on a.accommodationId= b.accommodationId
+                                           left join room c on c.accommodationId = b.accommodationId
+
+where a.accommodationDistrict='서울' and a.accommodationCity='강남/역삼/삼성'
+group by a.accommodationName,a.accommodationId,b.accommodationImage;
 
 
 
@@ -388,7 +446,6 @@ where  reservationCheckIn='2024-05-17'
 -- SET roomReservationNumbers = roomReservationNumbers+1
 
 -- WHERE roomId = 1;
-
 
 
 
