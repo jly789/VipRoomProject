@@ -62,6 +62,24 @@ public class ReservationController {
     OrderService orderService;
 
 
+    @GetMapping("/myReservation")
+    public String myReservation(HttpSession session,Model model){
+
+        int memberId = (int)session.getAttribute("memberId");
+        String userId = (String) session.getAttribute("userId");
+
+        List<ReservationListDto> myReservationList = reservationService.myReservationList(memberId);
+
+        model.addAttribute("userId",userId);
+        model.addAttribute("myReservationList",myReservationList);
+
+
+
+        return "reservation/myReservationMain";
+
+    }
+
+
 
     @GetMapping("/reservation")
     public String reservation(HttpSession session,Model model,@RequestParam("roomId")int roomId,@RequestParam("accommodationId")int accommodationId){

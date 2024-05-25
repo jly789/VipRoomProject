@@ -5,20 +5,32 @@
 
 <mapper namespace="vip.com.accommodation.mapper.review.ReviewMapper">
 
-<!--        <select id="maxNum" resultType="int">-->
-<!--            select ifnull(max(roomId),0) from orders-->
-<!--        </select>-->
+        <select id="maxNum" resultType="int">
+            select ifnull(max(reviewId),0) from review
+        </select>
 
 
 
-<!--    <insert id="orderInsert" parameterType="vip.com.accommodation.mapper.order.OrderMapper">-->
+    <insert id="insertReviewNotImage"  parameterType="vip.com.accommodation.dto.review.ReviewInsertDto">
 
-<!--        insert into orders(orderId,reservationId,orderPrice,orderNum,impUid,orderStatus,orderDate)-->
-<!--        values (#{orderId},#{reservationId},#{orderPrice},#{orderNum},#{impUid}-->
-<!--               ,'결제완료',sysdate())-->
+        insert into review(reviewId,memberId,accommodationId,reservationId,views,grade,reviewSubject,reviewContent,reviewFileName,reviewFilePath,reviewState,
+                           reviewDate)
+        values (#{reviewId},#{memberId},#{accommodationId},#{reservationId},0,#{grade}
+               ,#{reviewSubject},#{reviewContent},#{reviewFileName},#{reviewFilePath},'리뷰완료',sysdate())
 
 
-<!--    </insert>-->
+    </insert>
+
+
+    <insert id="insertReviewData"  parameterType="vip.com.accommodation.dto.review.ReviewInsertDto">
+
+        insert into review(reviewId,memberId,accommodationId,reservationId,views,grade,reviewSubject,reviewContent,reviewFileName,reviewFilePath,reviewState,
+                           reviewDate)
+        values (#{reviewId},#{memberId},#{accommodationId},#{reservationId},0,#{grade}
+               ,#{reviewSubject},#{reviewContent},#{reviewFileName},#{reviewFilePath},'리뷰완료',sysdate())
+
+
+    </insert>
 
 
 

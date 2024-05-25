@@ -22,4 +22,25 @@ public class ReservationListDto {
     private LocalDate reservationCheckIn; //체크인
     private LocalDate reservationCheckOut; //체크아웃
 
+
+    //객실
+    private int roomPrice; //객실 1박당 가격
+    private int  standardNumbers; //기준인원
+    private int maximumCapacity; //최대 숙박인원
+    private int roomNumbers;//객실수
+    private String roomName; //객실이름
+    private String roomDescription; //객실소개
+
+    //ReviewListDto
+
+    private int reviewId;
+    private int views;
+    private int grade;
+    private String reviewSubject;
+    private String reviewContent;
+    private String reviewFileName;
+    private String reviewFilePath;
+    private String reviewState;
+    private LocalDate reviewDate;
+
 }

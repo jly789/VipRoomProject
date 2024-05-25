@@ -41,4 +41,13 @@
     </select>
 
 
+    <select id="myReservationList" parameterType="int" resultType="vip.com.accommodation.dto.reservation.ReservationListDto">
+        select * from reservation
+                          left join review on review.reservationId = reservation.reservationId
+                          left join room on room.roomId = reservation.roomId
+        where reservation.memberId =#{memberId}
+
+    </select>
+
+
 </mapper>

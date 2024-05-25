@@ -61,6 +61,12 @@
       <div class="row d-flex mb-5 contact-info">
     <div class="col-md-12 mb-4">
       <h2>내 정보</h2>
+      <div class="form-group" >
+        <form action="/myReservation" method="get">
+        <input type="submit" id="notice" value="My 예약" class="btn btn-primary py-3 px-5"style="margin-left: 950px;">
+        </form>
+
+      </div>
     </div>
 
     <div>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
+import vip.com.accommodation.dto.reservation.ReservationListDto;
 import vip.com.accommodation.dto.room.RoomInsertDto;
 import vip.com.accommodation.mapper.reservation.ReservationMapper;
 import vip.com.accommodation.mapper.room.RoomMapper;
@@ -63,5 +64,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<ReservationFindDto> reservationFindDto(ReservationFindDto reservationFindDto) {
         return reservationMapper.reservationFindDto(reservationFindDto);
+    }
+
+    @Override
+    public List<ReservationListDto> myReservationList(int memberId) {
+        return reservationMapper.myReservationList(memberId);
     }
 }
