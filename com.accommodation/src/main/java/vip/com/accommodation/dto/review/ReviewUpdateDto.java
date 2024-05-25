@@ -6,5 +6,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReviewDto {
+public class ReviewUpdateDto {
 }

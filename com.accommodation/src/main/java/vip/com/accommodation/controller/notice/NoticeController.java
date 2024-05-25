@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import vip.com.accommodation.dto.notice.NoticeDeleteDto;
 import vip.com.accommodation.dto.notice.NoticeInsertDto;
 import vip.com.accommodation.dto.notice.NoticeListDto;
+import vip.com.accommodation.dto.notice.NoticeUpdateDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.notice.NoticeService;
@@ -54,7 +56,20 @@ public class NoticeController {
     }
 
     @GetMapping("/notice/{noticeId}") //공지사항 상세리스트
-    public String noticeDetail(@PathVariable("noticeId")int noticeId,Model model) {
+    public String noticeDetail(@PathVariable("noticeId")int noticeId,Model model,HttpSession session) {
+
+        int memberId = (int)session.getAttribute("memberId");
+
+
+        if(memberId==1){
+            List<NoticeListDto> noticeDetailList =noticeService.noticeDetailList(noticeId);
+
+            model.addAttribute("noticeDetailList",noticeDetailList);
+
+
+            return "notice/noticeDetailAdmin";
+
+        }
 
 
      List<NoticeListDto> noticeDetailList =noticeService.noticeDetailList(noticeId);
@@ -86,6 +101,26 @@ public class NoticeController {
 
         return "redirect:/notice";
     }
+
+    @PostMapping("/noticeUpdate")
+    public String noticeUpdate(NoticeUpdateDto noticeUpdateDto) {
+
+        noticeService.noticeUpdate(noticeUpdateDto);
+
+
+        return "redirect:/notice";
+    }
+
+    @PostMapping("/noticeDelete")
+    public String noticeDelete(NoticeDeleteDto noticeDeleteDto) {
+
+        noticeService.noticeDelete(noticeDeleteDto);
+
+
+        return "redirect:/notice";
+    }
+
+
 
 
 }

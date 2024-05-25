@@ -38,6 +38,25 @@
 
         </select>
 
+    <update id="noticeUpdate" parameterType="vip.com.accommodation.dto.notice.NoticeUpdateDto">
+
+        update notice set
+                          noticeSubject =#{noticeSubject},noticeContent =#{noticeContent},noticeType=#{noticeType}
+        where noticeId =#{noticeId}
+
+
+
+    </update>
+
+
+
+    <delete id="noticeDelete" parameterType="vip.com.accommodation.dto.notice.NoticeDeleteDto">
+
+        delete from notice
+        where noticeId =#{noticeId}
+
+    </delete>
+
 
 
 

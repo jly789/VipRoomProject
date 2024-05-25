@@ -3,8 +3,10 @@ package vip.com.accommodation.service.notice.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vip.com.accommodation.dto.notice.NoticeDeleteDto;
 import vip.com.accommodation.dto.notice.NoticeInsertDto;
 import vip.com.accommodation.dto.notice.NoticeListDto;
+import vip.com.accommodation.dto.notice.NoticeUpdateDto;
 import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.mapper.notice.NoticeMapper;
 import vip.com.accommodation.service.district.DistrictService;
@@ -21,6 +23,16 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void noticeInsert(NoticeInsertDto noticeInsertDto) {
         noticeMapper.noticeInsert(noticeInsertDto);
+    }
+
+    @Override
+    public void noticeUpdate(NoticeUpdateDto noticeUpdateDto) {
+        noticeMapper.noticeUpdate(noticeUpdateDto);
+    }
+
+    @Override
+    public void noticeDelete(NoticeDeleteDto noticeDeleteDto) {
+        noticeMapper.noticeDelete(noticeDeleteDto);
     }
 
     @Override
