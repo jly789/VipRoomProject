@@ -13,9 +13,9 @@
 
     <insert id="insertReviewNotImage"  parameterType="vip.com.accommodation.dto.review.ReviewInsertDto">
 
-        insert into review(reviewId,memberId,accommodationId,reservationId,views,grade,reviewSubject,reviewContent,reviewFileName,reviewFilePath,reviewState,
+        insert into review(reviewId,memberId,accommodationId,reservationId,roomId,views,grade,reviewSubject,reviewContent,reviewFileName,reviewFilePath,reviewState,
                            reviewDate)
-        values (#{reviewId},#{memberId},#{accommodationId},#{reservationId},0,#{grade}
+        values (#{reviewId},#{memberId},#{accommodationId},#{reservationId},#{roomId},0,#{grade}
                ,#{reviewSubject},#{reviewContent},#{reviewFileName},#{reviewFilePath},'리뷰완료',sysdate())
 
 
@@ -24,18 +24,82 @@
 
     <insert id="insertReviewData"  parameterType="vip.com.accommodation.dto.review.ReviewInsertDto">
 
-        insert into review(reviewId,memberId,accommodationId,reservationId,views,grade,reviewSubject,reviewContent,reviewFileName,reviewFilePath,reviewState,
+        insert into review(reviewId,memberId,accommodationId,reservationId,roomId,views,grade,reviewSubject,reviewContent,reviewFileName,reviewFilePath,reviewState,
                            reviewDate)
-        values (#{reviewId},#{memberId},#{accommodationId},#{reservationId},0,#{grade}
+        values (#{reviewId},#{memberId},#{accommodationId},#{reservationId},#{roomId},0,#{grade}
                ,#{reviewSubject},#{reviewContent},#{reviewFileName},#{reviewFilePath},'리뷰완료',sysdate())
 
 
     </insert>
 
 
+    <select id="reviewList" resultType="vip.com.accommodation.dto.review.ReviewListDto">
+
+        select * from review
+                          left join accommodation on accommodation.accommodationId = review.accommodationId
+                          left join member on member.memberId = review.memberId
+
+        order by review.reviewDate desc
+
+    </select>
+
+    <select id="reviewDetailList" parameterType="int" resultType="vip.com.accommodation.dto.review.ReviewListDto">
+
+        select * from review
+                          left join accommodation on accommodation.accommodationId = review.accommodationId
+
+        where reviewId=#{reviewId}
+
+
+    </select>
+
+
+    <update id="reviewUpdate" parameterType="vip.com.accommodation.dto.review.ReviewUpdateDto">
+
+        update review set
+                          reviewSubject =#{reviewSubject},reviewContent =#{reviewContent},reviewFileName=#{reviewFileName}
+                      ,reviewFilePath=#{reviewFilePath}
+        where reviewId =#{reviewId}
 
 
 
+    </update>
+
+
+    <update id="reviewUpdateNoImg" parameterType="vip.com.accommodation.dto.review.ReviewUpdateDto">
+
+        update review set
+            reviewSubject =#{reviewSubject},reviewContent =#{reviewContent}
+        where reviewId =#{reviewId}
+
+
+
+    </update>
+
+
+
+    <delete id="reviewDelete" parameterType="vip.com.accommodation.dto.review.ReviewDeleteDto">
+
+        delete from review
+        where reviewId =#{reviewId}
+
+    </delete>
+
+
+
+
+    <select id="accommodationReviewGrade" parameterType="int" resultType="Integer">
+
+        select avg(grade) from review
+                                   left join accommodation on accommodation.accommodationId = review.accommodationId
+        where accommodation.accommodationId=#{accommodationId}
+
+
+
+
+
+
+    </select>
 
 
 

@@ -23,7 +23,7 @@
         <select id="noticeList" resultType="vip.com.accommodation.dto.notice.NoticeListDto">
 
         select * from notice
-        ORDER BY noticeType ='중요' DESC
+        ORDER BY  noticeType ='중요'DESC ,noticeDate DESC
 
 
 
@@ -33,7 +33,6 @@
 
                 select * from notice
                 where noticeId =#{noticeId}
-
 
 
         </select>

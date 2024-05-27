@@ -4,13 +4,17 @@ package vip.com.accommodation.service.review.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import vip.com.accommodation.dto.review.ReviewDeleteDto;
 import vip.com.accommodation.dto.review.ReviewInsertDto;
+import vip.com.accommodation.dto.review.ReviewListDto;
+import vip.com.accommodation.dto.review.ReviewUpdateDto;
 import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.mapper.review.ReviewMapper;
 import vip.com.accommodation.service.district.DistrictService;
 import vip.com.accommodation.service.review.ReviewService;
 
 import java.io.File;
+import java.util.List;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -64,5 +68,61 @@ public class ReviewServiceImpl implements ReviewService {
 
 
         reviewMapper.insertReviewNotImage(reviewInsertDto);
+    }
+
+
+    @Override
+    public List<ReviewListDto> reviewList() {
+        return reviewMapper.reviewList();
+    }
+
+    @Override
+    public List<ReviewListDto> reviewDetailList(int reviewId) {
+        return reviewMapper.reviewDetailList(reviewId);
+    }
+
+    @Override
+    public void reviewUpdate(ReviewUpdateDto reviewUpdateDto,MultipartFile file)throws Exception {
+
+
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\reviewImg";
+
+
+        String fileName = file.getOriginalFilename();
+
+
+
+        File saveFile = new File(projectPath, fileName);
+
+        file.transferTo(saveFile);
+
+        reviewUpdateDto.setReviewFileName(fileName);
+
+        reviewUpdateDto.setReviewFilePath("/reviewImg/" + fileName);
+
+
+        reviewMapper.reviewUpdate(reviewUpdateDto);
+    }
+
+    @Override
+    public void reviewUpdateNoImg(ReviewUpdateDto reviewUpdateDto) throws Exception {
+
+
+        reviewMapper.reviewUpdateNoImg(reviewUpdateDto);
+    }
+
+    @Override
+    public void reviewDelete(ReviewDeleteDto reviewDeleteDto) {
+        reviewMapper.reviewDelete(reviewDeleteDto);
+
+    }
+
+    @Override
+    public Integer accommodationReviewGrade(int accommodationId) {
+
+
+
+        return reviewMapper.accommodationReviewGrade(accommodationId);
+
     }
 }

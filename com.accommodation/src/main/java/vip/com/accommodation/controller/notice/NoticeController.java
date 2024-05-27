@@ -11,6 +11,7 @@ import vip.com.accommodation.dto.notice.NoticeDeleteDto;
 import vip.com.accommodation.dto.notice.NoticeInsertDto;
 import vip.com.accommodation.dto.notice.NoticeListDto;
 import vip.com.accommodation.dto.notice.NoticeUpdateDto;
+import vip.com.accommodation.dto.review.ReviewListDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.notice.NoticeService;
@@ -58,9 +59,23 @@ public class NoticeController {
     @GetMapping("/notice/{noticeId}") //공지사항 상세리스트
     public String noticeDetail(@PathVariable("noticeId")int noticeId,Model model,HttpSession session) {
 
+
+
+        String userId = (String)session.getAttribute("userId");
+
+
+        if(userId==null){
+
+            List<NoticeListDto> noticeDetailList =noticeService.noticeDetailList(noticeId);
+
+            model.addAttribute("noticeDetailList",noticeDetailList);
+
+
+            return "notice/noticeDetail";
+
+        }
+
         int memberId = (int)session.getAttribute("memberId");
-
-
         if(memberId==1){
             List<NoticeListDto> noticeDetailList =noticeService.noticeDetailList(noticeId);
 

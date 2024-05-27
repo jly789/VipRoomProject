@@ -162,47 +162,8 @@
 
 
 
-        <c:if test="${accommodationReviewGrade==null}">
-          리뷰(0)
-
-        </c:if>
 
 
-        <c:if test="${accommodationReviewGrade!=null}">
-
-
-           <c:if test="${accommodationReviewGrade==1}">
-             <i class="icon-star"></i>
-           </c:if>
-
-          <c:if test="${accommodationReviewGrade==2}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-          </c:if>
-
-          <c:if test="${accommodationReviewGrade==3}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-          </c:if>
-
-          <c:if test="${accommodationReviewGrade==4}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-          </c:if>
-
-          <c:if test="${accommodationReviewGrade==5}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-          </c:if>
-
-
-        </c:if>
 
 
 

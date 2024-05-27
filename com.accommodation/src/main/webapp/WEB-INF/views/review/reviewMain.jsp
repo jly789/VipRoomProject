@@ -89,8 +89,8 @@
     <table class="table">
       <thead>
       <tr>
-        <th scope="col">공지번호</th>
-        <th scope="col">공지상태</th>
+        <th scope="col">리뷰번호</th>
+        <th scope="col">숙소</th>
         <th scope="col">제목</th>
         <th scope="col">작성자</th>
         <th scope="col">작성날짜</th>
@@ -99,45 +99,36 @@
       <tbody>
 
 
-    <c:forEach var="noticeList" items="${noticeList}">
-      <c:set var="i" value="${i+1}"/>
+    <c:forEach var="reviewList" items="${reviewList}">
+    <c:set var="i" value="${i+1}"/>
       <tr>
-
         <td style="color:black">
-            ${i}
+         ${i}
 
         </td>
 
 
 
-        <c:if test="${noticeList.noticeType=='중요'}">
-        <td>
-          <h6 style="color: red;"><strong>${noticeList.noticeType}</strong></h6>
+        <td style="color:black">
+          <a href="/${reviewList.accommodationId}" style="color: black;"> ${reviewList.accommodationName}</a>
 
         </td>
-        </c:if>
 
 
-        <c:if test="${noticeList.noticeType=='공지'}">
-          <td>
-            <h6 style="color: black;"><strong>${noticeList.noticeType}</strong></h6>
-
-          </td>
-        </c:if>
 
 
 
         <td style="color:black">
-          <a href="/notice/${noticeList.noticeId}" style="color: black;">${noticeList.noticeSubject}</a>
+          <a href="/review/${reviewList.reviewId}" style="color: black;">${reviewList.reviewSubject}</a>
         </td>
 
 
         <td style="color:black">
-           ${userId}
+            ${reviewList.userId}
         </td>
 
         <td style="color:black">
-            ${noticeList.noticeDate}
+            ${reviewList.reviewDate}
         </td>
 
 

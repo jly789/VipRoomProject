@@ -175,18 +175,20 @@ CREATE TABLE review
     memberId      INT NOT NULL, -- (외래키)회원번호
     accommodationId  INT NOT NULL,  -- (외래키)숙소번호
     reservationId INT NOT NULL, -- (외래키)예약번호
+    roomId        INT NOT NULL, -- (외래키)객실번호
     views  INT NOT NULL default 0 , -- 리뷰수
+    grade  INT NOT NULL, -- 리뷰평점
     reviewSubject  VARCHAR(255)      NOT NULL,  -- 리뷰제목
     reviewContent  VARCHAR(4000)     NOT NULL,  -- 리뷰내용
     reviewFileName VARCHAR(255)  NULL, -- 리뷰이미지
     reviewFilePath VARCHAR(255)  NULL, -- 리뷰이미지경로
-    grade  VARCHAR(255) NOT NULL, -- 리뷰평점
-    reviewState VARCHAR(50) DEFAULT '리뷰완료' not null, -- 리뷰상태
+    reviewState VARCHAR(50)  null, -- 리뷰상태
     reviewDate datetime NOT NULL default current_timestamp , -- 리뷰등록날짜
     CONSTRAINT PK_REVIEW PRIMARY KEY (reviewId),
     CONSTRAINT FK_REVIEW_MEMBERID FOREIGN KEY (memberId) REFERENCES member (memberId),
     CONSTRAINT FK_REVIEW_ACCOMMODATIONID FOREIGN KEY (accommodationId) REFERENCES accommodation (accommodationId),
-    CONSTRAINT FK_REVIEW_RESERVATIONID FOREIGN KEY (reservationId) REFERENCES reservation (reservationId)
+    CONSTRAINT FK_REVIEW_RESERVATIONID FOREIGN KEY (reservationId) REFERENCES reservation (reservationId),
+    CONSTRAINT FK_REVIEW_ROOMID FOREIGN KEY (roomId) REFERENCES room (roomId)
 );
 
 INSERT into member
@@ -349,7 +351,11 @@ INSERT into roomImg VALUES(4,4,2,'02_비즈니스싱글시티뷰.jpg','/roomImg/
 INSERT into roomImg VALUES(5,5,3,'03_디럭스트윈.jpg','/roomImg/03_디럭스트윈.jpg');
 
 
+INSERT into reservation VALUES(1,2,1,1,'예약중','','2024-05-26','2024-05-27');
+INSERT into reservation VALUES(2,2,1,2,'예약중','도착하면 연락하겠습니다','2024-05-26','2024-05-27');
 
+INSERT into orders VALUES(1,1,55000,'01_Standard','01_Standard','결제완료','2024-05-26');
+INSERT into orders VALUES(2,2,90000,'01_Deluxe','01_Deluxe','결제완료','2024-05-26');
 
 INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
 values(1,1,'긴급공지입니다','8월19일 14시 점검합니다','중요',sysdate(),0);
@@ -399,6 +405,11 @@ values(15,1,'택배 지연발생 공지','택배 지연발생시 문의바랍니
 INSERT into notice (noticeId,  memberId, noticeSubject ,noticeContent, noticeType, noticeDate, noticeViews)
 values(16,1,'리뷰이벤트 진행예정','8월20일~8월30일 전 상품 30% 여름 할인예정!','중요',sysdate(),0);
 
+
+
+INSERT into review VALUES(1,2,1,1,1,0,3,'강남캠퍼스좋아요','와 정말 싸고좋아요! 강추드립니다','01_강남캠퍼스.jpg','/reviewImg/01_강남캠퍼스.jpg','리뷰완료',sysdate());
+
+
 commit;
 
 select * from member;
@@ -413,10 +424,32 @@ select * from orders;
 select * from notice;
 select * from review;
 
+
+select distinct * from  room
+                            join review on review.roomId = room.roomId
+
+where room.accommodationId=1;
+
+
+
+
+select avg(grade)as avgGrade from review
+                                      left join accommodation on accommodation.accommodationId = review.accommodationId
+where accommodation.accommodationId=2;
+
+select   a.accommodationId,a.accommodationName ,b.accommodationImage,
+         a.accommodationCategory,r.grade  from  accommodation a
+                                                    left join  accommodationImg b
+                                                               on a.accommodationId= b.accommodationId
+                                                    left join room c on c.accommodationId = b.accommodationId
+                                                    left join review r on r.accommodationId = a.accommodationId
+group by a.accommodationName,a.accommodationId,b.accommodationImage,r.grade;
+
+
 -- select * from room
 -- where roomId =1;
 
-INSERT into reservation VALUES(1,1,1,1,'예약중','','2024-05-17','2024-05-18');
+
 -- INSERT into reservation VALUES(2,1,1,1,'예약중','','2024-05-19','2024-05-20');
 -- INSERT into reservation VALUES(3,1,1,1,'예약중','','2024-05-22','2024-05-23');
 -- INSERT into reservation VALUES(4,1,1,4,'예약중','','2024-05-16','2024-05-17');
@@ -447,7 +480,11 @@ group by a.accommodationName,a.accommodationId,b.accommodationImage;
 
 -- WHERE roomId = 1;
 
+select *from  review;
 
+-- update notice set
+-- noticeSubject ='안녕',noticeContent ='안녕',noticeType='공지'
+-- where noticeId =1;
 
 
 
