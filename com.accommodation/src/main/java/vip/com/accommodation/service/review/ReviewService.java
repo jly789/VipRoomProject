@@ -26,6 +26,8 @@ public interface ReviewService {
     public void reviewDelete(ReviewDeleteDto reviewDeleteDto);
 
     public Integer accommodationReviewGrade(int accommodationId); //숙소별 평균 리뷰점수
+
+    public Integer accommodationRoomReviewGrade(int accommodationId,int roomId); //숙소 객실별 평균 리뷰점수
 }
 
 

@@ -30,4 +30,7 @@ public interface ReviewMapper {
     public void reviewDelete(ReviewDeleteDto reviewDeleteDto);
 
     public Integer accommodationReviewGrade(int accommodationId);
+
+    public Integer accommodationRoomReviewGrade(int accommodationId,int roomId);
+
 }

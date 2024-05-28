@@ -101,6 +101,20 @@
 
     </select>
 
+    <select id="accommodationRoomReviewGrade" parameterType="int" resultType="Integer">
+
+        select avg(grade)as avgGrade from review
+                                              left join accommodation on accommodation.accommodationId = review.accommodationId
+                                              left join room on room.roomId = review.roomId
+        where accommodation.accommodationId=#{accommodationId} and room.roomId=#{roomId}
+
+
+
+
+
+
+    </select>
+
 
 
 </mapper>

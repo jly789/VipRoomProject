@@ -142,14 +142,7 @@
                 <div class="d-flex">
                   <div class="one">
                     <h3>${accommodationMainList.accommodationName}</h3>
-                    <p class="rate">
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star-o"></i>
-                      <span>8 Rating</span>
-                    </p>
+
                   </div>
                   <div class="two">
 <%--                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>--%>

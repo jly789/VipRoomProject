@@ -45,21 +45,19 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 
 
-<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
+<%--<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">--%>
 
-<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">
+<%--<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">--%>
 
-  </c:forEach>
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotel.html">Hotel</a></span> <span>Hotel Single</span></p>
-        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels Details</h1>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%--  <div class="overlay"></div>--%>
+<%--  <div class="container">--%>
+<%--    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">--%>
+<%--      <h1 style="color: black; font-weight: bold;">${accommodationDetailList.accommodationName}</h1>--%>
+<%--      </c:forEach>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--</div>--%>
 
 
 <section class="ftco-section ftco-degree-bg">
@@ -157,7 +155,7 @@
             <span>${accommodationDetailList.accommodationCategory}</span>
             <h2>${accommodationDetailList.accommodationName}</h2>
             <p class="rate mb-5">
-              <span class="loc"><a href="#"><i class="icon-map"></i>${accommodationDetailList.accommodationAddress}</a></span>
+              <span class="loc">${accommodationDetailList.accommodationAddress}</span>
               <span class="star">
 
 
@@ -172,25 +170,25 @@
 
 
            <c:if test="${accommodationReviewGrade==1}">
-             <i class="icon-star"></i>
+             <i  style="color: gold;"class="icon-star"></i>
            </c:if>
 
           <c:if test="${accommodationReviewGrade==2}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
           </c:if>
 
           <c:if test="${accommodationReviewGrade==3}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
           </c:if>
 
           <c:if test="${accommodationReviewGrade==4}">
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
+            <i  style="color: gold;"class="icon-star"></i>
+            <i style="color: gold;" class="icon-star"></i>
           </c:if>
 
           <c:if test="${accommodationReviewGrade==5}">
@@ -234,20 +232,11 @@
                     <div class="d-flex">
                       <div class="one">
                         <h3>${roomMainListDto.roomName}</h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
 
+                      </div>
+                        <br/>
+                        <p style="color: red;">${roomMainListDto.roomPrice}원</p>
 
-                        </p>
-                      </div>
-                      <div class="two">
-                        <span class="price per-price"><br><small>${roomMainListDto.roomPrice}원</small></span>
-                      </div>
                     </div>
                     <p>기준 ${roomMainListDto.standardNumbers}인 / 최대 ${roomMainListDto.maximumCapacity}인 </p>
                     <hr>

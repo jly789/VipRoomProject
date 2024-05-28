@@ -48,22 +48,23 @@
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 
-<input type="hidden" name="userId" id="userId" value="${userId}">${userId}</input>
-<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
+<input type="hidden" name="userId" id="userId" value="${userId}"/>
+<%--<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">--%>
 
-<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">
+<%--<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">--%>
 
-  </c:forEach>
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotel.html">Hotel</a></span> <span>Hotel Single</span></p>
-        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels Details</h1>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%--  <div class="overlay"></div>--%>
+<%--  <div class="container">--%>
+<%--    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">--%>
+
+
+<%--        <h1 style="color: black; font-weight: bold;">${accommodationDetailList.accommodationName}</h1>--%>
+<%--        </c:forEach>--%>
+<%--      </div>--%>
+
+<%--  </div>--%>
+<%--</div>--%>
 
 
 <section class="ftco-section ftco-degree-bg">
@@ -94,14 +95,50 @@
           <h2>${roomSpecificListDto.roomName}</h2>
 
           <p class="rate mb-5">
-            <span class="loc"><a href="#"><i class="icon-map"></i></a></span>
-            <span class="star">
-    							<i class="icon-star"></i>
-    							<i class="icon-star"></i>
-    							<i class="icon-star"></i>
-    							<i class="icon-star"></i>
-    							<i class="icon-star-o"></i>
-    							8 Rating</span>
+
+
+            <c:if test="${accommodationRoomReviewGrade==null}">
+              review(0)
+
+            </c:if>
+
+            <c:if test="${accommodationRoomReviewGrade!=null}">
+
+
+              <c:if test="${accommodationRoomReviewGrade==1}">
+                <i  style="color: gold;"class="icon-star"></i>
+              </c:if>
+
+              <c:if test="${accommodationRoomReviewGrade==2}">
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+              </c:if>
+
+              <c:if test="${accommodationRoomReviewGrade==3}">
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+              </c:if>
+
+              <c:if test="${accommodationRoomReviewGrade==4}">
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                <i  style="color: gold;"class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+              </c:if>
+
+              <c:if test="${accommodationRoomReviewGrade==5}">
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+              </c:if>
+
+
+            </c:if>
+
+
           </p>
           <h6> 기준 ${roomSpecificListDto.standardNumbers}인 / 최대  ${roomSpecificListDto.maximumCapacity}인</h6>
 
@@ -183,23 +220,14 @@
               <c:forEach var="roomMainListDto" items="${roomMainListDto}">
               <div class="col-md-4">
                 <div class="destination">
-                  <a href="hotel-single.html" class="img img-2" style="background-image: url(${roomMainListDto.roomImagePath});"></a>
+                  <a href="/reservation?roomId=${roomMainListDto.roomId}&accommodationId=${roomMainListDto.accommodationId}" class="img img-2" style="background-image: url(${roomMainListDto.roomImagePath});"></a>
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
                         <h3>${roomMainListDto.roomName}</h3>
-                        <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p>
+
                       </div>
-                      <div class="two">
-                        <span class="price per-price"><br><small>${roomMainListDto.roomPrice}원</small></span>
-                      </div>
+                      <p style="color: red;">${roomMainListDto.roomPrice}원</p>
                     </div>
                     <p>기준 ${roomMainListDto.standardNumbers}인 / 최대 ${roomMainListDto.maximumCapacity}인 </p>
                     <hr>

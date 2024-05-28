@@ -43,18 +43,18 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" >
     <div class="container">
-        <a class="navbar-brand" href="/">dirEngine.</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
 
 
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
+        <div class="collapse navbar-collapse" id="ftco-nav" style="margin-right: 400px;">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+
 
                 <c:if test="${userId==null}">
                 <li class="nav-item"><a href="/login" class="nav-link">로그인</a></li>
@@ -65,16 +65,19 @@
 
 
                     <c:if test="${userId == 'admin'}">
+                        <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a>
                         <li class="nav-item"><a href="/mypage" class="nav-link">관리자페이지</a></li>
                         <li class="nav-item"><a href="/accommodation" class="nav-link">숙소등록</a></li>
                         <li class="nav-item"><a href="/room" class="nav-link">객실등록</a></li>
+                        <li class="nav-item"><a href="/accommodationMain" class="nav-link">호텔</a></li>
                         <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
 
                     </c:if>
 
                 <c:if test="${userId != 'admin'}">
-
+                    <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a>
                     <li class="nav-item"><a href="/mypage" class="nav-link">mypage</a></li>
+                    <li class="nav-item"><a href="/accommodationMain" class="nav-link">호텔</a></li>
                     <li class="nav-item"><a href="/logOut" class="nav-link">로그아웃</a></li>
                 </c:if>
                 </c:if>
@@ -83,9 +86,9 @@
 
 
 
-                <li class="nav-item"><a href="/accommodationMain" class="nav-link">Hotel</a></li>
 
-                <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a>
+
+
 
 
 

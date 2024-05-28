@@ -24,6 +24,7 @@ import vip.com.accommodation.service.city.CityService;
 import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.order.OrderService;
 import vip.com.accommodation.service.reservation.ReservationService;
+import vip.com.accommodation.service.review.ReviewService;
 import vip.com.accommodation.service.room.RoomService;
 
 import javax.annotation.Resource;
@@ -61,6 +62,9 @@ public class ReservationController {
     @Resource
     OrderService orderService;
 
+    @Resource
+    ReviewService reviewService;
+
 
     @GetMapping("/myReservation")
     public String myReservation(HttpSession session,Model model){
@@ -86,18 +90,38 @@ public class ReservationController {
 
         String userId = (String) session.getAttribute("userId");
 
+        Integer accommodationRoomReviewGrade = reviewService.accommodationRoomReviewGrade(accommodationId,roomId);
 
 
-        List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(accommodationId);
-        List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
-        List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(roomId,accommodationId);
+        if(accommodationRoomReviewGrade==null){
 
-        model.addAttribute("userId",userId);
-        model.addAttribute("accommodationDetailList",accommodationDetailList);
-        model.addAttribute("roomMainListDto",roomMainListDto);
-        model.addAttribute("roomSpecificListDto",roomSpecificListDto);
+            List<AccommodationMainListDto> accommodationDetailList = accommodationService.accommodationDetailList(accommodationId);
+            List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
+            List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(roomId, accommodationId);
+
+            model.addAttribute("userId", userId);
+            model.addAttribute("accommodationDetailList", accommodationDetailList);
+            model.addAttribute("roomMainListDto", roomMainListDto);
+            model.addAttribute("roomSpecificListDto", roomSpecificListDto);
+            return "reservation/register";
+        }
+
+        if(accommodationRoomReviewGrade!=null) {
+
+            List<AccommodationMainListDto> accommodationDetailList = accommodationService.accommodationDetailList(accommodationId);
+            List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
+            List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(roomId, accommodationId);
+
+            model.addAttribute("userId", userId);
+            model.addAttribute("accommodationDetailList", accommodationDetailList);
+            model.addAttribute("roomMainListDto", roomMainListDto);
+            model.addAttribute("roomSpecificListDto", roomSpecificListDto);
+            model.addAttribute("accommodationRoomReviewGrade", accommodationRoomReviewGrade);
 
 
+            return "reservation/register";
+
+        }
         return "reservation/register";
     }
 

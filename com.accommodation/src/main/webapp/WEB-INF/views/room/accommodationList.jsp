@@ -191,20 +191,7 @@
       </div>
 
         <br/>
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
 
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
-
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
 
 
 

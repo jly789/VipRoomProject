@@ -125,4 +125,9 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.accommodationReviewGrade(accommodationId);
 
     }
+
+    @Override
+    public Integer accommodationRoomReviewGrade(int accommodationId, int roomId) {
+        return reviewMapper.accommodationRoomReviewGrade(accommodationId,roomId);
+    }
 }
