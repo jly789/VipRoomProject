@@ -19,8 +19,8 @@ public class ReservationListDto {
     private int reservationHeadCount; //예약인원수
     private String reservationStatus;  // 객실상태 ex)예약가능, 예약불가
     private String reservationDetails;  //예약내용
-    private LocalDate reservationCheckIn; //체크인
-    private LocalDate reservationCheckOut; //체크아웃
+    private String reservationCheckIn; //체크인
+    private String reservationCheckOut; //체크아웃
 
 
     //객실

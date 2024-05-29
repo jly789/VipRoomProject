@@ -18,6 +18,8 @@ public interface ReservationService {
 
     public void reservationInsert(ReservationInsertDto reservationInsertDto);
 
+    public void reservationDelete(int reservationId);
+
     public List<ReservationFindDto> reservationFindDto(ReservationFindDto reservationFindDto);
 
     public List<ReservationListDto> myReservationList(int memberId);

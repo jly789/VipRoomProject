@@ -96,6 +96,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public int loginCheck(MemberLoginDto memberLoginDto) {
+        return memberMapper.loginCheck(memberLoginDto);
+    }
+
+    @Override
     public int memberIdSearch(MemberLoginDto memberLoginDto) {
        return memberMapper.memberIdSearch(memberLoginDto);
     }

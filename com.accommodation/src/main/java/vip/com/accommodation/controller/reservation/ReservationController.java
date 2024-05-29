@@ -15,6 +15,7 @@ import vip.com.accommodation.dto.order.OrderInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationListDto;
+import vip.com.accommodation.dto.review.ReviewListDto;
 import vip.com.accommodation.dto.room.RoomMainListDto;
 import vip.com.accommodation.dto.room.RoomSpecificListDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
@@ -91,9 +92,12 @@ public class ReservationController {
         String userId = (String) session.getAttribute("userId");
 
         Integer accommodationRoomReviewGrade = reviewService.accommodationRoomReviewGrade(accommodationId,roomId);
+        List<ReviewListDto> roomReviewImg = reviewService.roomReviewImg(accommodationId,roomId);
+
+        Integer roomReviewTotal = reviewService.roomReviewTotal(accommodationId,roomId);
 
 
-        if(accommodationRoomReviewGrade==null){
+        if(accommodationRoomReviewGrade==null && roomReviewImg==null &&roomReviewTotal==null){
 
             List<AccommodationMainListDto> accommodationDetailList = accommodationService.accommodationDetailList(accommodationId);
             List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
@@ -106,7 +110,7 @@ public class ReservationController {
             return "reservation/register";
         }
 
-        if(accommodationRoomReviewGrade!=null) {
+        if(accommodationRoomReviewGrade!=null || roomReviewImg!=null || roomReviewTotal!=null) {
 
             List<AccommodationMainListDto> accommodationDetailList = accommodationService.accommodationDetailList(accommodationId);
             List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(accommodationId);
@@ -117,6 +121,8 @@ public class ReservationController {
             model.addAttribute("roomMainListDto", roomMainListDto);
             model.addAttribute("roomSpecificListDto", roomSpecificListDto);
             model.addAttribute("accommodationRoomReviewGrade", accommodationRoomReviewGrade);
+            model.addAttribute("roomReviewImg", roomReviewImg);
+            model.addAttribute("roomReviewTotal", roomReviewTotal);
 
 
             return "reservation/register";

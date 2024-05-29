@@ -22,6 +22,7 @@ public interface MemberMapper {
 
 
     public int login(MemberLoginDto memberLoginDto);
+    public int loginCheck(MemberLoginDto memberLoginDto);
 
     public int memberIdSearch(MemberLoginDto memberLoginDto);
 

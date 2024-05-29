@@ -27,10 +27,24 @@ public interface ReviewMapper {
 
     public void reviewUpdate(ReviewUpdateDto reviewUpdateDto);
     public void reviewUpdateNoImg(ReviewUpdateDto reviewUpdateDto)throws Exception;
-    public void reviewDelete(ReviewDeleteDto reviewDeleteDto);
+    public void reviewDelete(ReviewDeleteDto reviewDeleteDto); //reviewId를 통한 리뷰삭제
+    public void reservationReviewDelete(int reservationId); //reservationId를 통한 my예약에서 예약취소된 리뷰 삭제
+
+
 
     public Integer accommodationReviewGrade(int accommodationId);
 
+
     public Integer accommodationRoomReviewGrade(int accommodationId,int roomId);
+
+    public List<ReviewListDto> accommodationReviewImg(int accommodationId); //숙소 리뷰이미지
+    public List<ReviewListDto> roomReviewImg(int accommodationId,int roomId);
+
+    public Integer accommodationReviewTotal(int accommodationId);
+
+    public Integer roomReviewTotal(int accommodationId,int roomId);
+
+
+
 
 }

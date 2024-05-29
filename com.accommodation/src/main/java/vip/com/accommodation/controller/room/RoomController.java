@@ -50,14 +50,17 @@ public class RoomController {
 
     @GetMapping("/{accommodationId}")
 
-    public String roomMain(@PathVariable("accommodationId") int accommodationId, Model model) {
+    public String roomMain(@PathVariable("accommodationId") int accommodationId, Model model)  {
 
 
 
        Integer accommodationReviewGrade = reviewService.accommodationReviewGrade(accommodationId);
+        List<ReviewListDto> accommodationReviewImg = reviewService.accommodationReviewImg(accommodationId);
+
+        Integer accommodationReviewTotal = reviewService.accommodationReviewTotal(accommodationId);
 
 
-        if(accommodationReviewGrade==null){
+        if(accommodationReviewGrade==null && accommodationReviewImg==null &&accommodationReviewTotal==null){
 
 
 
@@ -83,7 +86,7 @@ public class RoomController {
 
 
 
-        if(accommodationReviewGrade!=null) {
+        if(accommodationReviewGrade!=null || accommodationReviewImg!=null || accommodationReviewTotal!=null) {
 
 
 
@@ -98,6 +101,8 @@ public class RoomController {
             model.addAttribute("accommodationDetailList", accommodationDetailList);
             model.addAttribute("roomMainListDto", roomMainListDto);
             model.addAttribute("accommodationReviewGrade", accommodationReviewGrade);
+            model.addAttribute("accommodationReviewImg", accommodationReviewImg);
+            model.addAttribute("accommodationReviewTotal", accommodationReviewTotal);
             model.addAttribute("relatedHotels", relatedHotels);
 
             return "room/roomMain";

@@ -19,12 +19,6 @@ public class ReservationInsertDto {
     private int roomId; // (외래키)객실번호
     private String reservationStatus;  // 객실상태 ex)예약가능, 예약불가
     private String reservationDetails;  //예약내용
-
-    @PastOrPresent(message = "과거 또는 현재의 날짜여야 합니다.")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate reservationCheckIn; //체크인
-
-    @PastOrPresent(message = "과거 또는 현재의 날짜여야 합니다.")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate reservationCheckOut; //체크아웃
+    private String reservationCheckIn; //체크인
+    private String reservationCheckOut; //체크아웃
 }

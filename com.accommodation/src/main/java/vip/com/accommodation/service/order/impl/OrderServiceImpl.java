@@ -35,4 +35,9 @@ public class OrderServiceImpl implements OrderService {
     public void orderInsert(OrderInsertDto orderInsertDto) {
         orderMapper.orderInsert(orderInsertDto);
     }
+
+    @Override
+    public void orderDelete(int reservationId) {
+        orderMapper.orderDelete(reservationId);
+    }
 }

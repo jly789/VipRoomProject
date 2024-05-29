@@ -425,25 +425,39 @@ select * from notice;
 select * from review;
 
 
-select distinct * from  room
-                            join review on review.roomId = room.roomId
 
-where room.accommodationId=1;
+
+
+
+
+select distinct review.reviewId,review.reviewFilePath,review.reviewDate from  accommodation
+                                                                                  join review on review.accommodationId = accommodation.accommodationId
+
+where accommodation.accommodationId=1 and review.roomId=1
+
+order by review.reviewDate desc
+    Limit 8;
+
+
+
+select distinct count(*) from  accommodation
+                                   join review on review.accommodationId = accommodation.accommodationId
+
+where accommodation.accommodationId=1
+
+order by review.reviewDate desc;
+
+
+
 
 
 
 
 select avg(grade)as avgGrade from review
                                       left join accommodation on accommodation.accommodationId = review.accommodationId
-where accommodation.accommodationId=2;
+                                      left join room on room.roomId = review.roomId
+where accommodation.accommodationId=1 and room.roomId=1;
 
-select   a.accommodationId,a.accommodationName ,b.accommodationImage,
-         a.accommodationCategory,r.grade  from  accommodation a
-                                                    left join  accommodationImg b
-                                                               on a.accommodationId= b.accommodationId
-                                                    left join room c on c.accommodationId = b.accommodationId
-                                                    left join review r on r.accommodationId = a.accommodationId
-group by a.accommodationName,a.accommodationId,b.accommodationImage,r.grade;
 
 
 -- select * from room

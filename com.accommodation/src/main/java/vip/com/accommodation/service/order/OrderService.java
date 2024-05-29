@@ -10,4 +10,6 @@ public interface OrderService {
 
     public int maxNum();
     public void orderInsert(OrderInsertDto orderInsertDto);
+
+    public void orderDelete(int reservationId);
 }

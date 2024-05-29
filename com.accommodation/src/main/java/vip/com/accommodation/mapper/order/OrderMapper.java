@@ -15,6 +15,7 @@ public interface OrderMapper {
 
     public void orderInsert(OrderInsertDto orderInsertDto);
 
+    public void orderDelete(int reservationId);
 
 
 

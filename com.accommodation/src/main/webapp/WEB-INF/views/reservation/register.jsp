@@ -107,17 +107,20 @@
 
               <c:if test="${accommodationRoomReviewGrade==1}">
                 <i  style="color: gold;"class="icon-star"></i>
+                리뷰(${roomReviewTotal})
               </c:if>
 
               <c:if test="${accommodationRoomReviewGrade==2}">
                 <i style="color: gold;" class="icon-star"></i>
                 <i style="color: gold;" class="icon-star"></i>
+                리뷰(${roomReviewTotal})
               </c:if>
 
               <c:if test="${accommodationRoomReviewGrade==3}">
                 <i style="color: gold;" class="icon-star"></i>
                 <i style="color: gold;" class="icon-star"></i>
                 <i style="color: gold;" class="icon-star"></i>
+                리뷰(${roomReviewTotal})
               </c:if>
 
               <c:if test="${accommodationRoomReviewGrade==4}">
@@ -125,15 +128,29 @@
                 <i style="color: gold;" class="icon-star"></i>
                 <i  style="color: gold;"class="icon-star"></i>
                 <i style="color: gold;" class="icon-star"></i>
+                리뷰(${roomReviewTotal})
               </c:if>
 
               <c:if test="${accommodationRoomReviewGrade==5}">
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                <i style="color: gold;" class="icon-star"></i>
+                리뷰(${roomReviewTotal})
               </c:if>
+
+
+              <br/>
+              <c:forEach var="roomReviewImg" items="${roomReviewImg}">
+
+                <a href="/review/${roomReviewImg.reviewId}">
+                  <img src="${roomReviewImg.reviewFilePath}" style="width: 100px; height: 100px;"/>
+
+                </a>
+
+              </c:forEach>
+
 
 
             </c:if>

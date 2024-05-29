@@ -20,6 +20,8 @@ public interface ReservationMapper {
 
     public void reservationInsert(ReservationInsertDto reservationInsertDto);
 
+    public void reservationDelete(int reservationId);
+
     public List<ReservationFindDto> reservationFindDto(ReservationFindDto reservationFindDto);
 
 

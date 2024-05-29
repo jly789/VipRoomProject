@@ -62,6 +62,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public void reservationDelete(int reservationId) {
+        reservationMapper.reservationDelete(reservationId);
+    }
+
+    @Override
     public List<ReservationFindDto> reservationFindDto(ReservationFindDto reservationFindDto) {
         return reservationMapper.reservationFindDto(reservationFindDto);
     }

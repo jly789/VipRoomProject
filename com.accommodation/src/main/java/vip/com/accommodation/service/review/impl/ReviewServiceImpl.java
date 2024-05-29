@@ -118,6 +118,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public void reservationReviewDelete(int reservationId) {
+        reviewMapper.reservationReviewDelete(reservationId);
+    }
+
+    @Override
     public Integer accommodationReviewGrade(int accommodationId) {
 
 
@@ -129,5 +134,25 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public Integer accommodationRoomReviewGrade(int accommodationId, int roomId) {
         return reviewMapper.accommodationRoomReviewGrade(accommodationId,roomId);
+    }
+
+    @Override
+    public List<ReviewListDto> accommodationReviewImg(int accommodationId) {
+        return  reviewMapper.accommodationReviewImg(accommodationId);
+    }
+
+    @Override
+    public List<ReviewListDto> roomReviewImg(int accommodationId,int roomId) {
+        return reviewMapper.roomReviewImg(accommodationId,roomId);
+    }
+
+    @Override
+    public Integer accommodationReviewTotal(int accommodationId) {
+        return reviewMapper.accommodationReviewTotal(accommodationId);
+    }
+
+    @Override
+    public Integer roomReviewTotal(int accommodationId,int roomId) {
+        return reviewMapper.roomReviewTotal(accommodationId,roomId);
     }
 }

@@ -19,6 +19,13 @@
 
 
     </insert>
+    
+    <delete id="orderDelete" parameterType="int">
+
+         delete from orders
+        where reservationId =#{reservationId}
+
+    </delete>
 
 
 

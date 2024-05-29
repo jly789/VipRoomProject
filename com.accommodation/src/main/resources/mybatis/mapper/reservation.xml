@@ -33,6 +33,17 @@
     </insert>
 
 
+    <update id="reservationDelete" parameterType="int">
+
+        update reservation set
+            reservationStatus ='예약취소' ,reservationCheckIn='예약취소' ,reservationCheckOut='예약취소'
+        where reservationId =#{reservationId}
+
+
+    </update>
+
+
+
     <select id="reservationFindDto" parameterType="vip.com.accommodation.dto.reservation.ReservationFindDto" resultType="vip.com.accommodation.dto.reservation.ReservationFindDto">
         select * from reservation
                                  left join room on reservation.roomId = room.roomId
@@ -46,6 +57,7 @@
                           left join review on review.reservationId = reservation.reservationId
                           left join room on room.roomId = reservation.roomId
         where reservation.memberId =#{memberId}
+        order by reservation.reservationStatus='예약취소' asc
 
     </select>
 

@@ -155,7 +155,7 @@
             <span>${accommodationDetailList.accommodationCategory}</span>
             <h2>${accommodationDetailList.accommodationName}</h2>
             <p class="rate mb-5">
-              <span class="loc">${accommodationDetailList.accommodationAddress}</span>
+              <span class="loc">${accommodationDetailList.accommodationAddress}</span> <br/><br/>
               <span class="star">
 
 
@@ -171,17 +171,20 @@
 
            <c:if test="${accommodationReviewGrade==1}">
              <i  style="color: gold;"class="icon-star"></i>
+             리뷰(${accommodationReviewTotal})
            </c:if>
 
           <c:if test="${accommodationReviewGrade==2}">
             <i style="color: gold;" class="icon-star"></i>
             <i style="color: gold;" class="icon-star"></i>
+            리뷰(${accommodationReviewTotal})
           </c:if>
 
           <c:if test="${accommodationReviewGrade==3}">
             <i style="color: gold;" class="icon-star"></i>
             <i style="color: gold;" class="icon-star"></i>
             <i style="color: gold;" class="icon-star"></i>
+            리뷰(${accommodationReviewTotal})
           </c:if>
 
           <c:if test="${accommodationReviewGrade==4}">
@@ -189,6 +192,7 @@
             <i style="color: gold;" class="icon-star"></i>
             <i  style="color: gold;"class="icon-star"></i>
             <i style="color: gold;" class="icon-star"></i>
+            리뷰(${accommodationReviewTotal})
           </c:if>
 
           <c:if test="${accommodationReviewGrade==5}">
@@ -197,8 +201,18 @@
             <i class="icon-star"></i>
             <i class="icon-star"></i>
             <i class="icon-star"></i>
+            리뷰(${accommodationReviewTotal})
           </c:if>
 
+          <br/>
+        <c:forEach var="accommodationReviewImg" items="${accommodationReviewImg}">
+
+          <a href="/review/${accommodationReviewImg.reviewId}">
+            <img src="${accommodationReviewImg.reviewFilePath}" style="width: 100px; height: 100px;"/>
+
+          </a>
+
+        </c:forEach>
 
         </c:if>
 

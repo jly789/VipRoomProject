@@ -264,7 +264,7 @@
 
       alert("결제성공!");
 
-      window.location.href = "/";
+      window.location.href = "/myReservation";
     });
 
 

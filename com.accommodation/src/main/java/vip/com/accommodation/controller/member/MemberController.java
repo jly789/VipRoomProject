@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import vip.com.accommodation.dto.member.*;
 import vip.com.accommodation.service.member.MemberService;
+import vip.com.accommodation.service.order.OrderService;
+import vip.com.accommodation.service.reservation.ReservationService;
+import vip.com.accommodation.service.review.ReviewService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +26,14 @@ public class MemberController {
     @Resource
     private MemberService memberService;
 
+    @Resource
+    private ReservationService reservationService;
+
+    @Resource
+    private OrderService orderService;
+
+    @Resource
+    private ReviewService reviewService;
 
     @GetMapping("/login")
     public String login(){
@@ -289,6 +297,45 @@ public class MemberController {
 
 
         return "redirect:/login";
+    }
+
+    @GetMapping("/loginCheck/{reservationId}")
+    public String loginCheck(@PathVariable("reservationId")int reservationId,Model model){
+
+        model.addAttribute("reservationId",reservationId);
+
+        return "member/loginCheck";
+    }
+
+
+    @ResponseBody
+    @PostMapping("/loginCheck")
+
+    public int loginCheckOk(MemberLoginDto memberLoginDto,@RequestParam("reservationId")int reservationId){
+
+        int loginCheck = memberService.loginCheck(memberLoginDto);
+
+
+        if(loginCheck==1){
+
+            orderService.orderDelete(reservationId);
+
+            reviewService.reservationReviewDelete(reservationId);
+
+            reservationService.reservationDelete(reservationId);
+
+
+            return  loginCheck;
+        }
+
+        if(loginCheck!=1){
+            return  loginCheck;
+        }
+
+
+
+        return  loginCheck;
+
     }
 
 

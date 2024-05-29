@@ -86,6 +86,13 @@
     </delete>
 
 
+    <delete id="reservationReviewDelete" parameterType="int">
+
+        delete from review
+        where reservationId =#{reservationId}
+
+    </delete>
+
 
 
     <select id="accommodationReviewGrade" parameterType="int" resultType="Integer">
@@ -109,6 +116,67 @@
         where accommodation.accommodationId=#{accommodationId} and room.roomId=#{roomId}
 
 
+
+
+
+
+    </select>
+
+    <select id="accommodationReviewImg" parameterType="int" resultType="vip.com.accommodation.dto.review.ReviewListDto">
+
+        select distinct review.reviewId,review.reviewFilePath,review.reviewDate from  accommodation
+                                                                          join review on review.accommodationId = accommodation.accommodationId
+
+        where accommodation.accommodationId=#{accommodationId}
+
+        order by review.reviewDate desc
+        Limit 8
+
+
+
+
+    </select>
+
+
+
+    <select id="roomReviewImg" parameterType="int" resultType="vip.com.accommodation.dto.review.ReviewListDto">
+
+        select distinct review.reviewId,review.reviewFilePath,review.reviewDate from  accommodation
+                                                                                          join review on review.accommodationId = accommodation.accommodationId
+
+        where accommodation.accommodationId=#{accommodationId} and review.roomId=#{roomId}
+
+        order by review.reviewDate desc
+        Limit 8
+
+    </select>
+
+
+    <select id="accommodationReviewTotal" parameterType="int" resultType="Integer">
+
+        select distinct count(*) from  accommodation
+                                           join review on review.accommodationId = accommodation.accommodationId
+
+        where accommodation.accommodationId=#{accommodationId}
+
+        order by review.reviewDate desc
+        Limit 8
+
+
+
+
+    </select>
+
+
+    <select id="roomReviewTotal" parameterType="int" resultType="Integer">
+
+        select distinct count(*) from  accommodation
+                                           join review on review.accommodationId = accommodation.accommodationId
+
+        where accommodation.accommodationId=#{accommodationId} and review.roomId=#{roomId}
+
+        order by review.reviewDate desc
+        Limit 8
 
 
 
