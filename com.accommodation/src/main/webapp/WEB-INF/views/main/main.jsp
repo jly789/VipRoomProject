@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="cp" value="<%=request.getContextPath()%>"/>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,31 +78,63 @@
                     <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>
                     <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
                     <div class="block-17 my-4">
-                        <form action="" method="post" class="d-block d-flex">
+                        <form action="/distinctSearch" method="post"  class="d-block d-flex">
+
                             <div class="fields d-block d-flex">
-                                <div class="textfield-search one-third">
-                                    <input type="text" class="form-control" placeholder="Ex: food, service, hotel">
+                                <div class="select-wrap one-third">
+                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+
+                                    <select name="accommodationDistrict"  id="accommodationDistrict" class="form-control">
+
+                                            <option value="선택" selected="selected" disabled>지역선택</option>
+                                            <option value="서울">서울</option>
+                                            <option value="부산">부산</option>
+                                            <option value="제주">제주</option>
+                                            <option value="경기">경기</option>
+                                            <option value="인천">인천</option>
+                                            <option value="강원">강원</option>
+                                            <option value="경상">경상</option>
+                                            <option value="전라">전라</option>
+                                            <option value="충청">충청</option>
+
+
+
+
+                                    </select>
                                 </div>
                                 <div class="select-wrap one-third">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="" class="form-control" placeholder="Keyword search">
-                                        <option value="">Where</option>
-                                        <option value="">San Francisco USA</option>
-                                        <option value="">Berlin Germany</option>
-                                        <option value="">Lodon United Kingdom</option>
-                                        <option value="">Paris Italy</option>
+                                    <select name="accommodationCategory"  id="accommodationCategory" class="form-control" >
+
+
+                                        <option value="선택" selected="selected" disabled>숙소선택</option>
+                                        <option value="호텔/리조트">호텔/리조트</option>
+                                        <option value="펜션/풀빌라">펜션/풀빌라</option>
+                                        <option value="모텔">모텔</option>
+                                        <option value="글램핑/캠핑">글램핑/캠핑</option>
+                                        <option value="게스트하우스">게스트하우스</option>
+                                        <option value="가족형숙소">가족형숙소</option>
+
+
+
+
                                     </select>
                                 </div>
                             </div>
-                            <input type="submit" class="search-submit btn btn-primary" value="Search">
+                            <input type="submit"  class="search-submit btn btn-primary" value="Search">
                         </form>
                     </div>
+
+
+
+
+
                     <p>Or browse the highlights</p>
                     <p class="browse d-md-flex">
-                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-fork"></i>Restaurant</a></span>
-                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-hotel"></i>Hotel</a></span>
-                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-meeting-point"></i>Places</a></span>
-                        <span class="d-flex justify-content-md-center align-items-md-	center"><a href="#"><i class="flaticon-shopping-bag"></i>Shopping</a></span>
+                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-hotel"></i>호텔</a></span>
+                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-hotel"></i>펜션/풀빌라</a></span>
+                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-hotel"></i>모텔</a></span>
+
                     </p>
                 </div>
             </div>
