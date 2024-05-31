@@ -16,6 +16,10 @@ public interface AccommodationService {
 
     public List<AccommodationMainListDto> accommodationMainList();
 
+    public List<AccommodationMainListDto> distinctSearchList(AccommodationMainListDto accommodationMainListDto); //main리스트에서 원하는 지역구,숙소유형의 검색 숙소리스트
+
+    public List<AccommodationMainListDto> accommodationCategorySearchList(AccommodationMainListDto accommodationMainListDto); //main리스트에서 숙소유형의  숙소리스트
+
     public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto);
 
     public List<AccommodationMainListDto> accommodationDetailList(int accommodationId);

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.member.*;
+import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.order.OrderService;
 import vip.com.accommodation.service.reservation.ReservationService;
@@ -27,6 +29,9 @@ public class MemberController {
     private MemberService memberService;
 
     @Resource
+    private AccommodationService accommodationService;
+
+    @Resource
     private ReservationService reservationService;
 
     @Resource
@@ -42,7 +47,7 @@ public class MemberController {
     }
 
     @PostMapping("/")
-    public String login_ok(MemberLoginDto memberLoginDto,HttpServletResponse response,HttpSession session)throws Exception{
+    public String login_ok(MemberLoginDto memberLoginDto,HttpServletResponse response,HttpSession session,Model model)throws Exception{
 
 
       if(memberService.login(memberLoginDto,response)==1){
@@ -51,6 +56,8 @@ public class MemberController {
           session.setAttribute("memberId",memberId);
 
 
+          List<AccommodationMainListDto> accommodationMainList = accommodationService.accommodationMainList();
+          model.addAttribute("accommodationMainList",accommodationMainList);
 
 
 

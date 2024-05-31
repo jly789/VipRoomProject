@@ -41,6 +41,16 @@ public class AccommodationServiceImpl implements AccommodationService {
     }
 
     @Override
+    public List<AccommodationMainListDto> distinctSearchList(AccommodationMainListDto accommodationMainListDto) {
+        return accommodationMapper.distinctSearchList(accommodationMainListDto);
+    }
+
+    @Override
+    public List<AccommodationMainListDto> accommodationCategorySearchList(AccommodationMainListDto accommodationMainListDto) {
+        return accommodationMapper.accommodationCategorySearchList(accommodationMainListDto);
+    }
+
+    @Override
     public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto) {
         return accommodationMapper.accommodationMainListSearchCity(accommodationMainListDto);
     }

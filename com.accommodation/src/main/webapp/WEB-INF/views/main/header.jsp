@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+    <title>VIP ROOM</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -57,6 +57,7 @@
 
 
                 <c:if test="${userId==null}">
+                    <li class="nav-item"><a href="/notice" class="nav-link">공지사항</a>
                 <li class="nav-item"><a href="/login" class="nav-link">로그인</a></li>
                 <li class="nav-item"><a href="/register" class="nav-link">회원가입</a></li>
                 </c:if>

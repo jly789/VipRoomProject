@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+  <title>VIP ROOM</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -49,22 +49,7 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 
 <input type="hidden" name="userId" id="userId" value="${userId}"/>
-<%--<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">--%>
 
-<%--<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">--%>
-
-
-<%--  <div class="overlay"></div>--%>
-<%--  <div class="container">--%>
-<%--    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">--%>
-
-
-<%--        <h1 style="color: black; font-weight: bold;">${accommodationDetailList.accommodationName}</h1>--%>
-<%--        </c:forEach>--%>
-<%--      </div>--%>
-
-<%--  </div>--%>
-<%--</div>--%>
 
 
 <section class="ftco-section ftco-degree-bg">
@@ -193,7 +178,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <h6>Check Out</h6>
-                      <input type="date"  name="reservationCheckOut" id="end" class="form-control" readonly
+                      <input type="date"  name="reservationCheckOut" id="end" class="form-control" value="연도" readonly
                              placeholder="체크아웃">
                     </div>
                   </div>
@@ -302,6 +287,8 @@
 
   $('#submit').click(function (){
 
+
+
     if($('#userId').val()==''){
       alert('회원만 예약가능합니다! \n로그인하세요');
       return false;
@@ -314,6 +301,8 @@
      alert('예약 날짜를 선택해주세요!');
      return false;
     }
+
+
 
   });
 

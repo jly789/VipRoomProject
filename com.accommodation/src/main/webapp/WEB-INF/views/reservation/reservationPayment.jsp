@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Book Shop</title>
+  <title>VIP ROOM</title>
   <!-- jQuery -->
   <script
           type="text/javascript"
@@ -205,7 +205,10 @@
   $('#payment').click(function () {
 
 
-
+    if($('#reservationCheckOut').val()==''){
+      alert('매월 마지막날은 휴무입니다.\n다른 날짜를 선택해주세요');
+      return false;
+    }
 
 
 
