@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class MemberDeleteDto {
 
+    private int memberId;
     private String userId;
     private String pwd;
 }

@@ -118,6 +118,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public void reviewDeleteMemberId(int memberId) {
+        reviewMapper.reviewDeleteMemberId(memberId);
+    }
+
+    @Override
     public void reservationReviewDelete(int reservationId) {
         reviewMapper.reservationReviewDelete(reservationId);
     }

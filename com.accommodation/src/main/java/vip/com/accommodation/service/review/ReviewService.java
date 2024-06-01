@@ -24,6 +24,8 @@ public interface ReviewService {
     public void reviewUpdateNoImg(ReviewUpdateDto reviewUpdateDto)throws Exception;
 
     public void reviewDelete(ReviewDeleteDto reviewDeleteDto); //reviewId를 통한 리뷰삭제
+
+    public void reviewDeleteMemberId(int memberId); //회원번호를 통한 리뷰삭제
     public void reservationReviewDelete(int reservationId); //reservationId를 통한 my예약에서 예약취소된 리뷰 삭제
 
     public Integer accommodationReviewGrade(int accommodationId); //숙소별 평균 리뷰점수

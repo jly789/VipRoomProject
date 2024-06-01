@@ -92,7 +92,7 @@
 
     </select>
 
-    <update id="mypageUpdate" parameterType="vip.com.accommodation.dto.member.MemberUpdateDto">
+    <update id="mypageUpdate" parameterType="vip.com.accommodation.dto.member.MemberFindDto">
 
        update member
        set  pwd =#{pwd},userName =#{userName},nickName =#{nickName},birth=#{birth}, tel =#{tel},postcode =#{postcode},address =#{address},

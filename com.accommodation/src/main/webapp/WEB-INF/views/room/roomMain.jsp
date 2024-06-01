@@ -65,7 +65,7 @@
     <div class="row">
       <div class="col-lg-3 sidebar">
         <div class="sidebar-wrap bg-light ftco-animate">
-          <h3 class="heading mb-4">Find City</h3>
+          <h3 class="heading mb-4">도시 검색</h3>
           <form:form action="/accommodationMainSearchCity" method="post" modelAttribute="accommodationMainListDto">
             <div class="fields">
 
@@ -128,7 +128,7 @@
 
 
               <div class="form-group">
-                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                <input type="submit" value="검색" class="btn btn-primary py-3 px-5">
               </div>
             </div>
           </form:form>
@@ -266,7 +266,7 @@
           </div>
 
 
-              <h4 class="mb-4">같은 지역 호텔</h4>
+              <h4 class="mb-4">주변 지역 호텔</h4>
               <div class="row">
 
 

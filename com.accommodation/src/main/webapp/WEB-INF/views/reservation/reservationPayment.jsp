@@ -93,14 +93,68 @@
   <h2>${roomSpecificListDto.roomName}</h2>
 
   <p class="rate mb-5">
-  <span class="loc"><a href="#"><i class="icon-map"></i></a></span>
-  <span class="star">
-  <i class="icon-star"></i>
-  <i class="icon-star"></i>
-  <i class="icon-star"></i>
-  <i class="icon-star"></i>
-  <i class="icon-star-o"></i>
-  8 Rating</span>
+
+    <c:if test="${accommodationRoomReviewGrade==null}">
+      review(0)
+
+    </c:if>
+
+    <c:if test="${accommodationRoomReviewGrade!=null}">
+
+
+      <c:if test="${accommodationRoomReviewGrade==1}">
+        <i  style="color: gold;"class="icon-star"></i>
+        리뷰(${roomReviewTotal})
+      </c:if>
+
+      <c:if test="${accommodationRoomReviewGrade==2}">
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        리뷰(${roomReviewTotal})
+      </c:if>
+
+      <c:if test="${accommodationRoomReviewGrade==3}">
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        리뷰(${roomReviewTotal})
+      </c:if>
+
+      <c:if test="${accommodationRoomReviewGrade==4}">
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        <i  style="color: gold;"class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        리뷰(${roomReviewTotal})
+      </c:if>
+
+      <c:if test="${accommodationRoomReviewGrade==5}">
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        <i style="color: gold;" class="icon-star"></i>
+        리뷰(${roomReviewTotal})
+      </c:if>
+
+
+      <br/>
+      <c:forEach var="roomReviewImg" items="${roomReviewImg}">
+
+        <a href="/review/${roomReviewImg.reviewId}">
+          <img src="${roomReviewImg.reviewFilePath}" style="width: 100px; height: 100px;"/>
+
+        </a>
+
+      </c:forEach>
+
+
+
+    </c:if>
+
+
+
+
   </p>
   <h6> 기준 ${roomSpecificListDto.standardNumbers}인 / 최대  ${roomSpecificListDto.maximumCapacity}인</h6>
 

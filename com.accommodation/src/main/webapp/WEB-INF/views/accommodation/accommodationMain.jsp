@@ -116,7 +116,7 @@
 
 
               <div class="form-group">
-                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                <input type="submit" value="검색" class="btn btn-primary py-3 px-5">
               </div>
             </div>
           </form:form>

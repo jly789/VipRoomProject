@@ -139,40 +139,37 @@
 
                     <h5 style="margin-right: 150px;">평점</h5>
 
-                    <c:if test="${reviewDetailList.reviewId==1}">
+                    <c:if test="${reviewDetailList.grade==1}">
 
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
 
                     </c:if>
 
-                    <c:if test="${reviewDetailList.reviewId==2}">
+                    <c:if test="${reviewDetailList.grade==2}">
 
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
-                      <input type="radio" name="grade"  value="5" id="rate1"><label
-                            for="rate1" style="color: gold;">★</label>
-                      <input type="radio" name="grade"  value="5" id="rate1"><label
-                            for="rate1" style="color: gold;">★</label>
-                      <input type="radio" name="grade"  value="5" id="rate1"><label
-                            for="rate1" style="color: gold;">★</label>
+
 
                     </c:if>
 
-                    <c:if test="${reviewDetailList.reviewId==3}">
+                    <c:if test="${reviewDetailList.grade==3}">
 
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
+
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
+
 
                     </c:if>
 
-                    <c:if test="${reviewDetailList.reviewId==4}">
+                    <c:if test="${reviewDetailList.grade==4}">
 
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
@@ -184,7 +181,7 @@
                             for="rate1" style="color: gold;">★</label>
                     </c:if>
 
-                    <c:if test="${reviewDetailList.reviewId==5}">
+                    <c:if test="${reviewDetailList.grade==5}">
 
                       <input type="radio" name="grade"  value="5" id="rate1"><label
                             for="rate1" style="color: gold;">★</label>
@@ -198,7 +195,6 @@
                             for="rate1" style="color: gold;">★</label>
 
                     </c:if>
-
 
 
 

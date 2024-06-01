@@ -19,6 +19,11 @@
         </select>
 
 
+    <select id="reservationMemberIdSearch" parameterType="int" resultType="vip.com.accommodation.dto.reservation.ReservationListDto">
+        select reservationId from reservation
+        where memberId =#{memberId}
+    </select>
+
 
 
 
@@ -37,6 +42,14 @@
 
         update reservation set
             reservationStatus ='예약취소' ,reservationCheckIn='예약취소' ,reservationCheckOut='예약취소'
+        where reservationId =#{reservationId}
+
+
+    </update>
+
+    <update id="reservationDeleteReservation" parameterType="int">
+
+        delete from reservation
         where reservationId =#{reservationId}
 
 

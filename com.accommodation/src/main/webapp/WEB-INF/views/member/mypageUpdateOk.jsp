@@ -60,7 +60,8 @@
     <div class="container" style="margin-right: 300px; >
       <div class="row d-flex mb-5 contact-info">
     <div class="col-md-12 mb-4">
-      <h2>정보수정</h2>
+
+      <h2>정보수정</h2>   <strong> <p> 회원탈퇴 하시고싶나요?  <a href="/mypageDelete"> 회원탈퇴 </a> click</p></strong>
     </div>
 
     <div>

@@ -137,6 +137,11 @@ public class ReservationController {
             String msg;
             int memberId = (int)session.getAttribute("memberId");
 
+        Integer accommodationRoomReviewGrade = reviewService.accommodationRoomReviewGrade(reservationFindDto.getAccommodationId(),reservationFindDto.getRoomId());
+        List<ReviewListDto> roomReviewImg = reviewService.roomReviewImg(reservationFindDto.getAccommodationId(),reservationFindDto.getRoomId());
+
+        Integer roomReviewTotal = reviewService.roomReviewTotal(reservationFindDto.getAccommodationId(),reservationFindDto.getRoomId());
+
 
 
            if(reservationService.reservationSearch(reservationFindDto)==0){
@@ -147,26 +152,38 @@ public class ReservationController {
            }
 
 
+        if(accommodationRoomReviewGrade==null && roomReviewImg==null &&roomReviewTotal==null) {
 
+            List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(reservationFindDto.getAccommodationId());
+            List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(reservationFindDto.getAccommodationId());
+            List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(reservationFindDto.getRoomId(),reservationFindDto.getAccommodationId());
 
-
-        List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(reservationFindDto.getAccommodationId());
-        List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(reservationFindDto.getAccommodationId());
-        List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(reservationFindDto.getRoomId(),reservationFindDto.getAccommodationId());
-
-        model.addAttribute("memberId",memberId);
-        model.addAttribute("accommodationDetailList",accommodationDetailList);
-        model.addAttribute("roomMainListDto",roomMainListDto);
-        model.addAttribute("roomSpecificListDto",roomSpecificListDto);
-        model.addAttribute("reservationFindDto",reservationFindDto);
-
-
-
-
-
-
+            model.addAttribute("memberId",memberId);
+            model.addAttribute("accommodationDetailList",accommodationDetailList);
+            model.addAttribute("roomMainListDto",roomMainListDto);
+            model.addAttribute("roomSpecificListDto",roomSpecificListDto);
+            model.addAttribute("reservationFindDto",reservationFindDto);
 
             return "reservation/reservationPayment";
+        }
+
+        if(accommodationRoomReviewGrade!=null || roomReviewImg!=null || roomReviewTotal!=null) {
+            List<AccommodationMainListDto> accommodationDetailList= accommodationService.accommodationDetailList(reservationFindDto.getAccommodationId());
+            List<RoomMainListDto> roomMainListDto = roomService.roomDetailList(reservationFindDto.getAccommodationId());
+            List<RoomSpecificListDto> roomSpecificListDto = roomService.roomSpecificListDto(reservationFindDto.getRoomId(),reservationFindDto.getAccommodationId());
+
+            model.addAttribute("memberId",memberId);
+            model.addAttribute("accommodationDetailList",accommodationDetailList);
+            model.addAttribute("roomMainListDto",roomMainListDto);
+            model.addAttribute("roomSpecificListDto",roomSpecificListDto);
+            model.addAttribute("reservationFindDto",reservationFindDto);
+            model.addAttribute("accommodationRoomReviewGrade", accommodationRoomReviewGrade);
+            model.addAttribute("roomReviewImg", roomReviewImg);
+            model.addAttribute("roomReviewTotal", roomReviewTotal);
+
+            return "reservation/reservationPayment";
+        }
+        return "reservation/reservationPayment";
         }
 
 

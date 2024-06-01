@@ -217,7 +217,7 @@
 
 
           <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-            <h4 class="mb-4">Our Rooms</h4>
+            <h4 class="mb-4">방 종류</h4>
             <div class="row">
               <c:forEach var="roomMainListDto" items="${roomMainListDto}">
               <div class="col-md-4">

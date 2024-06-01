@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.member.*;
+import vip.com.accommodation.dto.reservation.ReservationListDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.order.OrderService;
@@ -143,7 +144,6 @@ public class MemberController {
     public String idSearch_ok(@Valid @ModelAttribute("memberSearchDto")MemberSearchDto memberSearchDto
                               ,BindingResult bindingResult,Model model){
 
-        System.out.println("테스트");
 
 
         String idSearch = memberService.idSearch(memberSearchDto);
@@ -231,11 +231,9 @@ public class MemberController {
     }
 
     @PostMapping("/mypage")
-    public String mypage_update(@Valid  @ModelAttribute("memberFindDto") MemberUpdateDto memberUpdateDto,
+    public String mypage_update(@Valid  @ModelAttribute("memberFindDto")MemberFindDto memberFindDto,
 
-                               BindingResult bindingResult,HttpSession session,Model model){
-
-
+                               BindingResult bindingResult,HttpSession session,Model model)throws Exception {
 
 
 
@@ -243,26 +241,34 @@ public class MemberController {
         if(bindingResult.hasFieldErrors()){
 
 
-            return "/member/mypageUpdateOk";
+            return "/member/mypageUpdate";
 
         }
 
 
-        memberService.mypageUpdate(memberUpdateDto);
+
+              memberService.mypageUpdate(memberFindDto);
 
 
         return "redirect:/mypage";
-    }
+        }
+
+
+
+
+
+
+
 
     @PostMapping("/mypageUpdate")
-    public String mypageUpdate(HttpSession session,Model model){
+    public String mypageUpdate(MemberFindDto memberFindDto,HttpSession session,Model model){
 
         String userId = (String) session.getAttribute("userId");
 
 
 
-        List<MemberFindDto> memberFindDto = memberService.mypage(userId);
-
+//        List<MemberFindDto> memberFindDto = memberService.mypage(userId);
+//
         model.addAttribute("memberFindDto",memberFindDto);
 
 
@@ -283,9 +289,12 @@ public class MemberController {
 
 
     @PostMapping("/mypageDelete")
-    public String mypageDelete_ok(MemberDeleteDto memberDeleteDto,Model model){
+    public String mypageDelete_ok(MemberDeleteDto memberDeleteDto,MemberLoginDto memberLoginDto,Model model){
 
 
+
+        int memberId = memberService.memberIdSearch(memberLoginDto);
+        List<ReservationListDto> reservationMemberIdSearch =  reservationService.reservationMemberIdSearch(memberId);
 
        if( memberService.deleteLoginCheck(memberDeleteDto) ==1){
 
@@ -297,7 +306,26 @@ public class MemberController {
 
        else
 
-            memberService.mypageDelete(memberDeleteDto);
+           reviewService.reviewDeleteMemberId(memberId);
+
+
+            for(int i =0; i<reservationMemberIdSearch.size();i++){
+
+                orderService.orderDelete(reservationMemberIdSearch.get(i).getReservationId());
+                reservationService.reservationDeleteReservation(reservationMemberIdSearch.get(i).getReservationId());
+            }
+
+        memberService.mypageDelete(memberDeleteDto);
+
+
+
+           //orders
+
+
+
+
+
+
 
            //삭제
 

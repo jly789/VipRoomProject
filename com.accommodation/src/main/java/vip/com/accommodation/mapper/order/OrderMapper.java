@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import vip.com.accommodation.dto.order.OrderInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
+import vip.com.accommodation.dto.reservation.ReservationListDto;
 import vip.com.accommodation.dto.room.RoomInsertDto;
 
 @Mapper
@@ -16,6 +17,8 @@ public interface OrderMapper {
     public void orderInsert(OrderInsertDto orderInsertDto);
 
     public void orderDelete(int reservationId);
+
+
 
 
 

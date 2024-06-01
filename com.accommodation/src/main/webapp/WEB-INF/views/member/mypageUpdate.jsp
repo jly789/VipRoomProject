@@ -65,12 +65,12 @@
 
     <div>
 
-      <form:form action="/mypage" method="post">
-        <c:forEach items="${memberFindDto}" var="memberFindDto">
+      <form:form action="/mypage" method="post" modelAttribute="memberFindDto">
+
         <div class="form-group">
 
           <input type="text" readonly class="form-control" name="userId" id="userId" value="${memberFindDto.userId}" placeholder="아이디 입력"/>
-<%--          <form:errors path="userId" cssStyle="font-weight: bold; color: #e95050"></form:errors>--%>
+          <form:errors path="userId" cssStyle="font-weight: bold; color: #e95050"></form:errors>
 <%--          <input type="button" id="btnCheck" value="중복검사" class="btn btn-primary py-3 px-5"  />--%>
 <%--          <span id="result"></span>--%>
 
@@ -157,7 +157,7 @@
 
         <input type="submit" id="register" value="수정하기" class="btn btn-primary py-3 px-5" >
 
-          </c:forEach>
+
       </form:form>
 
 
@@ -165,8 +165,8 @@
 
     </div>
 
-</div>
-</div>
+
+
 
 
 </section>

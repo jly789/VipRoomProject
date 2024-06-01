@@ -86,6 +86,14 @@
     </delete>
 
 
+    <delete id="reviewDeleteMemberId" parameterType="int">
+
+        delete from review
+        where memberId =#{memberId}
+
+    </delete>
+
+
     <delete id="reservationReviewDelete" parameterType="int">
 
         delete from review

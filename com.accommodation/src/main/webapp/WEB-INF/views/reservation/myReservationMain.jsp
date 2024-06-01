@@ -65,7 +65,7 @@
         <th scope="col">주문금액</th>
         <th scope="col">체크인</th>
         <th scope="col">체크아웃</th>
-        <th scope="col">리뷰상태</th>
+        <th scope="col">리뷰상태 </th>
         <th scope="col">주문상세</th>
 
       </tr>
@@ -124,7 +124,7 @@
 
         <c:if test="${myReservationList.reviewState=='리뷰완료'}">
           <td style="color:red">
-              ${myReservationList.reviewState}
+            <a href="/review/${myReservationList.reviewId}">${myReservationList.reviewState}</a>
           </td>
         </c:if>
 

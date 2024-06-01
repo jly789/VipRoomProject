@@ -28,7 +28,7 @@ public interface MemberMapper {
 
     public  List<MemberFindDto> mypage(String userId);
 
-    public  void mypageUpdate(MemberUpdateDto memberUpdateDto);
+    public  void mypageUpdate(MemberFindDto memberFindDto);
 
     public int deleteLoginCheck(MemberDeleteDto memberDeleteDto);
 

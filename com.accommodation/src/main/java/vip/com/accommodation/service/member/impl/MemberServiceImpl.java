@@ -111,9 +111,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void mypageUpdate(MemberUpdateDto memberUpdateDto) {
+    public void mypageUpdate(MemberFindDto memberFindDto) {
 
-        memberMapper.mypageUpdate(memberUpdateDto);
+        memberMapper.mypageUpdate(memberFindDto);
     }
 
     @Override
