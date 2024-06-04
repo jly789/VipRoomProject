@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
+import vip.com.accommodation.dto.accommodation.Pagination;
 import vip.com.accommodation.dto.member.*;
 import vip.com.accommodation.dto.reservation.ReservationListDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
@@ -48,7 +49,14 @@ public class MemberController {
     }
 
     @PostMapping("/")
-    public String login_ok(MemberLoginDto memberLoginDto,HttpServletResponse response,HttpSession session,Model model)throws Exception{
+    public String login_ok(MemberLoginDto memberLoginDto,HttpServletResponse response,HttpSession session,Model model,
+                           @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+                           @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
+                           @RequestParam(value = "pageSize", required = false, defaultValue = "100") int pageSize)throws Exception{
+
+        int listCnt = accommodationService.testTableCount();
+        Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+        pagination.setTotalRecordCount(listCnt);
 
 
       if(memberService.login(memberLoginDto,response)==1){
@@ -57,9 +65,9 @@ public class MemberController {
           session.setAttribute("memberId",memberId);
 
 
-          List<AccommodationMainListDto> accommodationMainList = accommodationService.accommodationMainList();
+          List<AccommodationMainListDto> accommodationMainList = accommodationService.accommodationMainList(pagination);
           model.addAttribute("accommodationMainList",accommodationMainList);
-
+          model.addAttribute("paginationNotice",pagination);
 
 
           return "main/main";

@@ -113,6 +113,12 @@
             <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 885px;">
           </div>
 
+          <script>
+
+            function history_back() {
+              history.back();
+            }
+          </script>
 
 
         </div>
@@ -166,9 +172,6 @@ $('#noticeInsert').click(function (){
 });
 
 
-function history_back() {
-  history.back();
-}
 
 </script>
 

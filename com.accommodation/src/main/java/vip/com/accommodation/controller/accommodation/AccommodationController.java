@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
+import vip.com.accommodation.dto.accommodation.Pagination;
+import vip.com.accommodation.dto.accommodation.SearchCityPagination;
 import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
 import vip.com.accommodation.dto.city.CityDto;
 import vip.com.accommodation.dto.member.MemberInsertDto;
@@ -48,12 +50,25 @@ public class AccommodationController {
 
     @GetMapping("/accommodationMain")
 
-    public String accommodationMain(Model model){
+    public String accommodationMain(Model model,  @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+                                    @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
+                                    @RequestParam(value = "pageSize", required = false, defaultValue = "100") int pageSize)throws Exception{
+
+
+        int listCnt = accommodationService.testTableCount();
 
 
 
-        List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList();
+        Pagination pagination = new Pagination(currentPage, 6, pageSize);
+        pagination.setTotalRecordCount(listCnt);
 
+
+        List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList(pagination);
+
+
+
+
+        model.addAttribute("pagination",pagination);
         model.addAttribute("accommodationMainList",accommodationMainList);
 
 
@@ -63,23 +78,42 @@ public class AccommodationController {
 
     @PostMapping("/accommodationMainSearchCity")
 
-    public String accommodationMainSearchCity(@ModelAttribute("accommodationMainListDto")AccommodationMainListDto accommodationMainListDto,Model model){
+    public String accommodationMainSearchCity(@ModelAttribute("accommodationMainListDto")AccommodationMainListDto accommodationMainListDto,Model model,
+                                              @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+                                              @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
+                                              @RequestParam(value = "pageSize", required = false, defaultValue = "200") int pageSize)throws Exception{
+
+
 
 
         if(accommodationMainListDto.getAccommodationDistrict().equals("전체")){
 
-            List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList();
+            int listCnt = accommodationService.testTableCount();
+            Pagination pagination = new Pagination(currentPage, 6, pageSize);
+            pagination.setTotalRecordCount(listCnt);
+
+            pagination.setCntPerPage(listCnt);
+
+
+            List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList(pagination);
 
             model.addAttribute("accommodationMainList",accommodationMainList);
 
-
+            model.addAttribute("pagination",pagination);
             return "accommodation/accommodationMain";
         }
 
 
+        int listCnt = accommodationService.accommodationMainListSearchCityTableCount(accommodationMainListDto.getAccommodationDistrict(),accommodationMainListDto.getAccommodationCity());
+        Pagination pagination = new Pagination(currentPage, 100, pageSize);
+        pagination.setTotalRecordCount(listCnt);
 
-        List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainListSearchCity(accommodationMainListDto);
+        pagination.setAccommodationDistrict(accommodationMainListDto.getAccommodationDistrict());
+        pagination.setAccommodationCity(accommodationMainListDto.getAccommodationCity());
 
+        List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainListSearchCity(pagination);
+
+        model.addAttribute("pagination",pagination);
         model.addAttribute("accommodationMainList",accommodationMainList);
 
 

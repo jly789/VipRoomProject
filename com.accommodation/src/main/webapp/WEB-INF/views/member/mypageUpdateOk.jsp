@@ -173,7 +173,15 @@
 
 
         <input type="submit" id="register" value="수정하기" class="btn btn-primary py-3 px-5" >
+        <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back(); ">
 
+
+        <script>
+
+          function history_back() {
+            history.back();
+          }
+        </script>
 
       </form:form>
 

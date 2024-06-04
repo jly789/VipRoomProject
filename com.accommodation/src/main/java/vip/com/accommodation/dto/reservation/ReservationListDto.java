@@ -22,6 +22,9 @@ public class ReservationListDto {
     private String reservationCheckIn; //체크인
     private String reservationCheckOut; //체크아웃
 
+    //숙소
+    private String accommodationName; //숙소이름
+
 
     //객실
     private int roomPrice; //객실 1박당 가격

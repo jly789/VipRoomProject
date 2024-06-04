@@ -138,11 +138,12 @@
       <div class="col-lg-9">
         <div class="row">
           <div class="col-md-12 ftco-animate">
-            <div class="single-slider owl-carousel">
-
+            <div class="">
+<%--              <div class="single-slider owl-carousel">--%>
               <div class="item">
                 <c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
-                <div class="hotel-img" style="background-image: url(${accommodationDetailList.accommodationImagePath});"></div>
+<%--                <div class="hotel-img" style="background-image: url(${accommodationDetailList.accommodationImagePath});"></div>--%>
+                <img src="${accommodationDetailList.accommodationImagePath}" width="800px;" height="400px;" />
 
               </div>
             </div>
@@ -226,12 +227,60 @@
 
     							</span>
             </p>
-            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-            <div class="d-md-flex mt-5 mb-5">
+            <p><strong>
 
-                ${accommodationDetailList.accommodationInformation}
 
-            </div>
+
+                  ${accommodationDetailList.accommodationInformation}<br/><br/>
+
+
+              ※ 체크인 15시 체크아웃 11시 <br/>
+              익스프레스 체크아웃: 추가 결제 금액이 없는 경우 로비 키 드롭 박스에 객실 키를 반납하실 수 있습니다.  <br/><br/>
+              ※스마트 체크인 서비스 도입 안내  <br/>
+              비대면으로 빠르게 체크인 가능 | 키오스크 위치: 1층 로비, 지하 1층 주차장 <br/>
+              체크인 당일 오전 10시 이후 알림문자 전송 <br/>
+              모바일 체크인 및 키오스크에서 객실키 수령 후 체크인 진행 <br/><br/>
+              ※ 주차(발렛) 요금 <br/>
+              투숙객 10,000원/박 | 체크아웃 당일 12시까지 | 객실 당 1대 정산 및 출차 요청은 지하 1층 주차데스크에서 가능합니다 |<br/> 문의 010 2089 3971 <br/>
+              주차불가 상품 및 추가 차량은 1대 당 45,000원의 비용이 발생합니다. <br/>
+              체크아웃 시간대에는 출차가 지연될 수 있습니다 많은 양해 부탁드립니다. <br/><br/>
+              ※인원 추가 정보 <br/>
+              기준 인원 외 추가 시, 1인 22,000원 (영유아 포함) <br/>
+              영유아 인원수 포함 / 최대 인원 초과 불가 <br/>
+              침구 추가 가능 (유료 / 사전 문의 필수) <br/>
+              현장 결제 및 추가 비용 호텔 프론트 문의 <br/><br/>
+              ※ 필 (必) 환경 캠페인 <br/>
+              일회용품 칫솔&고체 치약 세트 1EA 2,500원 / 면도기 1EA 1,000원 프런트데스크에서 구매 가능합니다. <br/><br/>
+              ※ 인터넷 | 와이파이 <br/>
+              아이디: GLAD COEX / 비밀번호: 없음 <br/><br/>
+              ※ 금연 <br/>
+              흡연 구역(10층 야외 부스)외 호텔 객실 및 복도에서 흡연하시면 특별 정비 비용 20만원이 부과됩니다. <br/><br/>
+              ※ 부대시설 <br/>
+              조식 (지하 2층 - 프로젝트룸) 07:00 ~ 09:30 (Last Order 09:00) 기본메뉴: 아메리칸 브렉퍼스트 <br/>
+              변경 가능 메뉴: 한식 메뉴 (변경 원할시, 체크인시 프론트 사전 요청 필수) <br/>
+              카페 지(1층)
+              월~금 08:00 ~ 18:00 | 토~일 휴무 | 브레이크 타임 14:00 ~ 15:00 <br/>
+              갓포아키(지하2층)
+              월~토 17:30 ~ 24:30 (Last Order 23:20) | 일요일 휴무 | 월~목 투숙객 10% 할인 (21시 이후) <br/>
+              헬스장(지하2층) 24시간 운영 / 세탁실(지하2층) 세탁 4,000원(세제 포함), 건조 4,000원 | 24시간 운영 <br/>
+              루프 탑(옥상) 08:00 ~ 22:00 / 비즈니스 라운지(1층) 24시간 운영 <br/><br/>
+              ※1박 / 연박 모두 동일하게 고객 노쇼 시, 1박 비용이 부과됩니다. <br/>
+              노쇼(NO-SHOW): 예약을 하고 예약 취소를 하지 않은 채 투숙하지 않은 것을 의미합니다. <br/><br/>
+              ※객실 체크인시 신분증 확인 및 게런티(Deposit)카드가 요청됩니다. <br/><br/>
+              ※ 기타 <br/>
+              친환경, 위생, 보안 문제 등을 예방하고 쾌적한 환경을 위해 호텔내 외부 배달 음식 반입은 자제해 주세요! <br/>
+              기물(얼음, 식기류, 일회용품 등) 대여 서비스는 불가합니다. <br/>
+              호텔 시설, 비품 파손 및 분실에 대한 비용을 청구될 수 있습니다. <br/>
+              미성년자 숙박은 관련 서류 증빙 시에만 투숙 가능하며 관련 이용 기준 외 투숙 적발 시 퇴실 조치됩니다. <br/>
+              객실 내 화기 물질(촛불, 라이터, 성냥 등) 사용은 불가합니다. <br/>
+
+
+
+            </strong>
+
+
+            </p>
+
 
         </c:forEach>
 
@@ -318,7 +367,16 @@
 
 
 
+<div class="form-group">
+  <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 885px;">
+</div>
 
+<script>
+
+  function history_back() {
+    history.back();
+  }
+</script>
 
 
 

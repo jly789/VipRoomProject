@@ -133,7 +133,7 @@
 
 
         <td style="color:black">
-           ${userId}
+          관리자
         </td>
 
         <td style="color:black">
@@ -159,6 +159,8 @@
       </tr>
 
     </c:forEach>
+
+
       </tbody>
 
     </table>
@@ -168,7 +170,16 @@
 
 
 </section>
+<div class="form-group">
+  <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 885px;">
+</div>
 
+<script>
+
+  function history_back() {
+    history.back();
+  }
+</script>
 
 <br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/>

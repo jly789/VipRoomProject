@@ -108,7 +108,8 @@
 
 
                                         <option value="숙소선택"   selected="selected" >숙소선택</option>
-                                        <option value="호텔/리조트" >호텔/리조트</option>
+                                        <option value="호텔">호텔</option>
+                                        <option value="리조트">리조트</option>
                                         <option value="펜션/풀빌라">펜션/풀빌라</option>
                                         <option value="모텔">모텔</option>
                                         <option value="글램핑/캠핑">글램핑/캠핑</option>
@@ -132,7 +133,8 @@
                     <p>Click</p>
                     <p class="browse d-md-flex">
 
-                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=호텔/리조트"><i class="flaticon-hotel"></i>호텔/리조트</a></span>
+                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=호텔"><i class="flaticon-hotel"></i>호텔</a></span>
+                        <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=리조트"><i class="flaticon-hotel"></i>리조트</a></span>
                         <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=펜션/풀빌라"><i class="flaticon-hotel"></i>펜션/풀빌라</a></span>
                         <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=모텔"><i class="flaticon-hotel"></i>모텔</a></span>
 
@@ -194,7 +196,7 @@
             <div class="row justify-content-start mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate">
 
-                    <h3 class="mb-4"><strong>Best 숙소</strong></h3>
+                    <h3 class="mb-4"><strong>숙소</strong></h3>
                 </div>
             </div>
             <div class="row">
@@ -437,7 +439,8 @@
                 </div>
                 <p>Click</p>
                 <p class="browse d-md-flex">
-                    <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=호텔/리조트"><i class="flaticon-hotel"></i>호텔/리조트</a></span>
+                    <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=호텔"><i class="flaticon-hotel"></i>호텔</a></span>
+                    <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=리조트"><i class="flaticon-hotel"></i>리조트</a></span>
                     <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=펜션/풀빌라"><i class="flaticon-hotel"></i>펜션/풀빌라</a></span>
                     <span class="d-flex justify-content-md-center align-items-md-center"><a href="/CategorySearch?accommodationCategory=모텔"><i class="flaticon-hotel"></i>모텔</a></span>
                 </p>
@@ -497,7 +500,7 @@
             <div class="row justify-content-start mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate">
 
-                    <h3 class="mb-4"><strong>Best 숙소</strong></h3>
+                    <h3 class="mb-4"><strong>숙소</strong></h3>
                 </div>
             </div>
             <div class="row">

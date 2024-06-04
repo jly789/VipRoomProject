@@ -12,6 +12,25 @@
         select ifnull(max(accommodationId),0) from accommodation
     </select>
 
+    <select id="testTableCount" resultType="int">
+        SELECT count(*) FROM
+            accommodation
+    </select>
+
+    <select id="accommodationMainListSearchCityTableCount" parameterType="String" resultType="int">
+        SELECT count(*) FROM
+            accommodation
+        where  accommodationDistrict=#{accommodationDistrict} and accommodationCity=#{accommodationCity}
+    </select>
+
+    <select id="categorySearchTableCount" parameterType="String" resultType="int">
+        SELECT count(*) FROM
+            accommodation
+        where  accommodationCategory=#{accommodationCategory}
+    </select>
+
+
+
 
     <insert id="accommodationInsert" parameterType="vip.com.accommodation.mapper.accommodation.AccommodationMapper">
 
@@ -37,15 +56,27 @@
 
     <select id="accommodationMainList" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
 
-        select  a.accommodationId,a.accommodationName ,a.accommodationDistrict,a.accommodationCity
-               ,a.accommodationAddress,a.accommodationCategory,b.accommodationImage,b.accommodationImagePath
+        select *
+        from (
+                 SELECT  ROW_NUMBER() OVER(order by a.accommodationId asc) AS
+                             row_num,
+
+
+            a.accommodationId,a.accommodationName ,a.accommodationDistrict,a.accommodationCity
+               ,a.accommodationAddress,a.accommodationCategory,a.accommodationCreateDate,b.accommodationImage,b.accommodationImagePath
                  from  accommodation a
                                                    left join  accommodationImg b
                                                               on a.accommodationId= b.accommodationId
                                                    left join room c on c.accommodationId = b.accommodationId
         group by a.accommodationName,a.accommodationId,a.accommodationDistrict,a.accommodationCity
-                                    ,a.accommodationAddress,a.accommodationCategory,b.accommodationImage,b.accommodationImagePath
+                                    ,a.accommodationAddress,a.accommodationCategory,a.accommodationCreateDate,b.accommodationImage,b.accommodationImagePath
 
+                ) paging
+
+        <if test="firstRecordIndex !=null and lastRecordIndex != null">
+            WHERE row_num > #{firstRecordIndex} AND
+            #{lastRecordIndex} >=row_num
+        </if>
 
 
 
@@ -71,44 +102,67 @@
 
     </select>
 
-    <select id="accommodationCategorySearchList" parameterType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
+    <select id="accommodationCategorySearchList" parameterType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto"  resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
 
 
+        select
+        a.accommodationId,a.accommodationName ,a.accommodationDistrict,a.accommodationCity
+        ,a.accommodationAddress,a.accommodationCategory,a.accommodationCreateDate,b.accommodationImage,b.accommodationImagePath
+        from  accommodation a
+        left join  accommodationImg b
+        on a.accommodationId= b.accommodationId
+        left join room c on c.accommodationId = b.accommodationId
 
+        where  accommodationCategory=#{accommodationCategory}
 
-        select  a.accommodationId,a.accommodationName ,b.accommodationImage,
-                a.accommodationCategory  from  accommodation a
-                                                   left join  accommodationImg b
-                                                              on a.accommodationId= b.accommodationId
-                                                   left join room c on c.accommodationId = b.accommodationId
-
-        where  a.accommodationCategory=#{accommodationCategory}
-        group by a.accommodationName,a.accommodationId,b.accommodationImage
-
-
-
-    </select>
+        group by a.accommodationName,a.accommodationId,a.accommodationDistrict,a.accommodationCity
+        ,a.accommodationAddress,a.accommodationCategory,a.accommodationCreateDate,b.accommodationImage,b.accommodationImagePath
 
 
 
 
 
-    <select id="accommodationMainListSearchCity" parameterType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
-
-        select  a.accommodationId,a.accommodationName ,b.accommodationImage,
-                a.accommodationCategory  from  accommodation a
-                                                   left join  accommodationImg b
-                                                              on a.accommodationId= b.accommodationId
-                                                   left join room c on c.accommodationId = b.accommodationId
-
-        where a.accommodationDistrict= #{accommodationDistrict} and a.accommodationCity=#{accommodationCity}
-        group by a.accommodationName,a.accommodationId,b.accommodationImage
 
 
 
 
 
     </select>
+
+
+
+
+
+    <select id="accommodationMainListSearchCity" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
+
+
+        select *
+        from (
+        SELECT  ROW_NUMBER() OVER(order by a.accommodationId asc) AS
+        row_num,
+
+
+        a.accommodationId,a.accommodationName ,a.accommodationDistrict,a.accommodationCity
+        ,a.accommodationAddress,a.accommodationCategory,a.accommodationCreateDate,b.accommodationImage,b.accommodationImagePath
+        from  accommodation a
+        left join  accommodationImg b
+        on a.accommodationId= b.accommodationId
+        left join room c on c.accommodationId = b.accommodationId
+        group by a.accommodationName,a.accommodationId,a.accommodationDistrict,a.accommodationCity
+        ,a.accommodationAddress,a.accommodationCategory,a.accommodationCreateDate,b.accommodationImage,b.accommodationImagePath
+
+        ) paging
+
+        <if test="firstRecordIndex !=null and lastRecordIndex != null">
+            WHERE row_num > #{firstRecordIndex} AND
+            #{lastRecordIndex} >=row_num  AND accommodationDistrict=#{accommodationDistrict} AND accommodationCity=#{accommodationCity}
+        </if>
+
+    </select>
+
+
+
+
 
 
     <select id="relatedHotelsDistrict" parameterType="int" resultType="String">

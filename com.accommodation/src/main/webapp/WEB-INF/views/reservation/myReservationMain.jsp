@@ -101,7 +101,7 @@
         </td>
 
         <td style="color:black">
-          <a style="color: black;" href="/reservation?roomId=${myReservationList.roomId}&accommodationId=${myReservationList.accommodationId}">${myReservationList.roomName}</a>
+          <a style="color: black;" href="/reservation?roomId=${myReservationList.roomId}&accommodationId=${myReservationList.accommodationId}">${myReservationList.accommodationName}(${myReservationList.roomName})</a>
 
         </td>
 
@@ -198,9 +198,24 @@
 
 
 </section>
+<div class="form-group">
+  <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 885px;">
+</div>
+
+<script>
+
+  function history_back() {
+    history.back();
+  }
+</script>
+
+<br/><br/><br/><br/>
 
 
-<br/><br/><br/><br/><br/><br/><br/>
+
+<br/><br/><br/>
+
+
 <br/><br/><br/><br/><br/><br/><br/>
 
 <jsp:include page="../main/footer.jsp"></jsp:include>

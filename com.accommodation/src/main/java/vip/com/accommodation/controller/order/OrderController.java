@@ -59,33 +59,4 @@ public class OrderController {
 
 
 
-//    @ResponseBody
-//    @PostMapping("/payment")
-//    public String reservation_ok(OrderInsertDto orderInsertDto) {
-//
-//        System.out.println("안녕");
-//
-//        System.out.println(orderInsertDto.getOrderNum());
-//        System.out.println(orderInsertDto.getImpUid());
-//        //    System.out.println(orderInsertDto.getOrderPrice());
-//
-//
-////             reservationService.reservationInsert(reservationInsertDto);
-////
-////            int reservationId =  reservationService.maxNum();
-////
-////            orderInsertDto.setReservationId(reservationId);
-////
-////            orderService.orderInsert(orderInsertDto);
-//
-//
-//
-//
-//
-//
-//
-//        return "main";
-//
-//
-//    }
 }

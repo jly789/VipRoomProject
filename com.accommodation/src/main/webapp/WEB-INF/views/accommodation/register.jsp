@@ -186,25 +186,11 @@
             <p>상품 이미지<span>*</span></p>
             <input type="file" name="file" id="fileList" onchange="readURL(this);">
           </div>
-          <button type="button" class="btnAdd">이미지 추가</button>
+<%--          <button type="button" class="btnAdd">이미지 추가</button>--%>
         </div>
       </div>
 
         <br/>
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
-
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
-
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
 
 
 
@@ -284,16 +270,6 @@
 
 
 
-    // $('#accommodationDistrictOption').click(function (){
-    //
-    //   const accommodationDistrict = '';
-    //   const accommodationDistrictOption = $('#accommodationDistrictOption').val();
-    //
-    //   $('#accommodationDistrict').val(accommodationDistrictOption)
-    //
-    //   return true;
-    // });
-
 
 
     $('#accommodationDistrictOption').change(function () {
@@ -338,14 +314,19 @@
 
 
               $('#subCategory').append(option)
+
             }
 
 
             $('#subCategory').niceSelect('update')
+
+
           },
           error: function (a,b,c){
             console.log(a,b,c);
           }
+
+
 
         });
 

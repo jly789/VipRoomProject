@@ -67,8 +67,10 @@
 
     <select id="myReservationList" parameterType="int" resultType="vip.com.accommodation.dto.reservation.ReservationListDto">
         select * from reservation
+                          left join accommodation on accommodation.accommodationId = reservation.accommodationId
                           left join review on review.reservationId = reservation.reservationId
                           left join room on room.roomId = reservation.roomId
+
         where reservation.memberId =#{memberId}
         order by reservation.reservationStatus='예약취소' asc
 

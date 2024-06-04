@@ -38,202 +38,6 @@
   <link rel="stylesheet" href="/resources/css/icomoon.css">
   <link rel="stylesheet" href="/resources/css/style.css">
 
-  <style>
-
-    a:link {
-      color: red;
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: black;
-      text-decoration: none;
-    }
-
-    /* paginate */
-    .paginate {
-      padding: 0;
-      line-height: normal;
-      text-align: center;
-      position: relative;
-      margin: 20px 0 20px 0;
-      z-index: 1;
-    }
-
-    .paginate .paging {
-      text-align: center;
-    }
-
-    .paginate .paging a, .paginate .paging strong {
-      margin: 0;
-      padding: 0;
-      width: 20px;
-      height: 24px;
-      line-height: 24px;
-      text-align: center;
-      color: #848484;
-      display: inline-block;
-      vertical-align: middle;
-      text-align: center;
-      font-size: 12px;
-    }
-
-    .paginate .paging a:hover, .paginate .paging strong {
-      color: #DAA520;
-      font-weight: 600;
-      font-weight: normal;
-    }
-
-    .paginate .paging .direction {
-      z-index: 3;
-      vertical-align: middle;
-      background-color: none;
-      margin: 0 2px;
-      border: 1px solid #777;
-      border-radius: 2px;
-      width: 28px;
-    }
-
-    .paginate .paging .direction:hover {
-      border: 1px solid #C40639;
-    }
-
-    .paginate .paging .direction.prev {
-      margin-right: 4px;
-    }
-
-    .paginate .paging .direction.next {
-      margin-left: 4px;
-      cursor: pointer;
-    }
-
-    .paginate .paging img {
-      vertical-align: middle;
-    }
-
-    .paginate .right {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    .bottom-left, .bottom-right {
-      position: relative;
-      z-index: 5;
-    }
-
-    .paginate ~ .bottom {
-      margin-top: -50px;
-    }
-
-
-    .bottom select {
-      background: transparent;
-      color: #aaa;
-      cursor: pointer;
-    }
-
-
-    /* paginate */
-    .paginate {
-      padding: 0;
-      line-height: normal;
-      text-align: center;
-      position: relative;
-      margin: 20px 0 20px 0;
-    }
-
-    .paginate .paging {
-      text-align: center;
-    }
-
-    .paginate .paging a, .paginate .paging strong {
-      margin: 0;
-      padding: 0;
-      width: 20px;
-      height: 28px;
-      line-height: 28px;
-      text-align: center;
-      color: #999;
-      display: inline-block;
-      vertical-align: middle;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .paginate .paging a:hover, .paginate .paging strong {
-      color: #C40639;
-      font-weight: 600;
-      font-weight: normal;
-    }
-
-    .paginate .paging .direction {
-      z-index: 3;
-      vertical-align: middle;
-      background-color: none;
-      margin: 0 2px;
-    }
-
-    .paginate .paging .direction:hover {
-      background-color: transparent;
-    }
-
-    .paginate .paging .direction.prev {
-      margin-right: 4px;
-    }
-
-    .paginate .paging .direction.next {
-      margin-left: 4px;
-    }
-
-    .paginate .paging img {
-      vertical-align: middle;
-    }
-
-    .paginate .right {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-
-    .slidecontainer {
-      width: 300px;
-      margin-top: 100px;
-    }
-
-    .slider {
-      -webkit-appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
-      width: 170px; /* 슬라이더 길이 */
-      height: 8px; /* 슬라이더 두께 */
-      border-radius: 1px; /* 슬라이더 모서리를 약간 둥글게 */
-      background: #ccc; /* 슬라이더 색상 */
-      outline: none; /* 슬라이더 테두리 없이 */
-    }
-
-    /* 슬라이더 핸들(클릭해서 드래그하는 부분) 커스텀
-    (Chrome, Opera, Safari, Edge 브라우저를 위해서는 -webkit-을,
-    Firefox 브라우저를 위해서는 -moz- 를 사용하세요 */
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
-      appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
-      width: 25px; /* 슬라이더 핸들 길이 */
-      height: 25px; /* 슬라이더 핸들 높이 */
-      border-radius: 50%; /* 핸들 모양을 원모양으로 만들기 위함 */
-      background: gray; /* 슬라이더 핸들 색상 */
-      cursor: pointer; /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
-    }
-
-    .slider::-moz-range-thumb {
-      width: 100px; /* 슬라이더 핸들 길이 */
-      height: 25px; /* 슬라이더 핸들 높이 */
-      border-radius: 50%; /* 핸들 모양을 원모양으로 만들기 위함 */
-      background: #00f; /* 슬라이더 핸들 색상 */
-      cursor: pointer; /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
-    }
-
-  </style>
-
 </head>
 <body>
 
@@ -327,10 +131,6 @@
 
 
 
-          <c:choose>
-
-
-            <c:when test="${fn:length(accommodationMainList) < 2}">
 
 
 
@@ -372,97 +172,10 @@
 
 
 
-            </c:when>
 
 
 
 
-          <c:when test="${fn:length(accommodationMainList) >= 4}">
-
-
-
-          <c:forEach var="accommodationMainList" items="${accommodationMainList}">
-
-          <div class="col-md-4 ftco-animate">
-            <div class="destination">
-              <a href="${accommodationMainList.accommodationId}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(accommodationImg/${accommodationMainList.accommodationImage});">
-                <div class="icon d-flex justify-content-center align-items-center">
-                  <span class="icon-search2"></span>
-                </div>
-              </a>
-              <div class="text p-3">
-                <div class="d-flex">
-                  <div class="one">
-                    <h3>${accommodationMainList.accommodationName}</h3>
-
-                  </div>
-                  <div class="two">
-<%--                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>--%>
-                  </div>
-                </div>
-                <p></p>
-                <hr>
-                <p class="bottom-area d-flex">
-                  <span><i class="icon-map-o"></i>${accommodationMainList.accommodationCategory}</span>
-                  <span class="ml-auto"><a href="${accommodationMainList.accommodationId}">예약하기</a></span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          </c:forEach>
-
-
-            <!--paginate -->
-            <div class="paginate" >
-              <div class="paging" style="margin-left: 200px;">
-                <a class="direction prev" href="javascript:void(0);" style="color: black;"
-                   onclick="movePage(1,${pagination.cntPerPage},${pagination.pageSize});">
-                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-                                   style="color: black;"
-                                   onclick="movePage(${pagination.currentPage}<c:if
-                                           test="${pagination.hasPreviousPage == true}">-1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-                &lt; </a>
-
-                <c:forEach begin="${pagination.firstPage}"
-                           end="${pagination.lastPage}" var="idx">
-                  <a
-                          style="color: black;
-                            <c:out value="${pagination.currentPage == idx ? 'black; font-weight:700; margin-bottom: 2px;' : ''}"/> "
-                          href="javascript:void(0);"
-                          onclick="movePage(${idx},${pagination.cntPerPage},${pagination.pageSize});"><c:out
-                          value="${idx}"/></a>
-                </c:forEach>
-                <a class="direction next" href="javascript:void(0);" style="color: black;"
-                   onclick="movePage(${pagination.currentPage}<c:if
-                           test="${pagination.hasNextPage == true}">+1</c:if>,${pagination.cntPerPage},${pagination.pageSize});">
-                  &gt; </a> <a class="direction next" href="javascript:void(0);"
-                               style="color: black;"
-                               onclick="movePage(${pagination.totalRecordCount},${pagination.cntPerPage},${pagination.pageSize});">
-                &gt;&gt; </a>
-              </div>
-            </div>
-            <!-- /paginate -->
-
-
-
-
-            </c:when>
-
-
-
-
-
-
-
-
-            <c:otherwise>
-
-            </c:otherwise>
-
-
-
-            </c:choose>
 
 
 
@@ -474,16 +187,7 @@
 
 <script>
 
-  //페이지 이동
-  function movePage(currentPage, cntPerPage, pageSize) {
 
-    var url = "${pageContext.request.contextPath}/accommodationMain";
-    url = url + "?currentPage=" + currentPage;
-    url = url + "&cntPerPage=" + cntPerPage;
-    url = url + "&pageSize=" + pageSize;
-
-    location.href = url;
-  }
 
   function history_back() {
     history.back();

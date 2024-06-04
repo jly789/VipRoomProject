@@ -62,12 +62,12 @@
       <div class="col-lg-9">
         <div class="row">
           <div class="col-md-12 ftco-animate">
-            <div class="single-slider owl-carousel">
-
+<%--            <div class="single-slider owl-carousel">--%>
+              <div>
               <div class="item">
                 <c:forEach var="roomSpecificListDto" items="${roomSpecificListDto}">
-                <div class="hotel-img" style="background-image: url(${roomSpecificListDto.roomImagePath});"></div>
-
+<%--                <div class="hotel-img" style="background-image: url(${roomSpecificListDto.roomImagePath});"></div>--%>
+                  <img src="${roomSpecificListDto.roomImagePath}" width="800px;" height="400px;" />
               </div>
             </div>
           </div>
@@ -242,6 +242,17 @@
               </div>
               </c:forEach>
 </section> <!-- .section -->
+
+<div class="form-group">
+  <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 730px;">
+</div>
+
+<script>
+
+  function history_back() {
+    history.back();
+  }
+</script>
 
 
 <script>

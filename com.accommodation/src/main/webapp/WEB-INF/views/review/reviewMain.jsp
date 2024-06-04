@@ -153,15 +153,23 @@
       </tbody>
 
     </table>
-  </div>
+  </div><br/><br/>
+
+  <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 885px; ">
 
 
+  <script>
+
+    function history_back() {
+      history.back();
+    }
+  </script>
 
 
 </section>
 
 
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/>
 
 <jsp:include page="../main/footer.jsp"></jsp:include>

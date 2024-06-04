@@ -3,9 +3,7 @@ package vip.com.accommodation.service.accommodation.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vip.com.accommodation.dto.accommodation.AccommodationFindDto;
-import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
-import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
+import vip.com.accommodation.dto.accommodation.*;
 import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 
@@ -36,8 +34,18 @@ public class AccommodationServiceImpl implements AccommodationService {
 
 
     @Override
-    public List<AccommodationMainListDto> accommodationMainList() {
-       return   accommodationMapper.accommodationMainList();
+    public List<AccommodationMainListDto> accommodationMainList(Pagination pagination) {
+       return   accommodationMapper.accommodationMainList(pagination);
+    }
+
+    @Override
+    public int testTableCount() throws Exception {
+        return accommodationMapper.testTableCount();
+    }
+
+    @Override
+    public int accommodationMainListSearchCityTableCount(String accommodationDistrict,String accommodationCity) throws Exception {
+        return accommodationMapper.accommodationMainListSearchCityTableCount(accommodationDistrict,accommodationCity);
     }
 
     @Override
@@ -51,8 +59,13 @@ public class AccommodationServiceImpl implements AccommodationService {
     }
 
     @Override
-    public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto) {
-        return accommodationMapper.accommodationMainListSearchCity(accommodationMainListDto);
+    public List<AccommodationMainListDto> accommodationMainListSearchCity(Pagination pagination) {
+        return accommodationMapper.accommodationMainListSearchCity(pagination);
+    }
+
+    @Override
+    public int categorySearchTableCount(String category) throws Exception {
+        return accommodationMapper.categorySearchTableCount(category);
     }
 
     @Override

@@ -1,9 +1,7 @@
 package vip.com.accommodation.mapper.accommodation;
 
 import org.apache.ibatis.annotations.Mapper;
-import vip.com.accommodation.dto.accommodation.AccommodationFindDto;
-import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
-import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
+import vip.com.accommodation.dto.accommodation.*;
 
 import java.util.List;
 
@@ -15,12 +13,19 @@ public interface AccommodationMapper {
 
     public List<AccommodationFindDto> accommodationFindList();
 
-    public List<AccommodationMainListDto> accommodationMainList();
+    public List<AccommodationMainListDto> accommodationMainList(Pagination pagination);
+
+    public int testTableCount() throws Exception; //숙소전체리스트 갯수구하기
+    public int accommodationMainListSearchCityTableCount(String accommodationDistrict,String accommodationCity) throws Exception; //숙소 검색된 도시에 해당되는 숙소리스트 갯수구하기
+
+    public int categorySearchTableCount(String category) throws Exception; //숙소유형에 해당되는 숙소리스트 갯수구하기
 
     public List<AccommodationMainListDto> distinctSearchList(AccommodationMainListDto accommodationMainListDto); //main리스트에서 원하는 지역구,숙소유형의 검색 숙소리스트
     public List<AccommodationMainListDto> accommodationCategorySearchList(AccommodationMainListDto accommodationMainListDto); //main리스트에서 숙소유형의  숙소리스트
 
-    public List<AccommodationMainListDto> accommodationMainListSearchCity(AccommodationMainListDto accommodationMainListDto);
+
+
+    public List<AccommodationMainListDto> accommodationMainListSearchCity(Pagination pagination);
 
 
 

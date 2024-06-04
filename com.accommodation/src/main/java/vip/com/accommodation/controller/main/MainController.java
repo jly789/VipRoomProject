@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
+import vip.com.accommodation.dto.accommodation.Pagination;
 import vip.com.accommodation.dto.member.MemberDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 
@@ -22,24 +24,45 @@ public class MainController {
     private AccommodationService accommodationService;
 
     @GetMapping("/")
-    public String main(Model model)throws Exception{
+    public String main(Model model,  @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+                       @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
+                       @RequestParam(value = "pageSize", required = false, defaultValue = "100") int pageSize)throws Exception{
 
-        List<AccommodationMainListDto> accommodationMainList = accommodationService.accommodationMainList();
+
+
+        int listCnt = accommodationService.testTableCount();
+
+
+
+        Pagination pagination = new Pagination(currentPage, 6, pageSize);
+        pagination.setTotalRecordCount(listCnt);
+
+        List<AccommodationMainListDto> accommodationMainList = accommodationService.accommodationMainList(pagination);
         model.addAttribute("accommodationMainList",accommodationMainList);
 
         return "main/main";
     }
 
     @PostMapping("/distinctSearch")
-    public String distinctSearch(AccommodationMainListDto accommodationMainListDto, Model model)throws Exception{
+    public String distinctSearch(AccommodationMainListDto accommodationMainListDto, Model model,
+             @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage, @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
+                                 @RequestParam(value = "pageSize", required = false, defaultValue = "100") int pageSize)throws Exception{
+
+
+
 
 
 
         if(accommodationMainListDto.getAccommodationDistrict().equals("지역선택")|| accommodationMainListDto.getAccommodationCategory().equals("숙소선택")){
 
+            int listCnt = accommodationService.testTableCount();
 
-            List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList();
+            Pagination pagination = new Pagination(currentPage, 6, pageSize);
+            pagination.setTotalRecordCount(listCnt);
+            List<AccommodationMainListDto> accommodationMainList= accommodationService.accommodationMainList(pagination);
 
+
+            model.addAttribute("pagination",pagination);
             model.addAttribute("accommodationMainList",accommodationMainList);
 
 
@@ -52,7 +75,7 @@ public class MainController {
         model.addAttribute("accommodationMainList",distinctSearchList);
 
 
-        return "accommodation/accommodationMain";
+        return "accommodation/accommodationSearchMain";
     }
 
 
@@ -65,7 +88,7 @@ public class MainController {
         model.addAttribute("accommodationMainList",categorySearchList);
 
 
-        return "accommodation/accommodationMain";
+        return "accommodation/accommodationSearchMain";
     }
 
 
