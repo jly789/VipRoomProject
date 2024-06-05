@@ -40,7 +40,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/">VIP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
@@ -76,6 +76,7 @@
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
                 <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                     <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>VIP<br></strong>Room</h1>
+
                     <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></p>
                     <div class="block-17 my-4">
                         <form action="/distinctSearch" method="post"  class="d-block d-flex">
@@ -236,82 +237,33 @@
     </section>
 
 
-    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(resources/images/bg_1.jpg);">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <h2 class="mb-4">실시간</h2>
-                    <span class="subheading">5,000개 이상의 숙소 사이트 호스팅</span>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="row">
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="1000000">0</strong><strong class="number">명</strong>
-                                    <span>이용자 수</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="10000">0</strong><strong class="number">명</strong>
-                                    <span>실시간 접속자 수</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="5000">0</strong><strong class="number">개</strong>
-                                    <span>영업숙소</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="100000">0</strong></strong><strong class="number">개</strong>
-                                    <span>주변 음식점</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
 
 
-
-
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer class="ftco-footer ftco-bg-dark ftco-section" style="background-color: #A98CA0; ">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">GitHub 주소</h2>
-                        <p><a style="color: white;" href="https://github.com/jly789">https://github.com/jly789</a></p>
+                    <div class="ftco-footer-widget mb-4" >
+                        <h2 class="ftco-heading-2" style="color: black;">GitHub 주소</h2>
+                        <p><a style="color: black;" href="https://github.com/jly789" >https://github.com/jly789</a></p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                            <li class="ftco-animate"><a ><span class="icon-twitter"></span></a></li>
-                            <li class="ftco-animate"><a><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a ><span class="icon-instagram"></span></a></li>
+                            <li class="ftco-animate"><a ><span class="icon-twitter" style="color: black;"></span></a></li>
+                            <li class="ftco-animate"><a><span class="icon-facebook" style="color: black;"></span></a></li>
+                            <li class="ftco-animate"><a ><span class="icon-instagram" style="color: black;"></span></a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">연락문의</h2>
+                        <h2 class="ftco-heading-2" style="color: black;">연락문의</h2>
                         <div class="block-23 mb-3">
                             <ul>
 
-                                <li><a> <span class="icon icon-map-marker"></span><span class="text">경기도 성남시 태평동 7210</span></a></li>
-                                <li><a> <span class="icon icon-phone"></span><span class="text">010-2089-3971</span></a></li>
-                                <li><a> <span class="icon icon-envelope"></span><span class="text">jly789@naver.com</span></a></li>
+                                <li><a> <span class="icon icon-map-marker"></span><span class="text" style="color: black;">경기도 성남시 태평동 7210</span></a></li>
+                                <li><a> <span class="icon icon-phone"></span><span class="text" style="color: black;">010-2089-3971</span></a></li>
+                                <li><a> <span class="icon icon-envelope"></span><span class="text" style="color: black;">jly789@naver.com</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -321,7 +273,7 @@
                 <div class="col-md-12 text-center">
 
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                      <strong>Vip Room </strong>
+                        <strong style="color: black;">VIP Room </strong>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
             </div>
@@ -330,6 +282,7 @@
 
     </footer>
 
+
 </c:if>
 
 
@@ -337,7 +290,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/">VIP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -387,8 +340,9 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-            <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '100%' }">
                 <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>VIP<br></strong>Room</h1>
+
                 <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></p>
                 <div class="block-17 my-4">
                     <form action="/distinctSearch" method="post"  class="d-block d-flex">
@@ -476,9 +430,10 @@
                         <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-detective"></span></div></div>
                         <div class="media-body p-2 mt-2">
                             <h3 class="heading mb-3">숙소가 고민이다</h3>
-                            <p>바로 이곳 Vip Room</p>
+                            <p>바로 이곳 VIP Room</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-md-3 d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
@@ -541,81 +496,34 @@
 
 
 
-    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(resources/images/bg_1.jpg);">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <h2 class="mb-4">실시간</h2>
-                    <span class="subheading">5,000개 이상의 숙소 사이트 호스팅</span>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="row">
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="1000000">0</strong><strong class="number">명</strong>
-                                    <span>이용자 수</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="10000">0</strong><strong class="number">명</strong>
-                                    <span>실시간 접속자 수</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="5000">0</strong><strong class="number">개</strong>
-                                    <span>영업숙소</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                            <div class="block-18 text-center">
-                                <div class="text">
-                                    <strong class="number" data-number="100000">0</strong></strong><strong class="number">개</strong>
-                                    <span>주변 음식점</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
 
 
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer class="ftco-footer ftco-bg-dark ftco-section" style="background-color: #A98CA0; ">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">GitHub 주소</h2>
-                        <p><a style="color: white;" href="https://github.com/jly789">https://github.com/jly789</a></p>
+                    <div class="ftco-footer-widget mb-4" >
+                        <h2 class="ftco-heading-2" style="color: black;">GitHub 주소</h2>
+                        <p><a style="color: black;" href="https://github.com/jly789" >https://github.com/jly789</a></p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                            <li class="ftco-animate"><a ><span class="icon-twitter"></span></a></li>
-                            <li class="ftco-animate"><a><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a ><span class="icon-instagram"></span></a></li>
+                            <li class="ftco-animate"><a ><span class="icon-twitter" style="color: black;"></span></a></li>
+                            <li class="ftco-animate"><a><span class="icon-facebook" style="color: black;"></span></a></li>
+                            <li class="ftco-animate"><a ><span class="icon-instagram" style="color: black;"></span></a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">연락문의</h2>
+                        <h2 class="ftco-heading-2" style="color: black;">연락문의</h2>
                         <div class="block-23 mb-3">
                             <ul>
 
-                                <li><a> <span class="icon icon-map-marker"></span><span class="text">경기도 성남시 태평동 7210</span></a></li>
-                                <li><a> <span class="icon icon-phone"></span><span class="text">010-2089-3971</span></a></li>
-                                <li><a> <span class="icon icon-envelope"></span><span class="text">jly789@naver.com</span></a></li>
+                                <li><a> <span class="icon icon-map-marker"></span><span class="text" style="color: black;">경기도 성남시 태평동 7210</span></a></li>
+                                <li><a> <span class="icon icon-phone"></span><span class="text" style="color: black;">010-2089-3971</span></a></li>
+                                <li><a> <span class="icon icon-envelope"></span><span class="text" style="color: black;">jly789@naver.com</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -625,7 +533,7 @@
                 <div class="col-md-12 text-center">
 
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <strong>Vip Room </strong>
+                        <strong style="color: black;">VIP Room </strong>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
             </div>
@@ -633,6 +541,7 @@
 
 
     </footer>
+
 
 
 

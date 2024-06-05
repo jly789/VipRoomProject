@@ -77,6 +77,8 @@ public class AccommodationController {
                                               @RequestParam(value = "pageSize", required = false, defaultValue = "200") int pageSize)throws Exception{
 
 
+        System.out.println(accommodationMainListDto.getAccommodationDistrict());
+
 
 
         if(accommodationMainListDto.getAccommodationDistrict().equals("전체")){
@@ -95,6 +97,8 @@ public class AccommodationController {
             model.addAttribute("pagination",pagination);
             return "accommodation/accommodationMain";
         }
+
+
 
 
         int listCnt = accommodationService.accommodationMainListSearchCityTableCount(accommodationMainListDto.getAccommodationDistrict(),accommodationMainListDto.getAccommodationCity());

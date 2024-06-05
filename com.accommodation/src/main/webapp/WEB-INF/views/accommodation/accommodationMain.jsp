@@ -273,6 +273,7 @@
                   </select>
                     </c:if>
 
+
                   <c:if test="${accommodationMainListDto.accommodationDistrict==null}">
                   <option value="선택" selected="selected" disabled>선택</option>
                     <option value="전체">전체</option>
@@ -312,7 +313,7 @@
 
 
               <div class="form-group">
-                <input type="submit" value="검색" class="btn btn-primary py-3 px-5">
+                <input type="submit" id="submit" value="검색" class="btn btn-primary py-3 px-5">
               </div>
             </div>
           </form:form>
@@ -468,6 +469,9 @@
 
 
 </section> <!-- .section -->
+
+
+
 <div class="form-group">
   <input type="button" value="뒤로가기" class="btn btn-primary py-3 px-5" onclick="history_back();" style="margin-left: 1020px;">
 </div>
@@ -490,11 +494,23 @@
   }
 </script>
 
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
   <jsp:include page="../main/footer.jsp"></jsp:include>
 
 
 <script>
+
+  $('#submit').click(function (){
+
+    if($('#accommodationDistrictOption').val()==null){
+      alert('도시를 선택해주세요')
+      return false;
+    }
+
+  });
+
+
 
   $('#accommodationDistrictOption').change(function () {
 

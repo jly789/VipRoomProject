@@ -115,7 +115,7 @@
 
 
               <div class="form-group">
-                <input type="submit" value="검색" class="btn btn-primary py-3 px-5">
+                <input type="submit" id="submit" value="검색" class="btn btn-primary py-3 px-5">
               </div>
             </div>
           </form:form>
@@ -368,13 +368,23 @@
 
 
 
-
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
   <jsp:include page="../main/footer.jsp"></jsp:include>
 
 
 
 <script>
+
+  $('#submit').click(function (){
+
+    if($('#accommodationDistrictOption').val()==null){
+      alert('도시를 선택해주세요')
+      return false;
+    }
+
+  });
+
 
   $('#accommodationDistrictOption').change(function () {
 
