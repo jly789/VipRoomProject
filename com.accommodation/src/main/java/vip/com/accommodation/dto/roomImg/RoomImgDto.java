@@ -4,17 +4,16 @@ package vip.com.accommodation.dto.roomImg;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 public class RoomImgDto {
 
 
-    private int accommodationImgId; //숙소번호
-    private int accommodationId;
-    private String accommodationImage;
-    private String accommodationImagePath;
+    private int accommodationImgId; //숙소이미지번호
+    private int accommodationId; //숙소번호
+    private String accommodationImage; //숙소이미지
+    private String accommodationImagePath; //숙소이미지경로
 
 
 }

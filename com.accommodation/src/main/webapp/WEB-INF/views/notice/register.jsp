@@ -74,8 +74,7 @@
           <option value="중요">중요</option>
 
         </select>
-        <%--                        <input type="checkbox" id="noticeType" name="noticeType" value="중요">중요</input>--%>
-        <%--                        <input type="checkbox" id="noticeType" name="noticeType" value="공지">공지</input>--%>
+
         <br/><br/><br/>
 
         <div class="row">
@@ -118,7 +117,7 @@
 
 
         </div>
-        <%--                        </form>--%>
+
       </div>
     </div>
   </form>

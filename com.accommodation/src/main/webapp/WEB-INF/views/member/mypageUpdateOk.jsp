@@ -73,9 +73,7 @@
 
           <h6 style="text-align: left">아이디</h6>
           <input type="text" readonly class="form-control" name="userId" id="userId" value="${memberFindDto.userId}" placeholder="아이디 입력"/>
-<%--          <form:errors path="userId" cssStyle="font-weight: bold; color: #e95050"></form:errors>--%>
-<%--          <input type="button" id="btnCheck" value="중복검사" class="btn btn-primary py-3 px-5"  />--%>
-<%--          <span id="result"></span>--%>
+
 
 
 

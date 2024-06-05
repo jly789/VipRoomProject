@@ -5,12 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
-import vip.com.accommodation.dto.city.CityDto;
-import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.mapper.accommodationImg.AccommodationImgMapper;
-import vip.com.accommodation.mapper.city.CityMapper;
 import vip.com.accommodation.service.accommodationImg.AccommodationImgService;
-import vip.com.accommodation.service.city.CityService;
+
 
 import java.io.File;
 import java.util.List;
@@ -31,7 +28,7 @@ public class AccommodationImgServiceImpl implements AccommodationImgService {
 
         String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\accommodationImg";
 
-      //  int id = accommodationImgInsertDto.getAccommodationId(); //1
+
 
         for (int i = 0; i < file.size(); i++) {
 

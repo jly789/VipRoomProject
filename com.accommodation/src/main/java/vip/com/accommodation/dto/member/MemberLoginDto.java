@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class MemberLoginDto {
 
-    private String userId;
-    private String pwd;
+    private String userId; //사용자아이디
+    private String pwd; //비밀번호
 }

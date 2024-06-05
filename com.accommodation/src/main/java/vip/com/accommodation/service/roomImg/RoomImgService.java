@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RoomImgService {
 
-    public void roomImgInsert(RoomImgInsertDto roomImgInsertDto, List<MultipartFile> file)throws Exception;
+    public void roomImgInsert(RoomImgInsertDto roomImgInsertDto, List<MultipartFile> file)throws Exception; //객실이미지등록
 }

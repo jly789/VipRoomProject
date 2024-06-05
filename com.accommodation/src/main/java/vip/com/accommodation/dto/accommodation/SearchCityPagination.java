@@ -7,29 +7,17 @@ import lombok.Setter;
 @Setter
 public class SearchCityPagination {
 
-
-        // 현재페이지
-        private int currentPage;
-        // 페이지당 출력할 페이지 갯수
-        private int cntPerPage;
-        // 화면 하단 페이지 사이즈 1~10, 10~20 20~30 ...
-        private int pageSize;
-        // 전체 데이터 개수
-        private int totalRecordCount;
-        // 전체 페이지 개수
-        private int totalPageCount;
-        // 페이지 리스트의 첫 페이지 번호
-        private int firstPage;
-        // 페이지 리스트의 마지막 페이지 번호
-        private int lastPage;
-        // SQL의 조건절에 사용되는 첫 RNUM
-        private int firstRecordIndex;
-        // SQL의 조건절에 사용되는 마지막 RNUM
-        private int lastRecordIndex;
-        // 이전 페이지 존재 여부
-        private boolean hasPreviousPage;
-        // 다음 페이지 존재 여부
-        private boolean hasNextPage;
+        private int currentPage;   // 현재페이지
+        private int cntPerPage;  // 페이지당 출력할 페이지 갯수
+        private int pageSize;   // 화면 하단 페이지 사이즈 1~10, 10~20 20~30 ...
+        private int totalRecordCount;  // 전체 데이터 개수
+        private int totalPageCount;   // 전체 페이지 개수
+        private int firstPage;  // 페이지 리스트의 첫 페이지 번호
+        private int lastPage;  // 페이지 리스트의 마지막 페이지 번호
+        private int firstRecordIndex;  // SQL의 조건절에 사용되는 첫 RNUM
+        private int lastRecordIndex;  // SQL의 조건절에 사용되는 마지막 RNUM
+        private boolean hasPreviousPage;   // 이전 페이지 존재 여부
+        private boolean hasNextPage;  // 다음 페이지 존재 여부
 
         private String accommodationDistrict; //숙소지역구
         private String accommodationCity; //숙소시

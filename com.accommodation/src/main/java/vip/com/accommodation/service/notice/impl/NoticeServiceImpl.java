@@ -7,9 +7,7 @@ import vip.com.accommodation.dto.notice.NoticeDeleteDto;
 import vip.com.accommodation.dto.notice.NoticeInsertDto;
 import vip.com.accommodation.dto.notice.NoticeListDto;
 import vip.com.accommodation.dto.notice.NoticeUpdateDto;
-import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.mapper.notice.NoticeMapper;
-import vip.com.accommodation.service.district.DistrictService;
 import vip.com.accommodation.service.notice.NoticeService;
 
 import java.util.List;
@@ -28,6 +26,11 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void noticeUpdate(NoticeUpdateDto noticeUpdateDto) {
         noticeMapper.noticeUpdate(noticeUpdateDto);
+    }
+
+    @Override
+    public void noticeViewsUpdate(int noticeId) {
+        noticeMapper.noticeViewsUpdate(noticeId);
     }
 
     @Override

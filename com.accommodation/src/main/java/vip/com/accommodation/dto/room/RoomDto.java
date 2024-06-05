@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 @Getter
 @Setter
@@ -24,7 +24,6 @@ public class RoomDto {
     private int maximumCapacity; //최대 숙박인원
 
 
-    private int roomNumbers;// 객실수
 
     @NotBlank(message = "필수 정보입니다.")
     private String roomName; //객실이름

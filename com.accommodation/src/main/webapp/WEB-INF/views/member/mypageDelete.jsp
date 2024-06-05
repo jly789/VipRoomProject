@@ -88,9 +88,6 @@
   </div>
   </div>
 
-<%--  <strong><a href="/idSearch" style="color: black; text-align: end"  >계정 찾기 / </a>--%>
-<%--  <a href="/pwdSearch" style="color: black;" >비밀번호 찾기</a></strong>--%>
-<%--  <br/><br/>--%>
 
 
 

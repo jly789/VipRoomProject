@@ -120,16 +120,7 @@
 
 
 
-
-
-
-
-
-
-
     </select>
-
-
 
 
 
@@ -163,8 +154,6 @@
 
 
 
-
-
     <select id="relatedHotelsDistrict" parameterType="int" resultType="String">
 
         select accommodationDistrict  from  accommodation
@@ -181,7 +170,7 @@
 
     <select id="relatedHotels" parameterType="String" resultType="vip.com.accommodation.dto.accommodation.AccommodationMainListDto">
 
-        select  a.accommodationId,a.accommodationName ,b.accommodationImage,b.accommodationImagePath,
+        select  a.accommodationId,a.accommodationName,a.accommodationDistrict,b.accommodationImage,b.accommodationImagePath,
                 a.accommodationCategory  from  accommodation a
                                                    left join  accommodationImg b
                                                               on a.accommodationId= b.accommodationId
@@ -206,86 +195,9 @@
         where accommodation.accommodationId= #{accommodationId}
 
 
-
-
-
-
     </select>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    <select id="idCheck" parameterType="String" resultType="int">-->
-
-<!--    select count(*) from member-->
-<!--    where userId =#{userId}-->
-
-<!--    </select>-->
-
-<!--    <select id="idSearch" parameterType="vip.com.accommodation.dto.member.MemberSearchDto" resultType="String">-->
-
-<!--    select userId from member-->
-<!--    where userName=#{userName} and email=#{email}-->
-
-
-<!--    </select>-->
-
-<!--    <select id="pwdSearch" parameterType="vip.com.accommodation.dto.member.MemberSearchDto" resultType="String">-->
-
-<!--        select pwd from member-->
-<!--        where userId=#{userId} and email=#{email}-->
-
-
-<!--    </select>-->
-
-<!--    <select id="mypage" parameterType="String" resultType="vip.com.accommodation.dto.member.MemberFindDto">-->
-
-<!--    select * from member-->
-<!--    where userId = #{userId}-->
-
-
-
-<!--    </select>-->
-
-<!--    <update id="mypageUpdate" parameterType="vip.com.accommodation.dto.member.MemberUpdateDto">-->
-
-<!--       update member-->
-<!--       set  pwd =#{pwd},userName =#{userName},nickName =#{nickName},birth=#{birth}, tel =#{tel},postcode =#{postcode},address =#{address},-->
-<!--           detailAddress =#{detailAddress},extraAddress =#{extraAddress},email =#{email}-->
-
-<!--       where userId = #{userId}-->
-
-
-
-
-<!--    </update>-->
-
-
-
-<!--<select id="deleteLoginCheck" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto" resultType="int">-->
-
-<!--    select count(*) from member-->
-<!--    where userId = #{userId} and pwd = #{pwd}-->
-
-<!--</select>-->
-
-
-<!--    <delete id="mypageDelete" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto">-->
-
-<!--    delete from member-->
-<!--    where userId =#{userId} and pwd = #{pwd}-->
-
-<!--    </delete>-->
 
 
 </mapper>

@@ -150,7 +150,6 @@
 
                     </div>
                     <div class="two">
-                        <%--                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>--%>
                     </div>
                   </div>
                   <p></p>
@@ -236,14 +235,6 @@
       dataType: 'json',
 
       success:function (cityDtoList){
-
-
-        // if(result=='1'){
-        //   $('#result').text('사용 가능한 아이디입니다.');
-        //   $('#checkId').val(1);
-
-
-        // accommodationCityOption
 
 
         $('#subCategory').empty();

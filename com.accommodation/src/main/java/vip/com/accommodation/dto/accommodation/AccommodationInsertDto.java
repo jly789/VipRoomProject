@@ -2,8 +2,6 @@ package vip.com.accommodation.dto.accommodation;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 

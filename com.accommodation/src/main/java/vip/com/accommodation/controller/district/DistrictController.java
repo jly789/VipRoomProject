@@ -19,16 +19,6 @@ public class DistrictController {
 
 
 
-    @Resource
-    private MemberService memberService;
-
-    @Resource
-    private AccommodationService accommodationService;
-
-
-
-
-
 
 
 

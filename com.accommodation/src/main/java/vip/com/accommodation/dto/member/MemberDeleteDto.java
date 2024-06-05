@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class MemberDeleteDto {
 
-    private int memberId;
-    private String userId;
-    private String pwd;
+    private int memberId; //회원번호
+    private String userId; //사용자아이디
+    private String pwd; //비밀번호
 }

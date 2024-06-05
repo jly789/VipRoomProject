@@ -15,11 +15,9 @@ import vip.com.accommodation.dto.room.RoomMainListDto;
 import vip.com.accommodation.dto.roomImg.RoomImgInsertDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.alert.AlertService;
-import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.review.ReviewService;
 import vip.com.accommodation.service.room.RoomService;
 import vip.com.accommodation.service.roomImg.RoomImgService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -30,8 +28,7 @@ import java.util.List;
 public class RoomController {
 
 
-    @Resource
-    private MemberService memberService;
+
 
     @Resource
     private AccommodationService accommodationService;
@@ -48,7 +45,7 @@ public class RoomController {
     @Resource
     private AlertService alertService;
 
-    @GetMapping("/{accommodationId}")
+    @GetMapping("/{accommodationId}") //객실번호리스트
 
     public String roomMain(@PathVariable("accommodationId") int accommodationId, Model model)  {
 
@@ -112,7 +109,7 @@ public class RoomController {
     }
 
 
-    @GetMapping("/room")
+    @GetMapping("/room") //관리자전용 객실등록페이지
     public String room(Model model) {
 
         List<AccommodationFindDto> accommodationFindList = accommodationService.accommodationFindList();
@@ -124,7 +121,7 @@ public class RoomController {
     }
 
 
-    @PostMapping("/roomInsert")
+    @PostMapping("/roomInsert") //관리자전용 숙소의 객실등록
     public String roomInsert(@Valid @ModelAttribute("roomInsertDto") RoomInsertDto roomInsertDto, RoomImgInsertDto roomImgInsertDto,
                              BindingResult bindingResult, Model model,
                              List<MultipartFile> file,

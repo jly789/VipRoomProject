@@ -1,6 +1,4 @@
 package vip.com.accommodation.controller.notice;
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +9,7 @@ import vip.com.accommodation.dto.notice.NoticeDeleteDto;
 import vip.com.accommodation.dto.notice.NoticeInsertDto;
 import vip.com.accommodation.dto.notice.NoticeListDto;
 import vip.com.accommodation.dto.notice.NoticeUpdateDto;
-import vip.com.accommodation.dto.review.ReviewListDto;
-import vip.com.accommodation.service.accommodation.AccommodationService;
-import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.notice.NoticeService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -25,14 +19,12 @@ import java.util.List;
 public class NoticeController {
 
 
-    @Resource
-    private MemberService memberService;
 
     @Resource
     private NoticeService noticeService;
 
 
-    @GetMapping("/notice")
+    @GetMapping("/notice") //공지리스트
     public String notice(HttpSession session, Model model) {
 
         if (session.getAttribute("memberId") == null) {
@@ -59,6 +51,8 @@ public class NoticeController {
     @GetMapping("/notice/{noticeId}") //공지사항 상세리스트
     public String noticeDetail(@PathVariable("noticeId")int noticeId,Model model,HttpSession session) {
 
+
+        noticeService.noticeViewsUpdate(noticeId);
 
 
         String userId = (String)session.getAttribute("userId");
@@ -96,7 +90,7 @@ public class NoticeController {
     }
 
 
-    @GetMapping("/noticeInsert")
+    @GetMapping("/noticeInsert") //공지등록
     public String noticeInsert(HttpSession session, Model model) {
 
 
@@ -108,7 +102,7 @@ public class NoticeController {
     }
 
 
-    @PostMapping("/noticeInsert")
+    @PostMapping("/noticeInsert") //공지등록성공
     public String noticeInsertOk(NoticeInsertDto noticeInsertDto) {
 
         noticeService.noticeInsert(noticeInsertDto);
@@ -117,7 +111,7 @@ public class NoticeController {
         return "redirect:/notice";
     }
 
-    @PostMapping("/noticeUpdate")
+    @PostMapping("/noticeUpdate") //공지수정완료
     public String noticeUpdate(NoticeUpdateDto noticeUpdateDto) {
 
         noticeService.noticeUpdate(noticeUpdateDto);
@@ -126,7 +120,7 @@ public class NoticeController {
         return "redirect:/notice";
     }
 
-    @PostMapping("/noticeDelete")
+    @PostMapping("/noticeDelete") //공지삭제
     public String noticeDelete(NoticeDeleteDto noticeDeleteDto) {
 
         noticeService.noticeDelete(noticeDeleteDto);

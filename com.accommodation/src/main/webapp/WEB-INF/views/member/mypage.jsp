@@ -82,7 +82,6 @@
 
         </div>
 
-        <%--            result = 중복확인시 텍스트값을 뿌려준다--%>
 
 
         <div class="form-group">

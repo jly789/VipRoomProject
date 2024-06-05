@@ -1,6 +1,4 @@
 package vip.com.accommodation.controller.review;
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,15 +12,10 @@ import vip.com.accommodation.dto.review.ReviewDeleteDto;
 import vip.com.accommodation.dto.review.ReviewInsertDto;
 import vip.com.accommodation.dto.review.ReviewListDto;
 import vip.com.accommodation.dto.review.ReviewUpdateDto;
-import vip.com.accommodation.service.accommodation.AccommodationService;
-import vip.com.accommodation.service.alert.AlertService;
-import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.reservation.ReservationService;
 import vip.com.accommodation.service.review.ReviewService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.util.List;
 
 @Controller
@@ -31,11 +24,6 @@ public class ReviewController {
 
 
 
-    @Resource
-    private MemberService memberService;
-
-    @Resource
-    private AccommodationService accommodationService;
 
     @Resource
     private ReservationService reservationService;
@@ -44,11 +32,7 @@ public class ReviewController {
     private ReviewService reviewService;
 
 
-    @Resource
-    private AlertService alertService;
-
-
-    @GetMapping("/review")
+    @GetMapping("/review") //리뷰페이지
     public String review(ReviewListDto reviewListDto,Model model,HttpSession session){
 
         String userId = (String)session.getAttribute("userId");
@@ -56,13 +40,13 @@ public class ReviewController {
         List<ReviewListDto> reviewList = reviewService.reviewList();
 
         model.addAttribute("reviewList",reviewList);
-//        model.addAttribute("userId",userId);
+
 
         return "review/reviewMain";
 
     }
 
-    @GetMapping("/review/{reviewId}")
+    @GetMapping("/review/{reviewId}") //해당리뷰의 상세리스트
     public String review(@PathVariable("reviewId")int reviewId, ReviewListDto reviewListDto, Model model, HttpSession session){
 
 
@@ -106,7 +90,7 @@ public class ReviewController {
 
 
 
-    @GetMapping("/reviewInsert")
+    @GetMapping("/reviewInsert") //리뷰등록
     public String reviewInsert(@ModelAttribute("reviewInsertDto") ReviewInsertDto reviewInsertDto, Model model){
 
 
@@ -116,7 +100,7 @@ public class ReviewController {
 
     }
 
-    @PostMapping("/reviewInsert")
+    @PostMapping("/reviewInsert") //리뷰등록성공
     public String reviewInsert_Ok(HttpSession session, ReviewInsertDto reviewInsertDto, Model model, MultipartFile file)throws Exception{
 
         if(file.isEmpty()){
@@ -174,7 +158,7 @@ public class ReviewController {
 
 
 
-    @PostMapping("/reviewUpdate")
+    @PostMapping("/reviewUpdate") //리뷰수정
     public String reviewUpdate(MultipartFile file, ReviewUpdateDto reviewUpdateDto, Model model, HttpSession session)throws Exception{
 
 
@@ -191,7 +175,7 @@ public class ReviewController {
 
     }
 
-    @PostMapping("/reviewDelete")
+    @PostMapping("/reviewDelete") //리뷰삭제
     public String reviewDelete(ReviewDeleteDto reviewDeleteDto, Model model, HttpSession session){
 
 

@@ -14,12 +14,10 @@ import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.order.OrderService;
 import vip.com.accommodation.service.reservation.ReservationService;
 import vip.com.accommodation.service.review.ReviewService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -42,13 +40,13 @@ public class MemberController {
     @Resource
     private ReviewService reviewService;
 
-    @GetMapping("/login")
+    @GetMapping("/login") //회원로그인페이지
     public String login(){
 
         return "member/login";
     }
 
-    @PostMapping("/")
+    @PostMapping("/") //로그인성공시 페이지
     public String login_ok(MemberLoginDto memberLoginDto,HttpServletResponse response,HttpSession session,Model model,
                            @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
                            @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
@@ -80,7 +78,7 @@ public class MemberController {
 
     }
 
-    @GetMapping("/logOut")
+    @GetMapping("/logOut") //로그아웃
     public String logOut(HttpSession session){
 
         session.removeAttribute("userId");
@@ -90,7 +88,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/register")
+    @GetMapping("/register") //회원등록
     public String register(){
 
         return "member/register";
@@ -98,7 +96,7 @@ public class MemberController {
 
 
     @ResponseBody
-    @PostMapping("/idCheck")
+    @PostMapping("/idCheck") //아이디찾기
     public int idCheck(String userId){
 
         int result = memberService.idCheck(userId);
@@ -106,7 +104,7 @@ public class MemberController {
         return result;
     }
 
-    @PostMapping("/register_success")
+    @PostMapping("/register_success") //회원등록 성공페이지
     public String register_ok(@Valid @ModelAttribute("memberInsertDto") MemberInsertDto memberInsertDto,
                               BindingResult bindingResult,Model model
                              )throws Exception{
@@ -141,14 +139,14 @@ public class MemberController {
     }
 
 
-    @GetMapping("/idSearch")
+    @GetMapping("/idSearch") //아이디찾기
     public String idSearch(){
 
 
         return "/member/idSearch";
     }
 
-    @PostMapping("/idSearch")
+    @PostMapping("/idSearch") //아이디찾기성공
     public String idSearch_ok(@Valid @ModelAttribute("memberSearchDto")MemberSearchDto memberSearchDto
                               ,BindingResult bindingResult,Model model){
 
@@ -180,14 +178,14 @@ public class MemberController {
     }
 
 
-    @GetMapping("/pwdSearch")
+    @GetMapping("/pwdSearch") //비밀번호찾기
     public String pwdSearch(){
 
 
         return "/member/pwdSearch";
     }
 
-    @PostMapping("/pwdSearch")
+    @PostMapping("/pwdSearch") //비밀번호찾기 성공
     public String pwdSearch_ok(@Valid @ModelAttribute("memberSearchDto")MemberSearchDto memberSearchDto
             ,BindingResult bindingResult,Model model){
 
@@ -220,7 +218,7 @@ public class MemberController {
 
     }
 
-    @GetMapping("/mypage")
+    @GetMapping("/mypage") //마이페이지
     public String mypage(HttpSession session,Model model){
 
         String userId = (String) session.getAttribute("userId");
@@ -238,7 +236,7 @@ public class MemberController {
         return "/member/mypage";
     }
 
-    @PostMapping("/mypage")
+    @PostMapping("/mypage") //마이페이지수정 페이지
     public String mypage_update(@Valid  @ModelAttribute("memberFindDto")MemberFindDto memberFindDto,
 
                                BindingResult bindingResult,HttpSession session,Model model)throws Exception {
@@ -268,7 +266,7 @@ public class MemberController {
 
 
 
-    @PostMapping("/mypageUpdate")
+    @PostMapping("/mypageUpdate") //마이페이지 수정성공
     public String mypageUpdate(MemberFindDto memberFindDto,HttpSession session,Model model){
 
         String userId = (String) session.getAttribute("userId");
@@ -286,7 +284,7 @@ public class MemberController {
         return "/member/mypageUpdate";
     }
 
-    @GetMapping("/mypageDelete")
+    @GetMapping("/mypageDelete") //마이페이지삭제
     public String mypageDelete(HttpSession session,Model model){
 
 
@@ -296,7 +294,7 @@ public class MemberController {
 
 
 
-    @PostMapping("/mypageDelete")
+    @PostMapping("/mypageDelete") //마이페이지삭제 성공
     public String mypageDelete_ok(MemberDeleteDto memberDeleteDto,MemberLoginDto memberLoginDto,Model model){
 
 
@@ -342,7 +340,7 @@ public class MemberController {
         return "redirect:/login";
     }
 
-    @GetMapping("/loginCheck/{reservationId}")
+    @GetMapping("/loginCheck/{reservationId}") //예약번호 삭제를 위한 로그인체크 페이지
     public String loginCheck(@PathVariable("reservationId")int reservationId,Model model){
 
         model.addAttribute("reservationId",reservationId);
@@ -352,7 +350,7 @@ public class MemberController {
 
 
     @ResponseBody
-    @PostMapping("/loginCheck")
+    @PostMapping("/loginCheck") //로그인체크후 성공시 주문,리뷰,예약 삭제
 
     public int loginCheckOk(MemberLoginDto memberLoginDto,@RequestParam("reservationId")int reservationId){
 

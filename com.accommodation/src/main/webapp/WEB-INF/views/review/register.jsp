@@ -116,8 +116,7 @@
 
 
 
-        <%--                        <input type="checkbox" id="noticeType" name="noticeType" value="중요">중요</input>--%>
-        <%--                        <input type="checkbox" id="noticeType" name="noticeType" value="공지">공지</input>--%>
+
         <br/><br/><br/>
 
         <div class="row">
@@ -225,20 +224,6 @@
 
 
 
-//  //파일 리스트 추가
-//  $(document).ready(function() {
-//    $('.btnAdd').click(function () {
-//      $('.addInput').append(
-//              '<input type="file" name="file" id="fileList" onchange="readURL(this);"/><button type="button" class="btnRemove">삭제</button>'
-//      );//input file
-//      $('.btnRemove').on('click',function(){//this='.btnRemove'
-//        $(this).prev().remove();// .prev()=input file을 가리키고 remove()실행
-//        $(this).next().remove();//<br> 삭제
-//        $(this).remove();//버튼 삭제
-//      });
-//    });
-//
-//  });
 
 
 

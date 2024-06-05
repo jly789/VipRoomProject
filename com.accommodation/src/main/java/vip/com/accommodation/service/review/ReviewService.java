@@ -10,18 +10,18 @@ import java.util.List;
 
 public interface ReviewService {
 
-    public int maxNum();
-    public void insertReviewData(ReviewInsertDto reviewInsertDto, MultipartFile file) throws Exception;
+    public int maxNum();  //가장높은 리뷰번호
+    public void insertReviewData(ReviewInsertDto reviewInsertDto, MultipartFile file) throws Exception;  //이미지있는 리뷰등록
 
-    public void insertReviewNotImage(ReviewInsertDto reviewInsertDto,MultipartFile file) throws Exception;
+    public void insertReviewNotImage(ReviewInsertDto reviewInsertDto,MultipartFile file) throws Exception; //이미지없는 리뷰등록
 
-    public List<ReviewListDto> reviewList();
+    public List<ReviewListDto> reviewList(); //리뷰리스트
 
-    public List<ReviewListDto> reviewDetailList(int reviewId);
+    public List<ReviewListDto> reviewDetailList(int reviewId);  //리뷰상세리스트
 
 
-    public void reviewUpdate(ReviewUpdateDto reviewUpdateDto,MultipartFile file)throws Exception;
-    public void reviewUpdateNoImg(ReviewUpdateDto reviewUpdateDto)throws Exception;
+    public void reviewUpdate(ReviewUpdateDto reviewUpdateDto,MultipartFile file)throws Exception;  //리뷰수정
+    public void reviewUpdateNoImg(ReviewUpdateDto reviewUpdateDto)throws Exception; //이미지없는 리뷰수정
 
     public void reviewDelete(ReviewDeleteDto reviewDeleteDto); //reviewId를 통한 리뷰삭제
 

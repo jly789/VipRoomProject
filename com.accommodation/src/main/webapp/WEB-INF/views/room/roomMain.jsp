@@ -45,19 +45,6 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 
 
-<%--<c:forEach var="accommodationDetailList" items="${accommodationDetailList}">--%>
-
-<%--<div class="hero-wrap js-fullheight" style="background-image: url(${accommodationDetailList.accommodationImagePath});">--%>
-
-
-<%--  <div class="overlay"></div>--%>
-<%--  <div class="container">--%>
-<%--    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">--%>
-<%--      <h1 style="color: black; font-weight: bold;">${accommodationDetailList.accommodationName}</h1>--%>
-<%--      </c:forEach>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--</div>--%>
 
 
 <section class="ftco-section ftco-degree-bg">
@@ -139,10 +126,10 @@
         <div class="row">
           <div class="col-md-12 ftco-animate">
             <div class="">
-<%--              <div class="single-slider owl-carousel">--%>
+
               <div class="item">
                 <c:forEach var="accommodationDetailList" items="${accommodationDetailList}">
-<%--                <div class="hotel-img" style="background-image: url(${accommodationDetailList.accommodationImagePath});"></div>--%>
+
                 <img src="${accommodationDetailList.accommodationImagePath}" width="800px;" height="400px;" />
 
               </div>
@@ -315,7 +302,7 @@
           </div>
 
 
-              <h4 class="mb-4">주변 지역 호텔</h4>
+              <h4 class="mb-4">주변 호텔</h4>
               <div class="row">
 
 
@@ -332,10 +319,10 @@
                         <div >
 
                             <h3>${relatedHotels.accommodationName}</h3>
-
+                              (${relatedHotels.accommodationDistrict})
 
                           <div class="two">
-                              <%--                    <span class="price per-price"><br><small>${accommodationMainList.roomPrice}원</small></span>--%>
+
                           </div>
                         </div>
                         <p></p>

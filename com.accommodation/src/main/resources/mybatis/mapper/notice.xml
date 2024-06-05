@@ -5,10 +5,6 @@
 
 <mapper namespace="vip.com.accommodation.mapper.notice.NoticeMapper">
 
-<!--        <select id="maxNum" resultType="int">-->
-<!--            select ifnull(max(roomId),0) from orders-->
-<!--        </select>-->
-
 
 
     <insert id="noticeInsert" parameterType="vip.com.accommodation.dto.notice.NoticeInsertDto">
@@ -47,6 +43,16 @@
 
     </update>
 
+    <update id="noticeViewsUpdate" parameterType="vip.com.accommodation.dto.notice.NoticeUpdateDto">
+
+        update notice set
+                      noticeViews= noticeViews+1
+        where noticeId =#{noticeId}
+
+
+
+    </update>
+
 
 
     <delete id="noticeDelete" parameterType="vip.com.accommodation.dto.notice.NoticeDeleteDto">
@@ -55,8 +61,6 @@
         where noticeId =#{noticeId}
 
     </delete>
-
-
 
 
 

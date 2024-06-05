@@ -27,16 +27,14 @@ CREATE TABLE member ( -- 회원 테이블
                         CONSTRAINT PK_MEMBER PRIMARY KEY (memberId)
 );
 
-CREATE TABLE district ( -- 회원 테이블
+CREATE TABLE district ( -- 지역구 테이블
                           districtId  INT NOT NULL AUTO_INCREMENT, -- 지역구번호
-
                           districtName  VARCHAR(50) NOT NULL, -- 지역구이름
-
 
                           CONSTRAINT PK_DISTRICT PRIMARY KEY (districtId)
 );
 
-CREATE TABLE city ( -- 숙소 이미지 테이플
+CREATE TABLE city ( -- 도시 테이플
                       cityId INT NOT NULL AUTO_INCREMENT,  -- 도시번호
                       districtId INT NOT NULL, -- (외래키)지역구번호
                       cityName VARCHAR(300) NOT NULL, -- 도시이름
@@ -120,10 +118,10 @@ CREATE TABLE orders -- 주문
     orderId     INT NOT NULL AUTO_INCREMENT, -- 주문번호
     reservationId    INT  NOT NULL, -- (외래키)예약번호
     orderPrice  INT NOT NULL, -- 주문가격
-    orderNum    VARCHAR(200) NOT NULL,
-    impUid      VARCHAR(200) NULL,
+    orderNum    VARCHAR(200) NOT NULL,  -- 주문번호
+    impUid      VARCHAR(200) NULL, -- 결제번호
     orderStatus VARCHAR(30) NOT NULL, -- 주문상태 ex)결제완료
-    orderDate   datetime NOT NULL default current_timestamp , -- 주문날짜
+    orderDate   datetime NOT NULL default current_timestamp , -- 주문결제일
 
     CONSTRAINT PK_ORDERS PRIMARY KEY (orderId),
     CONSTRAINT FK_ORDERS_RESERVATIONID FOREIGN KEY (reservationId) REFERENCES reservation (reservationId)
@@ -132,13 +130,13 @@ CREATE TABLE orders -- 주문
 
 CREATE TABLE notice
 (
-    noticeId      INT NOT NULL  AUTO_INCREMENT,
-    memberId      INT NOT NULL         NOT NULL,
-    noticeSubject VARCHAR(300)  NOT NULL,
-    noticeContent VARCHAR(4000) NOT NULL,
+    noticeId      INT NOT NULL  AUTO_INCREMENT, -- 공지번호
+    memberId      INT NOT NULL         NOT NULL, -- (외래키)회원번호
+    noticeSubject VARCHAR(300)  NOT NULL, -- 공지제목
+    noticeContent VARCHAR(4000) NOT NULL, -- 공지내용
     noticeType    VARCHAR(50)   NOT NULL, -- 중요,공지
-    noticeDate    datetime NOT NULL default current_timestamp,
-    noticeViews   INT NOT NULL DEFAULT 0,
+    noticeDate    datetime NOT NULL default current_timestamp, -- 공지등록일
+    noticeViews   INT NOT NULL DEFAULT 0, -- 공지조회수
 
     CONSTRAINT PK_NOTICE PRIMARY KEY (noticeId),
     CONSTRAINT FK_NOTICE_MEMBERID FOREIGN KEY (memberId) REFERENCES member (memberId)
@@ -160,7 +158,7 @@ CREATE TABLE review
     reviewFileName VARCHAR(255)  NULL, -- 리뷰이미지
     reviewFilePath VARCHAR(255)  NULL, -- 리뷰이미지경로
     reviewState VARCHAR(50)  null, -- 리뷰상태
-    reviewDate datetime NOT NULL default current_timestamp , -- 리뷰등록날짜
+    reviewDate datetime NOT NULL default current_timestamp , -- 리뷰등록일
     CONSTRAINT PK_REVIEW PRIMARY KEY (reviewId),
     CONSTRAINT FK_REVIEW_MEMBERID FOREIGN KEY (memberId) REFERENCES member (memberId),
     CONSTRAINT FK_REVIEW_ACCOMMODATIONID FOREIGN KEY (accommodationId) REFERENCES accommodation (accommodationId),

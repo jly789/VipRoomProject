@@ -6,11 +6,8 @@ import org.springframework.stereotype.Service;
 import vip.com.accommodation.dto.room.RoomInsertDto;
 import vip.com.accommodation.dto.room.RoomMainListDto;
 import vip.com.accommodation.dto.room.RoomSpecificListDto;
-import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.mapper.room.RoomMapper;
-import vip.com.accommodation.service.district.DistrictService;
 import vip.com.accommodation.service.room.RoomService;
-
 import java.util.List;
 
 @Service

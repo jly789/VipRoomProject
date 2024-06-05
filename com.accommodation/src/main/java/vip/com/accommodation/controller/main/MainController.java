@@ -8,12 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.accommodation.Pagination;
-import vip.com.accommodation.dto.member.MemberDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 import java.util.List;
 
 @Controller
@@ -23,7 +19,7 @@ public class MainController {
     @Resource
     private AccommodationService accommodationService;
 
-    @GetMapping("/")
+    @GetMapping("/") //메인페이지
     public String main(Model model,  @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
                        @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
                        @RequestParam(value = "pageSize", required = false, defaultValue = "100") int pageSize)throws Exception{
@@ -34,7 +30,7 @@ public class MainController {
 
 
 
-        Pagination pagination = new Pagination(currentPage, 6, pageSize);
+        Pagination pagination = new Pagination(currentPage, listCnt, pageSize);
         pagination.setTotalRecordCount(listCnt);
 
         List<AccommodationMainListDto> accommodationMainList = accommodationService.accommodationMainList(pagination);
@@ -43,7 +39,7 @@ public class MainController {
         return "main/main";
     }
 
-    @PostMapping("/distinctSearch")
+    @PostMapping("/distinctSearch") //메인페이지 숙소지역구,지역을 통한 숙소검색
     public String distinctSearch(AccommodationMainListDto accommodationMainListDto, Model model,
              @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage, @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
                                  @RequestParam(value = "pageSize", required = false, defaultValue = "100") int pageSize)throws Exception{
@@ -80,7 +76,7 @@ public class MainController {
 
 
 
-    @GetMapping("/CategorySearch")
+    @GetMapping("/CategorySearch") //숙소유형 찾기
     public String CategorySearch(AccommodationMainListDto accommodationMainListDto, Model model)throws Exception{
 
         List<AccommodationMainListDto> categorySearchList= accommodationService.accommodationCategorySearchList(accommodationMainListDto);

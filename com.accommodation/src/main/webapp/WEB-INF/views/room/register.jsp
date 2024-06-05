@@ -113,12 +113,6 @@
 
     </div>
 
-          <div class="form-group">
-            <h5 style="text-align: left;">객실 수</h5>
-            <input type="text" class="form-control" name="roomNumbers" id="roomNumbers" value="${roomInsertDto.roomNumbers}" placeholder="객실 수 입력" />
-
-
-          </div>
 
     <div class="form-group">
       <h5 style="text-align: left;">객실소개</h5>
@@ -203,10 +197,6 @@
         return false;
       }
 
-      if($('#roomNumbers').val()==''){
-        alert('객실 수를 입력하세요!');
-        return false;
-      }
 
 
       if($('#roomDescription').val()==''){

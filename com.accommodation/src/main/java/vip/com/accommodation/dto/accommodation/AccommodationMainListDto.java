@@ -2,8 +2,6 @@ package vip.com.accommodation.dto.accommodation;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Getter
@@ -25,8 +23,8 @@ public class AccommodationMainListDto {
 
     //숙소이미지
     private int accommodationImgId; //숙소번호
-    private String accommodationImage;
-    private String accommodationImagePath;
+    private String accommodationImage; //숙소이미지
+    private String accommodationImagePath; //숙소이미지 경로
 
 
     //객실
@@ -40,8 +38,8 @@ public class AccommodationMainListDto {
 
     //객실이미지
     private int roomImgId; //객실이미지번호
-    private String roomImage;
-    private String roomImagePath;
+    private String roomImage; //객실이미지
+    private String roomImagePath; //객실이미지 경로
 
 
 }

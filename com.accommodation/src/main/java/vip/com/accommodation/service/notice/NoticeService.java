@@ -9,13 +9,16 @@ import java.util.List;
 
 public interface NoticeService {
 
-    public void noticeInsert(NoticeInsertDto noticeInsertDto);
 
-    public void noticeUpdate(NoticeUpdateDto noticeUpdateDto);
+    public void noticeInsert(NoticeInsertDto noticeInsertDto); //공지등록
 
-    public void noticeDelete(NoticeDeleteDto noticeDeleteDto);
+    public void noticeUpdate(NoticeUpdateDto noticeUpdateDto); //공지수정
 
-    public List<NoticeListDto> noticeList();
+    public void noticeViewsUpdate(int noticeId); //공지조회시 조회수증가
 
-    public List<NoticeListDto> noticeDetailList(int noticeId);
+    public void noticeDelete(NoticeDeleteDto noticeDeleteDto); //공지삭제
+
+    public List<NoticeListDto> noticeList(); //공지리스트
+
+    public List<NoticeListDto> noticeDetailList(int noticeId); //공지번호를통한 공지상세리스트
 }

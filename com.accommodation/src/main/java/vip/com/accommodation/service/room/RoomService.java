@@ -9,12 +9,14 @@ import java.util.List;
 public interface RoomService {
 
 
-    public int maxNum();
-    public void roomInsert(RoomInsertDto roomInsertDto);
+    public int maxNum(); //가장높은 객실번호
 
-    public List<RoomMainListDto> roomDetailList(int accommodationId);
+    public void roomInsert(RoomInsertDto roomInsertDto); //객실등록
 
-    public List<RoomSpecificListDto> roomSpecificListDto(int roomId,int accommodationId);
+
+    public List<RoomMainListDto> roomDetailList(int accommodationId); //객실 상세리스트
+
+    public List<RoomSpecificListDto> roomSpecificListDto(int roomId, int accommodationId); //특정객실리스트
 
 
 }

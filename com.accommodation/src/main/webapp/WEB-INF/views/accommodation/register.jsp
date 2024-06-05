@@ -102,7 +102,6 @@
             </div>
 
 
-<%--            <div  id="subCategory">--%>
 
 
 
@@ -166,11 +165,6 @@
 
     </div>
 
-<%--            <div class="form-group">--%>
-<%--              <input type="text" class="form-control" name="accommodationCategory" value="${accommodationInsertDto.accommodationCategory}" placeholder="숙박유형 입력"/>--%>
-<%--              <form:errors path="accommodationCategory" cssStyle="font-weight: bold; color: #e95050"></form:errors>--%>
-<%--            </div>--%>
-
 
             <div class="form-group">
               <input type="text" class="form-control" name="accommodationInformation" id="accommodationInformation"  value="${accommodationInsertDto.accommodationInformation}" placeholder="숙소정보 입력" />
@@ -186,7 +180,6 @@
             <p>상품 이미지<span>*</span></p>
             <input type="file" name="file" id="fileList" onchange="readURL(this);">
           </div>
-<%--          <button type="button" class="btnAdd">이미지 추가</button>--%>
         </div>
       </div>
 
@@ -293,13 +286,6 @@
           dataType: 'json',
 
           success:function (cityDtoList){
-
-            // if(result=='1'){
-            //   $('#result').text('사용 가능한 아이디입니다.');
-            //   $('#checkId').val(1);
-
-
-           // accommodationCityOption
 
 
             $('#subCategory').empty();

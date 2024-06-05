@@ -102,7 +102,7 @@
             </div>
 
 
-<%--            <div  id="subCategory">--%>
+
 
 
 
@@ -166,10 +166,7 @@
 
     </div>
 
-<%--            <div class="form-group">--%>
-<%--              <input type="text" class="form-control" name="accommodationCategory" value="${accommodationInsertDto.accommodationCategory}" placeholder="숙박유형 입력"/>--%>
-<%--              <form:errors path="accommodationCategory" cssStyle="font-weight: bold; color: #e95050"></form:errors>--%>
-<%--            </div>--%>
+
 
 
             <div class="form-group">
@@ -191,20 +188,6 @@
       </div>
 
         <br/>
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
-
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
-
-<%--    <div class="single-input-fields">--%>
-<%--      <input type="file" class="form-control" name="file"--%>
-<%--             style="width : 280px; height : 30px; "/>--%>
-<%--    </div>--%>
 
 
 
@@ -256,15 +239,6 @@
 
 
 
-    // $('#accommodationDistrictOption').click(function (){
-    //
-    //   const accommodationDistrict = '';
-    //   const accommodationDistrictOption = $('#accommodationDistrictOption').val();
-    //
-    //   $('#accommodationDistrict').val(accommodationDistrictOption)
-    //
-    //   return true;
-    // });
 
 
 
@@ -290,12 +264,6 @@
 
           success:function (cityDtoList){
 
-            // if(result=='1'){
-            //   $('#result').text('사용 가능한 아이디입니다.');
-            //   $('#checkId').val(1);
-
-
-           // accommodationCityOption
 
 
             $('#subCategory').empty();

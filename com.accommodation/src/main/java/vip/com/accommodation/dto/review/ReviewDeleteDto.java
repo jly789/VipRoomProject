@@ -8,5 +8,5 @@ import lombok.Setter;
 @Setter
 public class ReviewDeleteDto {
 
-    private int reviewId;
+    private int reviewId; //리뷰번호
 }

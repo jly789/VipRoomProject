@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class DistrictDto {
 
-    private   int districtId;
-    private String districtName;
+    private   int districtId; //지역구번호
+    private String districtName; //지역구이름
 }

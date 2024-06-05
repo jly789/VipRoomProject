@@ -10,20 +10,20 @@ import java.time.LocalDate;
 @Setter
 public class ReviewInsertDto {
 
-    private int reviewId;
-    private int memberId;
-    private int accommodationId;
-    private int reservationId;
-    private int views;
-    private int grade;
-    private String reviewSubject;
-    private String reviewContent;
-    private String reviewFileName;
-    private String reviewFilePath;
-    private String reviewState;
-    private LocalDate reviewDate;
+    private int reviewId; //리뷰번호
+    private int memberId; //(외래키)회원번호
+    private int accommodationId;  //(외래키)숙소번호
+    private int reservationId;  //(외래키)예약번호
+    private int views; //조회수
+    private int grade; //평점
+    private String reviewSubject; //리뷰제목
+    private String reviewContent; //리뷰내용
+    private String reviewFileName; //리뷰이미지
+    private String reviewFilePath; //리뷰이미지경로
+    private String reviewState; //리뷰상태
+    private LocalDate reviewDate; //리뷰등록일
 
 
-    private int roomId;
+    private int roomId;  //객실번호
 
 }

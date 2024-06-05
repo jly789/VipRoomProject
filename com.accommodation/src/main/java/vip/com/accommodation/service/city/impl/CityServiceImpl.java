@@ -14,8 +14,7 @@ import java.util.List;
 @Service
 public class CityServiceImpl implements CityService {
 
-    @Autowired
-    private AccommodationMapper accommodationMapper;
+
 
     @Autowired
     private CityMapper cityMapper;

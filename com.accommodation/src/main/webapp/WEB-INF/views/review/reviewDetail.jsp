@@ -226,10 +226,7 @@
             </div>
           </div>
 
-<%--          <textarea   name="noticeContent" id="noticeContent"  cols="100" rows="15" readonly>--%>
 
-
-<%--          </textarea>--%>
 
 
 

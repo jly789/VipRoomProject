@@ -13,13 +13,14 @@
 
     <insert id="roomInsert" parameterType="vip.com.accommodation.mapper.room.RoomMapper">
 
-        insert into room(roomId,accommodationId,roomPrice,standardNumbers,maximumCapacity,roomNumbers,
+        insert into room(roomId,accommodationId,roomPrice,standardNumbers,maximumCapacity,
                          roomName,roomDescription)
-        values (#{roomId},#{accommodationId},#{roomPrice},#{standardNumbers},#{maximumCapacity},#{roomNumbers}
+        values (#{roomId},#{accommodationId},#{roomPrice},#{standardNumbers},#{maximumCapacity}
                ,#{roomName},#{roomDescription})
 
 
     </insert>
+
 
 
     <select id="roomDetailList" parameterType="int" resultType="vip.com.accommodation.dto.room.RoomMainListDto">

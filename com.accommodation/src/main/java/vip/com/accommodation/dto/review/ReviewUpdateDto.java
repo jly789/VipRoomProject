@@ -8,10 +8,10 @@ import lombok.Setter;
 @Setter
 public class ReviewUpdateDto {
 
-    private int reviewId;
-    private String reviewSubject;
-    private String reviewContent;
-    private String reviewFileName;
-    private String reviewFilePath;
+    private int reviewId; //리뷰아이디
+    private String reviewSubject; //리뷰제목
+    private String reviewContent; //리뷰내용
+    private String reviewFileName; //리뷰이미지
+    private String reviewFilePath; //리뷰이미지경로
 
 }

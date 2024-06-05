@@ -10,20 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
 import vip.com.accommodation.dto.accommodation.Pagination;
-import vip.com.accommodation.dto.accommodation.SearchCityPagination;
 import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
 import vip.com.accommodation.dto.city.CityDto;
-import vip.com.accommodation.dto.member.MemberInsertDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
 import vip.com.accommodation.service.accommodationImg.AccommodationImgService;
 import vip.com.accommodation.service.alert.AlertService;
 import vip.com.accommodation.service.city.CityService;
-import vip.com.accommodation.service.member.MemberService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -31,8 +26,6 @@ import java.util.List;
 public class AccommodationController {
 
 
-    @Resource
-    private MemberService memberService;
 
     @Resource
     private AccommodationService accommodationService;
@@ -48,7 +41,7 @@ public class AccommodationController {
 
 
 
-    @GetMapping("/accommodationMain")
+    @GetMapping("/accommodationMain") //숙소메인 리스트
 
     public String accommodationMain(Model model,  @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
                                     @RequestParam(value = "cntPerPage", required = false, defaultValue = "1") int cntPerPage,
@@ -76,7 +69,7 @@ public class AccommodationController {
     }
 
 
-    @PostMapping("/accommodationMainSearchCity")
+    @PostMapping("/accommodationMainSearchCity") //숙소 지역구,도시에 해당되는 숙소찾기
 
     public String accommodationMainSearchCity(@ModelAttribute("accommodationMainListDto")AccommodationMainListDto accommodationMainListDto,Model model,
                                               @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
@@ -174,7 +167,7 @@ public class AccommodationController {
 
 
     @ResponseBody
-    @PostMapping("/accommodationDistrict")
+    @PostMapping("/accommodationDistrict") // 해당 지역구의 도시찾기
     public List<CityDto> idCheck(@RequestParam("accommodationDistrict") String accommodationDistrict) {
 
         List<CityDto> cityDtoList = cityService.citySearch(accommodationDistrict);

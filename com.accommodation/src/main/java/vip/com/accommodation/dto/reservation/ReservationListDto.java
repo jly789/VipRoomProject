@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Getter
 @Setter
@@ -36,14 +36,14 @@ public class ReservationListDto {
 
     //ReviewListDto
 
-    private int reviewId;
-    private int views;
-    private int grade;
-    private String reviewSubject;
-    private String reviewContent;
-    private String reviewFileName;
-    private String reviewFilePath;
-    private String reviewState;
-    private LocalDate reviewDate;
+    private int reviewId; //리뷰번호
+    private int views; //리뷰조회수
+    private int grade; //평점
+    private String reviewSubject; //리뷰제목
+    private String reviewContent; //리뷰내용
+    private String reviewFileName; //리뷰이미지
+    private String reviewFilePath; //리뷰이미지경로
+    private String reviewState; //리뷰상태
+    private LocalDate reviewDate; //리뷰등록일
 
 }

@@ -5,10 +5,6 @@
 
 <mapper namespace="vip.com.accommodation.mapper.order.OrderMapper">
 
-<!--        <select id="maxNum" resultType="int">-->
-<!--            select ifnull(max(roomId),0) from orders-->
-<!--        </select>-->
-
 
 
     <insert id="orderInsert" parameterType="vip.com.accommodation.mapper.order.OrderMapper">
@@ -26,12 +22,6 @@
         where reservationId =#{reservationId}
 
     </delete>
-
-
-
-
-
-
 
 
 </mapper>

@@ -105,21 +105,6 @@
 
     </update>
 
-    <!--    <select id="memberIdFind" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
-<!--        select memberId from member-->
-<!--        where userId=#{userId}-->
-
-<!--    </select>-->
-
-<!--    <select id="login" parameterType="man.man.dto.member.MemberLoginDTO" resultType="int">-->
-
-<!--        select count(*),0 from member-->
-<!--        where userId =#{userId} and pwd =#{pwd}-->
-
-
-
-
-<!--    </select>-->
 
 
 <select id="deleteLoginCheck" parameterType="vip.com.accommodation.dto.member.MemberDeleteDto" resultType="int">

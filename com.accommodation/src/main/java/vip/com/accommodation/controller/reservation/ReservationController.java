@@ -1,16 +1,9 @@
 package vip.com.accommodation.controller.reservation;
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import vip.com.accommodation.dto.accommodation.AccommodationInsertDto;
 import vip.com.accommodation.dto.accommodation.AccommodationMainListDto;
-import vip.com.accommodation.dto.accommodationImg.AccommodationImgInsertDto;
-import vip.com.accommodation.dto.city.CityDto;
 import vip.com.accommodation.dto.order.OrderInsertDto;
 import vip.com.accommodation.dto.reservation.ReservationFindDto;
 import vip.com.accommodation.dto.reservation.ReservationInsertDto;
@@ -19,19 +12,14 @@ import vip.com.accommodation.dto.review.ReviewListDto;
 import vip.com.accommodation.dto.room.RoomMainListDto;
 import vip.com.accommodation.dto.room.RoomSpecificListDto;
 import vip.com.accommodation.service.accommodation.AccommodationService;
-import vip.com.accommodation.service.accommodationImg.AccommodationImgService;
 import vip.com.accommodation.service.alert.AlertService;
-import vip.com.accommodation.service.city.CityService;
-import vip.com.accommodation.service.member.MemberService;
 import vip.com.accommodation.service.order.OrderService;
 import vip.com.accommodation.service.reservation.ReservationService;
 import vip.com.accommodation.service.review.ReviewService;
 import vip.com.accommodation.service.room.RoomService;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -39,17 +27,10 @@ import java.util.List;
 public class ReservationController {
 
 
-    @Resource
-    private MemberService memberService;
+
 
     @Resource
     private AccommodationService accommodationService;
-
-    @Resource
-    private AccommodationImgService accommodationImgService;
-
-    @Resource
-    private CityService cityService;
 
     @Resource
     private AlertService alertService;
@@ -67,7 +48,7 @@ public class ReservationController {
     ReviewService reviewService;
 
 
-    @GetMapping("/myReservation")
+    @GetMapping("/myReservation") //나의예약리스트페이지
     public String myReservation(HttpSession session,Model model){
 
         int memberId = (int)session.getAttribute("memberId");
@@ -86,7 +67,7 @@ public class ReservationController {
 
 
 
-    @GetMapping("/reservation")
+    @GetMapping("/reservation") //예약페이지
     public String reservation(HttpSession session,Model model,@RequestParam("roomId")int roomId,@RequestParam("accommodationId")int accommodationId){
 
         String userId = (String) session.getAttribute("userId");
@@ -131,7 +112,7 @@ public class ReservationController {
         return "reservation/register";
     }
 
-    @PostMapping("/reservation")
+    @PostMapping("/reservation") //예약성공
     public String reservation_ok(Model model, ReservationFindDto reservationFindDto, HttpSession session, HttpServletResponse response)throws Exception{
 
             String msg;
@@ -188,13 +169,11 @@ public class ReservationController {
 
 
     @ResponseBody
-    @PostMapping("/payment")
+    @PostMapping("/payment") //결제성공시 예약등록및 주문등록
     public String reservationOrder(OrderInsertDto orderInsertDto,ReservationInsertDto reservationInsertDto)throws Exception {
 
 
 
-        System.out.println(orderInsertDto.getOrderNum());
-        System.out.println(orderInsertDto.getImpUid());
 
 
              reservationService.reservationInsert(reservationInsertDto);

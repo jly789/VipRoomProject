@@ -25,25 +25,13 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void insertData(MemberInsertDto memberInsertDto)throws Exception {
 
-//        response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter out = response.getWriter();
-
-
-
 
             memberMapper.insertData(memberInsertDto);
-//            out.println("<script> alert('회원가입완료.');");
-//            out.println("history.go(-1);</script>");
-//            out.flush(); //flush해야 됨
-
-
 
     }
 
     @Override
     public int idCheck(String userId){
-
-
 
 
 

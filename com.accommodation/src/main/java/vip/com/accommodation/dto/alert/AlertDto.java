@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class AlertDto {
 
-    private String alertMessage;
+    private String alertMessage; //경고메세지
 
 }

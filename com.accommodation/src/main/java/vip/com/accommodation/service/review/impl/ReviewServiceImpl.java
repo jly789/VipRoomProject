@@ -8,9 +8,7 @@ import vip.com.accommodation.dto.review.ReviewDeleteDto;
 import vip.com.accommodation.dto.review.ReviewInsertDto;
 import vip.com.accommodation.dto.review.ReviewListDto;
 import vip.com.accommodation.dto.review.ReviewUpdateDto;
-import vip.com.accommodation.mapper.accommodation.AccommodationMapper;
 import vip.com.accommodation.mapper.review.ReviewMapper;
-import vip.com.accommodation.service.district.DistrictService;
 import vip.com.accommodation.service.review.ReviewService;
 
 import java.io.File;

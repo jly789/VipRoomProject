@@ -3,20 +3,16 @@ package vip.com.accommodation.mapper.order;
 
 import org.apache.ibatis.annotations.Mapper;
 import vip.com.accommodation.dto.order.OrderInsertDto;
-import vip.com.accommodation.dto.reservation.ReservationFindDto;
-import vip.com.accommodation.dto.reservation.ReservationInsertDto;
-import vip.com.accommodation.dto.reservation.ReservationListDto;
-import vip.com.accommodation.dto.room.RoomInsertDto;
 
 @Mapper
 public interface OrderMapper {
 
-    public int maxNum();
+    public int maxNum(); //가장높은 주문번호
 
 
-    public void orderInsert(OrderInsertDto orderInsertDto);
+    public void orderInsert(OrderInsertDto orderInsertDto); //주문등록
 
-    public void orderDelete(int reservationId);
+    public void orderDelete(int reservationId); //예약번호를 통한 주문삭제
 
 
 

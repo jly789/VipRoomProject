@@ -77,10 +77,7 @@
 
       <tr>
 
-<%--        <td style="color:black">--%>
-<%--                          <c:set var="i" value="${i+1}"/>--%>
-<%--                          ${i}--%>
-<%--        </td>--%>
+
 
         <td>
           <div class="media">
@@ -262,7 +259,7 @@ function reservationDelete(reservationId){
   var reservationId = reservationId;
 
 
-  //reservationId++;
+
 
 
   var_left=Math.ceil((window.screen.width-var_width)/2);
